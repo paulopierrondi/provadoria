@@ -34,8 +34,12 @@ struct ProvadorIAApp: App {
                 ContentView()
                     .preferredColorScheme(.dark)
             } else {
-                OnboardingView()
-                    .preferredColorScheme(.dark)
+                OnboardingView {
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        hasSeenOnboarding = true
+                    }
+                }
+                .preferredColorScheme(.dark)
             }
         }
     }
