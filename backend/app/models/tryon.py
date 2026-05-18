@@ -5,7 +5,11 @@ from datetime import datetime
 from app.core.config import settings
 
 Base = declarative_base()
-engine = create_engine(settings.DATABASE_URL)
+# Fallback to SQLite if DATABASE_URL is not a valid postgres URL (e.g. Railway without DB yet)
+_db_url = settings.DATABASE_URL
+if not _db_url or _db_url.startswith("postgresql://user:pass@localhost"):
+    _db_url = "sqlite:///./provadoria.db"
+engine = create_engine(_db_url, connect_args={"check_same_thread": False} if _db_url.startswith("sqlite") else {})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 class User(Base):
