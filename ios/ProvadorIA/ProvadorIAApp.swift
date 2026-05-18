@@ -5,6 +5,9 @@ struct ProvadorIAApp: App {
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
     
     init() {
+        if ProcessInfo.processInfo.arguments.contains("--uitest-reset") {
+            UserDefaults.standard.removeObject(forKey: "hasSeenOnboarding")
+        }
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = UIColor(Color.neuralVoid)

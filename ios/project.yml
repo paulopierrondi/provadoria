@@ -36,3 +36,10 @@ targets:
           - pt-BR
         UILaunchScreen: {}
         ITSAppUsesNonExemptEncryption: false
+  ProvadorIAUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: ProvadorIAUITests
+    dependencies:
+      - target: ProvadorIA

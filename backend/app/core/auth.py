@@ -5,7 +5,7 @@ import hashlib
 import base64
 import json
 from uuid import uuid4
-from typing import Any
+from typing import Any, Optional
 
 JWT_SECRET = os.environ.get("JWT_SECRET", "dev-secret-change-me")
 TOKEN_TTL_SECONDS = 60 * 60 * 24 * 30  # 30 days
@@ -33,7 +33,7 @@ def issue_token(user_id: str) -> str:
     sig = hmac.new(_secret(), signing_input, hashlib.sha256).digest()
     return f"{h}.{p}.{_b64url(sig)}"
 
-def verify_token(token: str) -> dict[str, Any] | None:
+def verify_token(token: str) -> Optional[dict[str, Any]]:
     try:
         h_b, p_b, s_b = token.split(".")
     except ValueError:
