@@ -3,93 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProvadorIA — Experimente Antes de Comprar</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>ProvadorIA — Experimente roupas com IA</title>
+    <meta name="description" content="Visualize como qualquer peça de roupa ficaria em você antes de comprar, usando Inteligência Artificial.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #050508;
+            --surface: #0A0A12;
+            --cyan: #00F0FF;
+            --purple: #B829F7;
+            --pink: #FF2D8F;
+            --white: #E8F4F8;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(ellipse at 30% 20%, rgba(0,240,255,0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(184,41,247,0.06) 0%, transparent 50%);
+        }
+        .hero-content { animation: fadeInUp 1s ease-out; }
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        .hero p {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--white);
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 18px 48px;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            color: var(--bg);
+            text-decoration: none;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 32px rgba(0,240,255,0.25);
+        }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,240,255,0.35); }
+        .app-store-badge {
+            margin-top: 32px;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+        
+        /* Features */
+        .features { padding: 100px 0; }
+        .features h2 {
+            text-align: center;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 60px;
+            color: var(--white);
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        .feature-card {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 40px 32px;
+            border: 1px solid rgba(0,240,255,0.1);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0,240,255,0.3);
+        }
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--white);
+        }
+        .feature-card p { opacity: 0.6; font-size: 0.95rem; }
+        
+        /* Screenshot */
+        .screenshot { padding: 80px 0; text-align: center; }
+        .screenshot-placeholder {
+            max-width: 360px;
+            margin: 0 auto;
+            aspect-ratio: 9/19.5;
+            background: var(--surface);
+            border-radius: 40px;
+            border: 2px solid rgba(0,240,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0,240,255,0.1);
+        }
+        footer a { color: var(--cyan); text-decoration: none; margin: 0 16px; opacity: 0.7; }
+        footer a:hover { opacity: 1; }
+        footer p { margin-top: 20px; opacity: 0.4; font-size: 0.85rem; }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero { padding: 80px 20px; }
+            .features { padding: 60px 0; }
+        }
+    </style>
 </head>
 <body>
-    <nav class="nav">
-        <div class="logo">ProvadorIA</div>
-        <a href="#download" class="btn-small">Baixar</a>
-    </nav>
-
     <section class="hero">
         <div class="hero-content">
-            <h1>Experimente qualquer roupa <span class="gradient">sem sair de casa</span></h1>
-            <p class="subtitle">Tire uma foto sua, escolha uma roupa e veja como ficaria em você com IA generativa.</p>
-            <div class="badges">
-                <span class="badge">Virtual Try-On</span>
-                <span class="badge">IA Generativa</span>
-                <span class="badge">Reviews da Comunidade</span>
-            </div>
-            <a href="#download" class="btn-primary">Baixar na App Store</a>
+            <h1>ProvadorIA</h1>
+            <p>Experimente roupas virtualmente com Inteligência Artificial. Veja como fica em você antes de comprar.</p>
+            <a href="#" class="cta-button">Baixar na App Store</a>
+            <div class="app-store-badge">Em breve disponível para iOS</div>
         </div>
-        <div class="hero-visual">
-            <div class="phone-mockup">
-                <div class="screen">
-                    <div class="tryon-card">
-                        <div class="before-after">
-                            <div class="before">Você</div>
-                            <div class="arrow">→</div>
-                            <div class="after">Try-On IA</div>
-                        </div>
-                        <div class="tryon-img"></div>
-                        <p class="tryon-title">Vestido Floral Verão 🌸</p>
-                        <div class="tryon-meta">
-                            <span>Caimento: Ótimo</span>
-                            <span>Nota: 9.2</span>
-                        </div>
-                    </div>
+    </section>
+    
+    <section class="features">
+        <div class="container">
+            <h2>Como funciona</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📸</div>
+                    <h3>Provador Virtual</h3>
+                    <p>Envie uma foto sua e uma foto da roupa. Nossa IA mostra como ficaria em você com resultados realistas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Análise de Estilo</h3>
+                    <p>Receba análises de caimento, dicas de estilo personalizadas e ocasiões recomendadas para cada peça.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Feed da Comunidade</h3>
+                    <p>Descubra try-ons de outros usuários, vote nos melhores e compartilhe seus experimentos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Reviews e Avaliações</h3>
+                    <p>Leia opiniões sobre looks e peças. Deixe sua avaliação e ajude a comunidade a escolher melhor.</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <section class="features">
-        <h2>Como funciona</h2>
-        <div class="grid">
-            <div class="feature">
-                <div class="icon">📸</div>
-                <h3>Foto sua</h3>
-                <p>Tire uma foto do seu corpo para a IA entender seu formato.</p>
-            </div>
-            <div class="feature">
-                <div class="icon">👗</div>
-                <h3>Escolha a roupa</h3>
-                <p>Upload de qualquer roupa: Shein, Zara, Instagram, loja física.</p>
-            </div>
-            <div class="feature">
-                <div class="icon">✨</div>
-                <h3>Veja o resultado</h3>
-                <p>IA gera uma imagem realista de como a roupa ficaria em você.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="social-proof">
-        <h2>Quem usa, ama</h2>
-        <div class="testimonials">
-            <div class="testimonial">
-                <p>"Experimentei 20 vestidos do Shein em 5 minutos. Economizei horas de provador."</p>
-                <span>— @ana.compras</span>
-            </div>
-            <div class="testimonial">
-                <p>"A comunidade é honesta. Sei se vale a pena comprar antes de gastar meu dinheiro."</p>
-                <span>— @bruno.shop</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta" id="download">
-        <h2>Experimente antes de comprar</h2>
-        <p>5 try-ons gratuitos por dia. Premium ilimitado.</p>
-        <a href="#" class="btn-primary large">Baixar na App Store</a>
-        <p class="price">R$ 14,90/mês ou R$ 89,90/ano</p>
-    </section>
-
+    
     <footer>
-        <p>© 2026 ProvadorIA. Todos os direitos reservados.</p>
+        <div class="container">
+            <a href="/privacy">Privacidade</a>
+            <a href="/support">Suporte</a>
+            <a href="https://pierrondi.com">pierrondi.com</a>
+            <p>© 2024 ProvadorIA. Todos os direitos reservados.</p>
+        </div>
     </footer>
 </body>
 </html>
