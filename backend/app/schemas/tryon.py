@@ -3,8 +3,8 @@ from typing import Optional, List
 from datetime import datetime
 
 class TryOnCreate(BaseModel):
-    user_photo_url: str
-    clothing_photo_url: str
+    user_photo_url: Optional[str] = None
+    clothing_photo_url: Optional[str] = None
     clothing_description: Optional[str] = None
 
 class TryOnResponse(BaseModel):
