@@ -1,0 +1,1 @@
+Primeira versão do ProvadorIA! Provador virtual por IA, análise de peças e feed da comunidade.

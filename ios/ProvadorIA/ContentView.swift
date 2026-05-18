@@ -33,24 +33,15 @@ struct ContentView: View {
             .tag(2)
             
             NavigationStack {
-                ReviewsView(tryOnId: "1")
-            }
-            .tabItem {
-                Image(systemName: "star.bubble")
-                Text("Reviews")
-            }
-            .tag(3)
-            
-            NavigationStack {
                 ProfileView()
             }
             .tabItem {
                 Image(systemName: "person")
                 Text("Perfil")
             }
-            .tag(4)
+            .tag(3)
         }
-        .tint(.appAccentCyan)
+        .tint(.electricCyan)
     }
 }
 

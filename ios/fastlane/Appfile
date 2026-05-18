@@ -1,0 +1,5 @@
+# Fastlane Appfile — ProvadorIA
+app_identifier("com.paulopierrondi.provadoria")
+apple_id("pierrondi@gmail.com")
+itc_team_id("126198026")
+team_id("8ULNGWJZ6B")

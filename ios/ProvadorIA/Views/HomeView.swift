@@ -15,33 +15,29 @@ struct HomeView: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
         }
-        .background(Color.appBackground.ignoresSafeArea())
+        .background(Color.neuralVoid.ignoresSafeArea())
+        .navigationTitle("Início")
+        .navigationBarTitleDisplayMode(.large)
     }
     
     private var headerSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Bem-vindo ao")
-                .font(.subheadline)
+                .neuralBody()
                 .foregroundColor(.gray)
             
             HStack(spacing: 4) {
                 Text("Provador")
-                    .font(.system(size: 32, weight: .bold))
-                    .foregroundColor(.white)
+                    .neuralDisplay()
+                    .foregroundColor(.neuralWhite)
                 
                 Text("IA")
-                    .font(.system(size: 32, weight: .bold))
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [.appAccentCyan, .appAccentPurple],
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                    )
+                    .neuralDisplay()
+                    .foregroundStyle(LinearGradient.cyanGradient)
             }
             
             Text("Experimente roupas virtualmente com IA")
-                .font(.subheadline)
+                .neuralBody()
                 .foregroundColor(.gray)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -53,32 +49,20 @@ struct HomeView: View {
                 HStack(spacing: 16) {
                     ZStack {
                         Circle()
-                            .fill(
-                                LinearGradient(
-                                    colors: [.appAccentCyan.opacity(0.2), .appAccentPurple.opacity(0.2)],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                            )
+                            .fill(Color.electricCyan.opacity(0.12))
                             .frame(width: 56, height: 56)
                         
                         Image(systemName: "camera.viewfinder")
                             .font(.system(size: 24))
-                            .foregroundStyle(
-                                LinearGradient(
-                                    colors: [.appAccentCyan, .appAccentPurple],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                            )
+                            .foregroundStyle(LinearGradient.cyanGradient)
                     }
                     
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Novo Try-On")
-                            .font(.headline)
-                            .foregroundColor(.white)
+                            .neuralTitle()
+                            .foregroundColor(.neuralWhite)
                         Text("Tire uma foto e experimente uma roupa")
-                            .font(.caption)
+                            .neuralCaption()
                             .foregroundColor(.gray)
                     }
                     
@@ -88,27 +72,28 @@ struct HomeView: View {
                         .foregroundColor(.gray)
                 }
                 .padding(16)
-                .glassCard()
+                .neuralCard()
             }
+            .buttonStyle(.plain)
             
             NavigationLink(destination: FeedView()) {
                 HStack(spacing: 16) {
                     ZStack {
                         Circle()
-                            .fill(Color.appAccentPink.opacity(0.15))
+                            .fill(Color.neonPink.opacity(0.12))
                             .frame(width: 56, height: 56)
                         
                         Image(systemName: "photo.stack")
                             .font(.system(size: 24))
-                            .foregroundColor(.appAccentPink)
+                            .foregroundColor(.neonPink)
                     }
                     
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Ver Feed")
-                            .font(.headline)
-                            .foregroundColor(.white)
+                            .neuralTitle()
+                            .foregroundColor(.neuralWhite)
                         Text("Descubra looks da comunidade")
-                            .font(.caption)
+                            .neuralCaption()
                             .foregroundColor(.gray)
                     }
                     
@@ -118,37 +103,38 @@ struct HomeView: View {
                         .foregroundColor(.gray)
                 }
                 .padding(16)
-                .glassCard()
+                .neuralCard()
             }
+            .buttonStyle(.plain)
         }
     }
     
     private var statsSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Suas Estatísticas")
-                .font(.headline)
-                .foregroundColor(.white)
+                .neuralTitle()
+                .foregroundColor(.neuralWhite)
             
             HStack(spacing: 12) {
                 StatCard(
                     value: "\(stats.tryOns)",
                     label: "Try-ons",
                     icon: "camera.viewfinder",
-                    color: .appAccentCyan
+                    color: .electricCyan
                 )
                 
                 StatCard(
                     value: "\(stats.reviews)",
                     label: "Reviews",
                     icon: "star.bubble",
-                    color: .appAccentPurple
+                    color: .neonPurple
                 )
                 
                 StatCard(
                     value: "\(stats.votes)",
                     label: "Votos",
                     icon: "arrow.up.heart",
-                    color: .appAccentPink
+                    color: .neonPink
                 )
             }
         }
@@ -158,14 +144,14 @@ struct HomeView: View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
                 Text("Tendências")
-                    .font(.headline)
-                    .foregroundColor(.white)
+                    .neuralTitle()
+                    .foregroundColor(.neuralWhite)
                 
                 Spacer()
                 
                 Text("Ver todos")
-                    .font(.caption)
-                    .foregroundColor(.appAccentCyan)
+                    .neuralCaption()
+                    .foregroundColor(.electricCyan)
             }
             
             ScrollView(.horizontal, showsIndicators: false) {
@@ -202,27 +188,25 @@ struct TrendingCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             RoundedRectangle(cornerRadius: 16)
-                .fill(
-                    LinearGradient(
-                        colors: [Color.appSurfaceLight, Color.appSurface],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
+                .fill(LinearGradient.voidGradient)
                 .frame(width: 140, height: 140)
                 .overlay(
                     Image(systemName: "tshirt")
                         .font(.system(size: 40))
                         .foregroundColor(.gray.opacity(0.5))
                 )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.electricCyan.opacity(0.1), lineWidth: 1)
+                )
             
             Text(item.name)
                 .font(.subheadline.weight(.semibold))
-                .foregroundColor(.white)
+                .foregroundColor(.neuralWhite)
                 .lineLimit(1)
             
             Text("\(item.category) · \(item.color)")
-                .font(.caption)
+                .neuralCaption()
                 .foregroundColor(.gray)
         }
         .frame(width: 140)
@@ -232,5 +216,36 @@ struct TrendingCard: View {
 #Preview {
     NavigationStack {
         HomeView()
+    }
+}
+
+struct StatCard: View {
+    let value: String
+    let label: String
+    let icon: String
+    let color: Color
+
+    var body: some View {
+        VStack(spacing: 8) {
+            Image(systemName: icon)
+                .font(.system(size: 20))
+                .foregroundColor(color)
+
+            Text(value)
+                .font(.system(size: 22, weight: .bold, design: .rounded))
+                .foregroundColor(.neuralWhite)
+
+            Text(label)
+                .font(.system(size: 11, weight: .medium))
+                .foregroundColor(.neuralWhite.opacity(0.5))
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 16)
+        .background(Color.neuralDark)
+        .cornerRadius(16)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(color.opacity(0.2), lineWidth: 1)
+        )
     }
 }

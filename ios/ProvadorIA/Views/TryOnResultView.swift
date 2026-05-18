@@ -19,18 +19,21 @@ struct TryOnResultView: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
         }
-        .background(Color.appBackground.ignoresSafeArea())
+        .background(Color.neuralVoid.ignoresSafeArea())
         .navigationTitle("Resultado")
         .navigationBarTitleDisplayMode(.large)
         .toolbarColorScheme(.dark, for: .navigationBar)
-        .toolbarBackground(Color.appBackground, for: .navigationBar)
+        .toolbarBackground(Color.neuralVoid, for: .navigationBar)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Fechar") {
                     dismiss()
                 }
-                .foregroundColor(.appAccentCyan)
+                .foregroundColor(.electricCyan)
             }
+        }
+        .sheet(isPresented: $showShareSheet) {
+            ShareSheet(items: [shareText])
         }
         .alert("Salvo!", isPresented: $showSavedAlert) {
             Button("OK") { }
@@ -39,15 +42,19 @@ struct TryOnResultView: View {
         }
     }
     
+    private var shareText: String {
+        "Confira meu look no ProvadorIA! \(tryOn.description) — Avaliação: \(String(format: "%.1f", tryOn.rating))/10"
+    }
+    
     private var resultImageSection: some View {
         VStack(spacing: 12) {
             RoundedRectangle(cornerRadius: 20)
                 .fill(
                     LinearGradient(
                         colors: [
-                            Color.appAccentCyan.opacity(0.2),
-                            Color.appAccentPurple.opacity(0.2),
-                            Color.appAccentPink.opacity(0.1)
+                            Color.electricCyan.opacity(0.2),
+                            Color.neonPurple.opacity(0.2),
+                            Color.neonPink.opacity(0.1)
                         ],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
@@ -58,22 +65,16 @@ struct TryOnResultView: View {
                     VStack(spacing: 16) {
                         Image(systemName: "person.fill.viewfinder")
                             .font(.system(size: 60))
-                            .foregroundStyle(
-                                LinearGradient(
-                                    colors: [.appAccentCyan, .appAccentPurple],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                            )
+                            .foregroundStyle(LinearGradient.cyanGradient)
                         
                         Text(tryOn.description)
-                            .font(.subheadline)
-                            .foregroundColor(.white)
+                            .neuralBody()
+                            .foregroundColor(.neuralWhite)
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 32)
                         
                         Text("Preview gerado por IA")
-                            .font(.caption)
+                            .neuralCaption()
                             .foregroundColor(.gray)
                     }
                 )
@@ -81,21 +82,22 @@ struct TryOnResultView: View {
                     RoundedRectangle(cornerRadius: 20)
                         .stroke(
                             LinearGradient(
-                                colors: [.appAccentCyan.opacity(0.5), .appAccentPurple.opacity(0.5)],
+                                colors: [.electricCyan.opacity(0.5), .neonPurple.opacity(0.5)],
                                 startPoint: .topLeading,
                                 endPoint: .bottomTrailing
                             ),
                             lineWidth: 2
                         )
                 )
+                .cyanGlow()
             
             HStack(spacing: 8) {
                 Image(systemName: "arrow.left.arrow.right")
                     .font(.caption)
-                    .foregroundColor(.appAccentCyan)
+                    .foregroundColor(.electricCyan)
                 
                 Text("Antes / Depois")
-                    .font(.caption)
+                    .neuralCaption()
                     .foregroundColor(.gray)
                 
                 Spacer()
@@ -107,17 +109,11 @@ struct TryOnResultView: View {
         HStack(spacing: 16) {
             VStack(spacing: 4) {
                 Text(String(format: "%.1f", tryOn.rating))
-                    .font(.system(size: 36, weight: .bold))
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [.appAccentCyan, .appAccentPurple],
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                    )
+                    .font(.system(size: 36, weight: .bold, design: .rounded))
+                    .foregroundStyle(LinearGradient.cyanGradient)
                 
                 Text("de 10")
-                    .font(.caption)
+                    .neuralCaption()
                     .foregroundColor(.gray)
             }
             .frame(width: 80)
@@ -135,14 +131,14 @@ struct TryOnResultView: View {
                 }
                 
                 Text(ratingDescription)
-                    .font(.subheadline)
-                    .foregroundColor(.white)
+                    .neuralBody()
+                    .foregroundColor(.neuralWhite)
             }
             
             Spacer()
         }
         .padding(16)
-        .glassCard()
+        .neuralCard()
     }
     
     private var ratingDescription: String {
@@ -158,43 +154,43 @@ struct TryOnResultView: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 8) {
                 Image(systemName: "ruler")
-                    .foregroundColor(.appAccentCyan)
+                    .foregroundColor(.electricCyan)
                 Text("Avaliação do Ajuste")
-                    .font(.headline)
-                    .foregroundColor(.white)
+                    .neuralTitle()
+                    .foregroundColor(.neuralWhite)
             }
             
             Text(tryOn.fitAssessment)
-                .font(.body)
+                .neuralBody()
                 .foregroundColor(.gray)
                 .lineSpacing(4)
         }
         .padding(16)
-        .glassCard()
+        .neuralCard()
     }
     
     private var styleTipsSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 8) {
                 Image(systemName: "lightbulb")
-                    .foregroundColor(.appAccentPurple)
+                    .foregroundColor(.neonPurple)
                 Text("Dicas de Estilo")
-                    .font(.headline)
-                    .foregroundColor(.white)
+                    .neuralTitle()
+                    .foregroundColor(.neuralWhite)
             }
             
             VStack(alignment: .leading, spacing: 10) {
                 ForEach(Array(tryOn.styleTips.enumerated()), id: \.offset) { index, tip in
                     HStack(alignment: .top, spacing: 10) {
                         Text("\(index + 1)")
-                            .font(.caption.weight(.bold))
-                            .foregroundColor(.appAccentPurple)
+                            .font(.system(size: 11, weight: .bold, design: .monospaced))
+                            .foregroundColor(.neonPurple)
                             .frame(width: 22, height: 22)
-                            .background(Color.appAccentPurple.opacity(0.15))
+                            .background(Color.neonPurple.opacity(0.15))
                             .cornerRadius(6)
                         
                         Text(tip)
-                            .font(.subheadline)
+                            .neuralBody()
                             .foregroundColor(.gray)
                             .lineSpacing(2)
                         
@@ -204,58 +200,53 @@ struct TryOnResultView: View {
             }
         }
         .padding(16)
-        .glassCard()
+        .neuralCard()
     }
     
     private var occasionsSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 8) {
                 Image(systemName: "calendar.badge.clock")
-                    .foregroundColor(.appAccentPink)
+                    .foregroundColor(.neonPink)
                 Text("Ocasiões Recomendadas")
-                    .font(.headline)
-                    .foregroundColor(.white)
+                    .neuralTitle()
+                    .foregroundColor(.neuralWhite)
             }
             
             FlowLayout(spacing: 8) {
                 ForEach(tryOn.occasions, id: \.self) { occasion in
                     Text(occasion)
-                        .font(.caption.weight(.medium))
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 8)
-                        .background(
-                            Capsule()
-                                .fill(Color.appAccentCyan.opacity(0.15))
-                        )
-                        .overlay(
-                            Capsule()
-                                .stroke(Color.appAccentCyan.opacity(0.3), lineWidth: 1)
-                        )
+                        .neuralTag()
                 }
             }
         }
         .padding(16)
-        .glassCard()
+        .neuralCard()
     }
     
     private var actionButtons: some View {
         VStack(spacing: 12) {
-            Button(action: { showShareSheet = true }) {
+            Button(action: {
+                HapticFeedback.medium()
+                showShareSheet = true
+            }) {
                 HStack(spacing: 8) {
                     Image(systemName: "square.and.arrow.up")
                     Text("Compartilhar")
                 }
             }
-            .buttonStyle(AccentButtonStyle())
+            .buttonStyle(NeuralButtonStyle())
             
-            Button(action: saveToGallery) {
+            Button(action: {
+                HapticFeedback.success()
+                saveToGallery()
+            }) {
                 HStack(spacing: 8) {
                     Image(systemName: "square.and.arrow.down")
                     Text("Salvar na Galeria")
                 }
             }
-            .buttonStyle(SecondaryButtonStyle())
+            .buttonStyle(SecondaryNeuralButtonStyle())
         }
     }
     

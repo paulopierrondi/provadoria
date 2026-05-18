@@ -5,6 +5,7 @@ struct TryOnCardView: View {
     @State private var isVoted = false
     @State private var voteCount: Int
     @State private var showReviews = false
+    @State private var showShareSheet = false
     
     init(tryOn: TryOn) {
         self.tryOn = tryOn
@@ -18,39 +19,40 @@ struct TryOnCardView: View {
             descriptionSection
             actionSection
         }
-        .background(Color.appSurface)
-        .cornerRadius(20)
+        .background(Color.neuralDark)
+        .cornerRadius(16)
         .overlay(
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(Color.white.opacity(0.06), lineWidth: 1)
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color.electricCyan.opacity(0.1), lineWidth: 1)
         )
+        .shadow(color: Color.electricCyan.opacity(0.05), radius: 12, x: 0, y: 4)
+        .sheet(isPresented: $showShareSheet) {
+            ShareSheet(items: ["Confira este look no ProvadorIA! \(tryOn.description)"])
+        }
+        .navigationDestination(isPresented: $showReviews) {
+            ReviewsView(tryOnId: tryOn.id)
+        }
     }
     
     private var userInfoSection: some View {
         HStack(spacing: 12) {
             ZStack {
                 Circle()
-                    .fill(
-                        LinearGradient(
-                            colors: [.appAccentCyan.opacity(0.3), .appAccentPurple.opacity(0.3)],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .fill(Color.electricCyan.opacity(0.12))
                     .frame(width: 40, height: 40)
                 
                 Image(systemName: tryOn.userAvatar)
                     .font(.system(size: 20))
-                    .foregroundColor(.white)
+                    .foregroundColor(.neuralWhite)
             }
             
             VStack(alignment: .leading, spacing: 2) {
                 Text(tryOn.userName)
                     .font(.subheadline.weight(.semibold))
-                    .foregroundColor(.white)
+                    .foregroundColor(.neuralWhite)
                 
                 Text(tryOn.createdAt.formatted(date: .abbreviated, time: .shortened))
-                    .font(.caption2)
+                    .neuralCaption()
                     .foregroundColor(.gray)
             }
             
@@ -67,16 +69,7 @@ struct TryOnCardView: View {
     private var imageSection: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
-                .fill(
-                    LinearGradient(
-                        colors: [
-                            Color.appSurfaceLight,
-                            Color.appSurface
-                        ],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
+                .fill(LinearGradient.voidGradient)
                 .frame(height: 280)
                 .padding(.horizontal, 12)
             
@@ -85,7 +78,7 @@ struct TryOnCardView: View {
                     .font(.system(size: 48))
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [.appAccentCyan.opacity(0.6), .appAccentPurple.opacity(0.6)],
+                            colors: [.electricCyan.opacity(0.6), .neonPurple.opacity(0.6)],
                             startPoint: .leading,
                             endPoint: .trailing
                         )
@@ -93,16 +86,16 @@ struct TryOnCardView: View {
                 
                 HStack(spacing: 16) {
                     Label("Antes", systemImage: "person")
-                        .font(.caption)
+                        .neuralCaption()
                         .foregroundColor(.gray)
                     
                     Image(systemName: "arrow.right")
                         .font(.caption)
-                        .foregroundColor(.appAccentCyan)
+                        .foregroundColor(.electricCyan)
                     
                     Label("Depois", systemImage: "person.fill")
-                        .font(.caption)
-                        .foregroundColor(.appAccentCyan)
+                        .neuralCaption()
+                        .foregroundColor(.electricCyan)
                 }
             }
             
@@ -126,7 +119,7 @@ struct TryOnCardView: View {
             
             Text(String(format: "%.1f", tryOn.rating))
                 .font(.caption.weight(.bold))
-                .foregroundColor(.white)
+                .foregroundColor(.neuralWhite)
         }
         .padding(.horizontal, 10)
         .padding(.vertical, 6)
@@ -137,19 +130,19 @@ struct TryOnCardView: View {
     private var descriptionSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(tryOn.description)
-                .font(.subheadline)
-                .foregroundColor(.white)
+                .neuralBody()
+                .foregroundColor(.neuralWhite)
                 .lineLimit(2)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 6) {
                     ForEach(tryOn.occasions.prefix(3), id: \.self) { occasion in
                         Text(occasion)
-                            .font(.caption2)
+                            .neuralCaption()
                             .foregroundColor(.gray)
                             .padding(.horizontal, 8)
                             .padding(.vertical, 4)
-                            .background(Color.appSurfaceLight)
+                            .background(Color.neuralSurface)
                             .cornerRadius(6)
                     }
                 }
@@ -165,11 +158,11 @@ struct TryOnCardView: View {
                 HStack(spacing: 6) {
                     Image(systemName: isVoted ? "arrow.up.heart.fill" : "arrow.up.heart")
                         .font(.system(size: 18))
-                        .foregroundColor(isVoted ? .appAccentPink : .gray)
+                        .foregroundColor(isVoted ? .electricCyan : .gray)
                     
                     Text("\(voteCount)")
                         .font(.subheadline.weight(.medium))
-                        .foregroundColor(isVoted ? .appAccentPink : .gray)
+                        .foregroundColor(isVoted ? .electricCyan : .gray)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 12)
@@ -178,7 +171,10 @@ struct TryOnCardView: View {
             Divider()
                 .background(Color.white.opacity(0.06))
             
-            Button(action: { showReviews = true }) {
+            Button(action: {
+                HapticFeedback.light()
+                showReviews = true
+            }) {
                 HStack(spacing: 6) {
                     Image(systemName: "star.bubble")
                         .font(.system(size: 18))
@@ -195,7 +191,10 @@ struct TryOnCardView: View {
             Divider()
                 .background(Color.white.opacity(0.06))
             
-            Button(action: { }) {
+            Button(action: {
+                HapticFeedback.light()
+                showShareSheet = true
+            }) {
                 Image(systemName: "square.and.arrow.up")
                     .font(.system(size: 18))
                     .foregroundColor(.gray)
@@ -208,6 +207,7 @@ struct TryOnCardView: View {
     }
     
     private func toggleVote() {
+        HapticFeedback.medium()
         withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
             isVoted.toggle()
             voteCount += isVoted ? 1 : -1
@@ -218,12 +218,15 @@ struct TryOnCardView: View {
                 let newVotes = try await APIService.shared.voteTryOn(id: tryOn.id)
                 await MainActor.run {
                     voteCount = newVotes
+                    if isVoted {
+                        HapticFeedback.success()
+                    }
                 }
             } catch {
-                // Revert on error
                 await MainActor.run {
                     isVoted.toggle()
                     voteCount += isVoted ? 1 : -1
+                    HapticFeedback.error()
                 }
             }
         }
@@ -235,5 +238,5 @@ struct TryOnCardView: View {
         TryOnCardView(tryOn: TryOn.sample)
             .padding(.horizontal, 16)
     }
-    .background(Color.appBackground)
+    .background(Color.neuralVoid)
 }

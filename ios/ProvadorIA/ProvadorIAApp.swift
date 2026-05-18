@@ -2,22 +2,24 @@ import SwiftUI
 
 @main
 struct ProvadorIAApp: App {
+    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
+    
     init() {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(Color(hex: "0A0A0F"))
+        appearance.backgroundColor = UIColor(Color.neuralVoid)
         
         appearance.stackedLayoutAppearance.normal.iconColor = UIColor.gray
         appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gray]
-        appearance.stackedLayoutAppearance.selected.iconColor = UIColor(Color(hex: "06B6D4"))
-        appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor(Color(hex: "06B6D4"))]
+        appearance.stackedLayoutAppearance.selected.iconColor = UIColor(Color.electricCyan)
+        appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor(Color.electricCyan)]
         
         UITabBar.appearance().standardAppearance = appearance
         UITabBar.appearance().scrollEdgeAppearance = appearance
         
         let navAppearance = UINavigationBarAppearance()
         navAppearance.configureWithOpaqueBackground()
-        navAppearance.backgroundColor = UIColor(Color(hex: "0A0A0F"))
+        navAppearance.backgroundColor = UIColor(Color.neuralVoid)
         navAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         navAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         
@@ -28,8 +30,13 @@ struct ProvadorIAApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .preferredColorScheme(.dark)
+            if hasSeenOnboarding {
+                ContentView()
+                    .preferredColorScheme(.dark)
+            } else {
+                OnboardingView()
+                    .preferredColorScheme(.dark)
+            }
         }
     }
 }

@@ -14,9 +14,21 @@ struct TryOnView: View {
     @State private var showError = false
     @Environment(\.dismiss) private var dismiss
     
+    private var isFormValid: Bool {
+        userPhotoData != nil && clothingPhotoData != nil && !description.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+    
+    private var currentStep: Int {
+        if userPhotoData == nil { return 0 }
+        if clothingPhotoData == nil { return 1 }
+        if description.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { return 2 }
+        return 3
+    }
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 24) {
+                stepIndicatorSection
                 photoUploadSection
                 descriptionSection
                 generateButton
@@ -24,11 +36,11 @@ struct TryOnView: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
         }
-        .background(Color.appBackground.ignoresSafeArea())
+        .background(Color.neuralVoid.ignoresSafeArea())
         .navigationTitle("Novo Try-On")
         .navigationBarTitleDisplayMode(.large)
         .toolbarColorScheme(.dark, for: .navigationBar)
-        .toolbarBackground(Color.appBackground, for: .navigationBar)
+        .toolbarBackground(Color.neuralVoid, for: .navigationBar)
         .fullScreenCover(item: $result) { tryOn in
             TryOnResultView(tryOn: tryOn)
         }
@@ -39,6 +51,15 @@ struct TryOnView: View {
         }
     }
     
+    private var stepIndicatorSection: some View {
+        StepIndicator(
+            currentStep: currentStep,
+            totalSteps: 4,
+            labels: ["Sua Foto", "Roupa", "Descrição", "Gerar"]
+        )
+        .padding(.horizontal, 8)
+    }
+    
     private var photoUploadSection: some View {
         VStack(spacing: 16) {
             HStack(spacing: 16) {
@@ -46,14 +67,16 @@ struct TryOnView: View {
                     title: "Sua foto",
                     icon: "person.crop.rectangle.fill",
                     photoData: $userPhotoData,
-                    photoItem: $userPhotoItem
+                    photoItem: $userPhotoItem,
+                    isCompleted: userPhotoData != nil
                 )
                 
                 PhotoUploadCard(
                     title: "Foto da roupa",
                     icon: "tshirt.fill",
                     photoData: $clothingPhotoData,
-                    photoItem: $clothingPhotoItem
+                    photoItem: $clothingPhotoItem,
+                    isCompleted: clothingPhotoData != nil
                 )
             }
         }
@@ -62,21 +85,15 @@ struct TryOnView: View {
     private var descriptionSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Descrição da roupa")
-                .font(.headline)
-                .foregroundColor(.white)
+                .neuralTitle()
+                .foregroundColor(.neuralWhite)
             
             TextEditor(text: $description)
-                .font(.body)
-                .foregroundColor(.white)
+                .neuralBody()
+                .foregroundColor(.neuralWhite)
                 .scrollContentBackground(.hidden)
                 .frame(minHeight: 100)
-                .padding(12)
-                .background(Color.appSurfaceLight)
-                .cornerRadius(16)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
+                .neuralTextField()
         }
     }
     
@@ -85,34 +102,37 @@ struct TryOnView: View {
             if isGenerating {
                 HStack(spacing: 12) {
                     ProgressView()
-                        .tint(.white)
+                        .tint(.neuralWhite)
                     Text("Gerando preview...")
-                        .font(.headline.weight(.semibold))
-                        .foregroundColor(.white)
+                        .font(.system(size: 16, weight: .semibold, design: .rounded))
+                        .foregroundColor(.neuralWhite)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
             } else {
-                Text("Gerar Preview")
-                    .font(.headline.weight(.semibold))
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 16)
+                HStack(spacing: 8) {
+                    Image(systemName: "sparkles")
+                    Text("Gerar Preview")
+                }
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
+                .foregroundColor(.neuralWhite)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 16)
             }
         }
         .background(
-            LinearGradient(
-                colors: [.appAccentCyan, .appAccentPurple],
-                startPoint: .leading,
-                endPoint: .trailing
-            )
+            isFormValid && !isGenerating
+                ? AnyView(LinearGradient.cyanGradient)
+                : AnyView(Color.neuralSurface)
         )
-        .cornerRadius(16)
-        .disabled(isGenerating)
-        .opacity(isGenerating ? 0.7 : 1.0)
+        .cornerRadius(14)
+        .disabled(!isFormValid || isGenerating)
+        .opacity(isGenerating ? 0.7 : (isFormValid ? 1.0 : 0.5))
+        .shadow(color: Color.electricCyan.opacity(isFormValid && !isGenerating ? 0.3 : 0), radius: 12, x: 0, y: 4)
     }
     
     private func generateTryOn() {
+        HapticFeedback.medium()
         isGenerating = true
         
         Task {
@@ -125,12 +145,14 @@ struct TryOnView: View {
                 await MainActor.run {
                     isGenerating = false
                     result = tryOn
+                    HapticFeedback.success()
                 }
             } catch {
                 await MainActor.run {
                     isGenerating = false
                     errorMessage = error.localizedDescription
                     showError = true
+                    HapticFeedback.error()
                 }
             }
         }
@@ -142,19 +164,28 @@ struct PhotoUploadCard: View {
     let icon: String
     @Binding var photoData: Data?
     @Binding var photoItem: PhotosPickerItem?
+    var isCompleted: Bool = false
     
     var body: some View {
         PhotosPicker(selection: $photoItem, matching: .images) {
             VStack(spacing: 12) {
                 if let photoData, let uiImage = UIImage(data: photoData) {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 120, height: 160)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                    ZStack(alignment: .topTrailing) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 120, height: 160)
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                        
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.system(size: 22))
+                            .foregroundColor(.electricCyan)
+                            .background(Circle().fill(Color.neuralVoid))
+                            .offset(x: 4, y: -4)
+                    }
                 } else {
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(Color.appSurfaceLight)
+                        .fill(LinearGradient.voidGradient)
                         .frame(width: 120, height: 160)
                         .overlay(
                             VStack(spacing: 8) {
@@ -163,19 +194,19 @@ struct PhotoUploadCard: View {
                                     .foregroundColor(.gray)
                                 Image(systemName: "plus.circle.fill")
                                     .font(.system(size: 20))
-                                    .foregroundColor(.appAccentCyan)
+                                    .foregroundColor(.electricCyan)
                             }
                         )
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
                                 .stroke(style: StrokeStyle(lineWidth: 1, dash: [6]))
-                                .foregroundColor(Color.white.opacity(0.1))
+                                .foregroundColor(Color.electricCyan.opacity(0.15))
                         )
                 }
                 
                 Text(title)
-                    .font(.caption)
-                    .foregroundColor(.gray)
+                    .neuralCaption()
+                    .foregroundColor(isCompleted ? .electricCyan : .gray)
             }
         }
         .onChange(of: photoItem) { _, newItem in
@@ -183,6 +214,7 @@ struct PhotoUploadCard: View {
                 if let data = try? await newItem?.loadTransferable(type: Data.self) {
                     await MainActor.run {
                         photoData = data
+                        HapticFeedback.light()
                     }
                 }
             }

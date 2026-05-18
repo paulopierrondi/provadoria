@@ -20,6 +20,12 @@ struct TryOn: Identifiable, Codable, Equatable {
     }
 }
 
+struct UserStats {
+    let tryOns: Int
+    let reviews: Int
+    let votes: Int
+}
+
 struct ClothingAnalysis: Identifiable, Codable {
     let id: String
     let name: String

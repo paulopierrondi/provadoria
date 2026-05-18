@@ -3,7 +3,10 @@ import SwiftUI
 struct FeedView: View {
     @State private var tryOns: [TryOn] = []
     @State private var isLoading = true
+    @State private var hasError = false
+    @State private var errorMessage = ""
     @State private var selectedFilter = FilterOption.all
+    @State private var isRefreshing = false
     
     enum FilterOption: String, CaseIterable {
         case all = "Todos"
@@ -31,7 +34,18 @@ struct FeedView: View {
                 filterSection
                 
                 if isLoading {
-                    loadingSection
+                    ShimmerLoadingView()
+                        .padding(.top, 20)
+                } else if hasError {
+                    ErrorStateView(message: errorMessage) {
+                        Task { await loadFeed() }
+                    }
+                } else if filteredTryOns.isEmpty {
+                    EmptyStateView(
+                        icon: "photo.stack",
+                        title: "Feed vazio",
+                        message: "Nenhum look encontrado. Seja o primeiro a compartilhar!"
+                    )
                 } else {
                     feedSection
                 }
@@ -39,11 +53,14 @@ struct FeedView: View {
             .padding(.horizontal, 16)
             .padding(.vertical, 16)
         }
-        .background(Color.appBackground.ignoresSafeArea())
+        .background(Color.neuralVoid.ignoresSafeArea())
         .navigationTitle("Feed")
         .navigationBarTitleDisplayMode(.large)
         .toolbarColorScheme(.dark, for: .navigationBar)
-        .toolbarBackground(Color.appBackground, for: .navigationBar)
+        .toolbarBackground(Color.neuralVoid, for: .navigationBar)
+        .refreshable {
+            await refreshFeed()
+        }
         .task {
             await loadFeed()
         }
@@ -53,46 +70,30 @@ struct FeedView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 10) {
                 ForEach(FilterOption.allCases, id: \.self) { filter in
-                    Button(action: { selectedFilter = filter }) {
+                    Button(action: {
+                        HapticFeedback.light()
+                        selectedFilter = filter
+                    }) {
                         Text(filter.rawValue)
                             .font(.subheadline.weight(.medium))
-                            .foregroundColor(selectedFilter == filter ? .white : .gray)
+                            .foregroundColor(selectedFilter == filter ? .neuralWhite : .gray)
                             .padding(.horizontal, 16)
                             .padding(.vertical, 8)
                             .background(
                                 selectedFilter == filter
                                 ? AnyView(
                                     Capsule()
-                                        .fill(
-                                            LinearGradient(
-                                                colors: [.appAccentCyan, .appAccentPurple],
-                                                startPoint: .leading,
-                                                endPoint: .trailing
-                                            )
-                                        )
+                                        .fill(LinearGradient.cyanGradient)
                                 )
                                 : AnyView(
                                     Capsule()
-                                        .fill(Color.appSurfaceLight)
+                                        .fill(Color.neuralSurface)
                                 )
                             )
                     }
                 }
             }
         }
-    }
-    
-    private var loadingSection: some View {
-        VStack(spacing: 16) {
-            ProgressView()
-                .tint(.appAccentCyan)
-                .scaleEffect(1.2)
-            
-            Text("Carregando feed...")
-                .font(.subheadline)
-                .foregroundColor(.gray)
-        }
-        .frame(maxWidth: .infinity, minHeight: 300)
     }
     
     private var feedSection: some View {
@@ -103,18 +104,34 @@ struct FeedView: View {
         }
     }
     
+    @MainActor
     private func loadFeed() async {
+        isLoading = true
+        hasError = false
+        
         do {
             let feed = try await APIService.shared.fetchFeed()
-            await MainActor.run {
-                tryOns = feed
-                isLoading = false
-            }
+            tryOns = feed
+            isLoading = false
         } catch {
-            await MainActor.run {
-                isLoading = false
-            }
+            isLoading = false
+            hasError = true
+            errorMessage = error.localizedDescription
         }
+    }
+    
+    @MainActor
+    private func refreshFeed() async {
+        isRefreshing = true
+        do {
+            let feed = try await APIService.shared.fetchFeed()
+            tryOns = feed
+            hasError = false
+        } catch {
+            hasError = true
+            errorMessage = error.localizedDescription
+        }
+        isRefreshing = false
     }
 }
 

@@ -1,0 +1,75 @@
+# Fastlane Fastfile — ProvadorIA
+# Usage: fastlane release
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Create app on App Store Connect"
+  lane :create_app do
+    produce(
+      app_name: "ProvadorIA",
+      language: "pt-BR",
+      app_version: "1.0.0",
+      sku: "provadoria-2024",
+      team_name: "PAULO HENRIQUE CARNEIRO PIERRONDI",
+      itc_team_name: "PAULO HENRIQUE CARNEIRO PIERRONDI"
+    )
+  end
+
+  desc "Register devices"
+  lane :register_devices do
+    register_device(
+      name: "iPhone Test",
+      udid: ENV["DEVICE_UDID"] || ""
+    )
+  end
+
+  desc "Build and upload to TestFlight"
+  lane :beta do
+    increment_build_number(xcodeproj: "ProvadorIA.xcodeproj")
+    build_app(
+      scheme: "ProvadorIA",
+      export_method: "app-store",
+      xcargs: "-allowProvisioningUpdates",
+      output_directory: "./build",
+      output_name: "ProvadorIA.ipa"
+    )
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true,
+      notify_external_testers: false
+    )
+  end
+
+  desc "Build and upload to App Store"
+  lane :release do
+    increment_build_number(xcodeproj: "ProvadorIA.xcodeproj")
+    build_app(
+      scheme: "ProvadorIA",
+      export_method: "app-store",
+      xcargs: "-allowProvisioningUpdates",
+      output_directory: "./build",
+      output_name: "ProvadorIA.ipa"
+    )
+    upload_to_app_store(
+      force: true,
+      skip_metadata: false,
+      skip_screenshots: true,
+      skip_binary_upload: false,
+      submit_for_review: false,
+      automatic_release: false,
+      precheck_include_in_app_purchases: false
+    )
+  end
+
+  desc "Take screenshots"
+  lane :screenshots do
+    capture_screenshots(
+      scheme: "ProvadorIA",
+      output_directory: "./fastlane/screenshots",
+      devices: ["iPhone 16 Pro Max", "iPhone 16 Pro"],
+      languages: ["pt-BR"],
+      dark_mode: true,
+      clear_previous_screenshots: true
+    )
+  end
+end

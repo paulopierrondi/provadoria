@@ -4,6 +4,7 @@ struct ReviewsView: View {
     let tryOnId: String
     @State private var reviews: [Review] = []
     @State private var isLoading = true
+    @State private var hasError = false
     @State private var averageRating: Double = 0
     
     var body: some View {
@@ -15,8 +16,10 @@ struct ReviewsView: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
         }
-        .background(Color.appBackground.ignoresSafeArea())
+        .background(Color.neuralVoid.ignoresSafeArea())
         .navigationTitle("Reviews")
+        .toolbarColorScheme(.dark, for: .navigationBar)
+        .toolbarBackground(Color.neuralVoid, for: .navigationBar)
         .task {
             await loadReviews()
         }
@@ -25,8 +28,8 @@ struct ReviewsView: View {
     private var ratingHeader: some View {
         VStack(spacing: 12) {
             Text(String(format: "%.1f", averageRating))
-                .font(.system(size: 56, weight: .bold))
-                .foregroundColor(.white)
+                .font(.system(size: 56, weight: .bold, design: .rounded))
+                .foregroundStyle(LinearGradient.cyanGradient)
             
             HStack(spacing: 4) {
                 ForEach(1...5, id: \.self) { index in
@@ -37,23 +40,28 @@ struct ReviewsView: View {
             }
             
             Text("\(reviews.count) reviews")
-                .font(.subheadline)
+                .neuralBody()
                 .foregroundColor(.gray)
         }
         .frame(maxWidth: .infinity)
         .padding(24)
-        .background(
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.appSurface)
-        )
+        .neuralCard()
     }
     
     private var reviewsList: some View {
         VStack(spacing: 12) {
             if isLoading {
-                ProgressView()
-                    .tint(Color.appAccentCyan)
-                    .padding()
+                ShimmerLoadingView()
+            } else if hasError {
+                ErrorStateView(message: "Não foi possível carregar os reviews.") {
+                    Task { await loadReviews() }
+                }
+            } else if reviews.isEmpty {
+                EmptyStateView(
+                    icon: "star.bubble",
+                    title: "Sem reviews",
+                    message: "Ninguém avaliou ainda. Seja o primeiro!"
+                )
             } else {
                 ForEach(reviews) { review in
                     ReviewCard(review: review)
@@ -62,7 +70,11 @@ struct ReviewsView: View {
         }
     }
     
+    @MainActor
     private func loadReviews() async {
+        isLoading = true
+        hasError = false
+        
         do {
             reviews = try await APIService.shared.fetchReviews(tryOnId: tryOnId)
             if !reviews.isEmpty {
@@ -72,6 +84,7 @@ struct ReviewsView: View {
             isLoading = false
         } catch {
             isLoading = false
+            hasError = true
         }
     }
 }
@@ -94,26 +107,25 @@ struct ReviewCard: View {
                 
                 Text(review.reviewerName)
                     .font(.subheadline.weight(.medium))
-                    .foregroundColor(.white)
+                    .foregroundColor(.neuralWhite)
             }
             
             Text(review.comment)
-                .font(.body)
+                .neuralBody()
                 .foregroundColor(.gray)
                 .lineLimit(4)
             
             Text(review.createdAt, style: .relative)
-                .font(.caption)
+                .neuralCaption()
                 .foregroundColor(.gray.opacity(0.6))
         }
         .padding(16)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color.appSurface)
-        )
+        .neuralCard()
     }
 }
 
 #Preview {
-    ReviewsView(tryOnId: "1")
+    NavigationStack {
+        ReviewsView(tryOnId: "1")
+    }
 }

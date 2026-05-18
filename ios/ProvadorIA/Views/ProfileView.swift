@@ -14,43 +14,37 @@ struct ProfileView: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
         }
-        .background(Color.appBackground.ignoresSafeArea())
+        .background(Color.neuralVoid.ignoresSafeArea())
+        .navigationTitle("Perfil")
+        .navigationBarTitleDisplayMode(.large)
     }
     
     private var profileHeader: some View {
         VStack(spacing: 16) {
             ZStack {
                 Circle()
-                    .fill(
-                        LinearGradient(
-                            colors: [.appAccentCyan, .appAccentPurple],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .fill(LinearGradient.cyanGradient)
                     .frame(width: 100, height: 100)
+                    .cyanGlow()
                 
                 Image(systemName: "person.fill")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 50, height: 50)
-                    .foregroundColor(.white)
+                    .foregroundColor(.neuralWhite)
             }
             
             Text(userName)
-                .font(.title2.weight(.bold))
-                .foregroundColor(.white)
+                .font(.system(size: 24, weight: .bold, design: .rounded))
+                .foregroundColor(.neuralWhite)
             
             Text("Membro desde Maio 2026")
-                .font(.subheadline)
+                .neuralBody()
                 .foregroundColor(.gray)
         }
         .frame(maxWidth: .infinity)
         .padding(24)
-        .background(
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.appSurface)
-        )
+        .neuralCard()
     }
     
     private var statsGrid: some View {
@@ -59,34 +53,28 @@ struct ProfileView: View {
             GridItem(.flexible()),
             GridItem(.flexible())
         ], spacing: 12) {
-            StatCard(value: "\(stats.tryOns)", label: "Try-Ons", icon: "camera.viewfinder")
-            StatCard(value: "\(stats.votes)", label: "Votos", icon: "heart.fill")
-            StatCard(value: "\(stats.reviews)", label: "Reviews", icon: "star.fill")
+            NeuralStatCard(value: "\(stats.tryOns)", label: "Try-Ons", icon: "camera.viewfinder", color: .electricCyan)
+            NeuralStatCard(value: "\(stats.votes)", label: "Votos", icon: "heart.fill", color: .neonPink)
+            NeuralStatCard(value: "\(stats.reviews)", label: "Reviews", icon: "star.fill", color: .neonPurple)
         }
     }
     
     private var settingsSection: some View {
         VStack(spacing: 12) {
-            SettingRow(icon: "crown.fill", title: "Premium", subtitle: "Desbloquear try-ons ilimitados", color: .appWarning)
-            SettingRow(icon: "bell.fill", title: "Notificações", subtitle: "Lembretes de desafios", color: .appAccentCyan)
-            SettingRow(icon: "share.fill", title: "Compartilhar", subtitle: "Convide amigos", color: .appAccentPurple)
-            SettingRow(icon: "questionmark.circle.fill", title: "Ajuda", subtitle: "FAQ e suporte", color: .gray)
+            NeuralSettingRow(icon: "crown.fill", title: "Premium", subtitle: "Desbloquear try-ons ilimitados", color: .appWarning)
+            NeuralSettingRow(icon: "bell.fill", title: "Notificações", subtitle: "Lembretes de desafios", color: .electricCyan)
+            NeuralSettingRow(icon: "share.fill", title: "Compartilhar", subtitle: "Convide amigos", color: .neonPurple)
+            NeuralSettingRow(icon: "questionmark.circle.fill", title: "Ajuda", subtitle: "FAQ e suporte", color: .gray)
             DeleteAccountRow()
         }
     }
 }
 
-struct UserStats {
-    let tryOns: Int
-    let reviews: Int
-    let votes: Int
-}
-
-struct StatCard: View {
+struct NeuralStatCard: View {
     let value: String
     let label: String
     let icon: String
-    var color: Color = .appAccentCyan
+    var color: Color = .electricCyan
     
     var body: some View {
         VStack(spacing: 8) {
@@ -95,23 +83,20 @@ struct StatCard: View {
                 .foregroundColor(color)
             
             Text(value)
-                .font(.title3.weight(.bold))
-                .foregroundColor(.white)
+                .font(.system(size: 20, weight: .bold, design: .rounded))
+                .foregroundColor(.neuralWhite)
             
             Text(label)
-                .font(.caption)
+                .neuralCaption()
                 .foregroundColor(.gray)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 20)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color.appSurface)
-        )
+        .neuralCard()
     }
 }
 
-struct SettingRow: View {
+struct NeuralSettingRow: View {
     let icon: String
     let title: String
     let subtitle: String
@@ -131,9 +116,9 @@ struct SettingRow: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .font(.body.weight(.semibold))
-                    .foregroundColor(.white)
+                    .foregroundColor(.neuralWhite)
                 Text(subtitle)
-                    .font(.caption)
+                    .neuralCaption()
                     .foregroundColor(.gray)
             }
             
@@ -144,10 +129,7 @@ struct SettingRow: View {
                 .font(.caption)
         }
         .padding(16)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color.appSurface)
-        )
+        .neuralCard()
     }
 }
 
@@ -158,23 +140,26 @@ struct DeleteAccountRow: View {
     @State private var showError = false
 
     var body: some View {
-        Button(action: { showConfirmation = true }) {
+        Button(action: {
+            HapticFeedback.medium()
+            showConfirmation = true
+        }) {
             HStack(spacing: 16) {
                 Image(systemName: "trash.fill")
                     .font(.title3)
-                    .foregroundColor(.red)
+                    .foregroundColor(.appError)
                     .frame(width: 40, height: 40)
                     .background(
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(Color.red.opacity(0.15))
+                            .fill(Color.appError.opacity(0.15))
                     )
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Excluir Conta")
                         .font(.body.weight(.semibold))
-                        .foregroundColor(.red)
+                        .foregroundColor(.appError)
                     Text("Remover todos os dados")
-                        .font(.caption)
+                        .neuralCaption()
                         .foregroundColor(.gray)
                 }
 
@@ -182,7 +167,7 @@ struct DeleteAccountRow: View {
 
                 if isDeleting {
                     ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .red))
+                        .progressViewStyle(CircularProgressViewStyle(tint: .appError))
                 } else {
                     Image(systemName: "chevron.right")
                         .foregroundColor(.gray)
@@ -190,10 +175,7 @@ struct DeleteAccountRow: View {
                 }
             }
             .padding(16)
-            .background(
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(Color.appSurface)
-            )
+            .neuralCard()
         }
         .disabled(isDeleting)
         .alert("Excluir Conta", isPresented: $showConfirmation) {
@@ -231,5 +213,7 @@ struct DeleteAccountRow: View {
 }
 
 #Preview {
-    ProfileView()
+    NavigationStack {
+        ProfileView()
+    }
 }

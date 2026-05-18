@@ -1,0 +1,179 @@
+{
+  "" : {
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProvadorIA-primary.dia",
+    "emit-module-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProvadorIA-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProvadorIA-primary-emit-module.dia",
+    "pch" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProvadorIA-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProvadorIA-primary.swiftdeps"
+  },
+  "/Users/paulopierrondi/Downloads/provadoria/ios/ProvadorIA/ContentView.swift" : {
+    "const-values" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ContentView.d",
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ContentView.dia",
+    "index-unit-output-path" : "/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ContentView.o",
+    "llvm-bc" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ContentView.bc",
+    "object" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ContentView.o",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ContentView~partial.swiftmodule"
+  },
+  "/Users/paulopierrondi/Downloads/provadoria/ios/ProvadorIA/Models/TryOnModels.swift" : {
+    "const-values" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnModels.swiftconstvalues",
+    "dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnModels.d",
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnModels.dia",
+    "index-unit-output-path" : "/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnModels.o",
+    "llvm-bc" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnModels.bc",
+    "object" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnModels.o",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnModels.swiftdeps",
+    "swiftmodule" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnModels~partial.swiftmodule"
+  },
+  "/Users/paulopierrondi/Downloads/provadoria/ios/ProvadorIA/ProvadorIAApp.swift" : {
+    "const-values" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProvadorIAApp.swiftconstvalues",
+    "dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProvadorIAApp.d",
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProvadorIAApp.dia",
+    "index-unit-output-path" : "/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProvadorIAApp.o",
+    "llvm-bc" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProvadorIAApp.bc",
+    "object" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProvadorIAApp.o",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProvadorIAApp.swiftdeps",
+    "swiftmodule" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProvadorIAApp~partial.swiftmodule"
+  },
+  "/Users/paulopierrondi/Downloads/provadoria/ios/ProvadorIA/Services/APIService.swift" : {
+    "const-values" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/APIService.swiftconstvalues",
+    "dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/APIService.d",
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/APIService.dia",
+    "index-unit-output-path" : "/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/APIService.o",
+    "llvm-bc" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/APIService.bc",
+    "object" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/APIService.o",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/APIService.swiftdeps",
+    "swiftmodule" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/APIService~partial.swiftmodule"
+  },
+  "/Users/paulopierrondi/Downloads/provadoria/ios/ProvadorIA/Utils/Extensions.swift" : {
+    "const-values" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/Extensions.swiftconstvalues",
+    "dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/Extensions.d",
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/Extensions.dia",
+    "index-unit-output-path" : "/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/Extensions.o",
+    "llvm-bc" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/Extensions.bc",
+    "object" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/Extensions.o",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/Extensions.swiftdeps",
+    "swiftmodule" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/Extensions~partial.swiftmodule"
+  },
+  "/Users/paulopierrondi/Downloads/provadoria/ios/ProvadorIA/Views/EmptyStateView.swift" : {
+    "const-values" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/EmptyStateView.swiftconstvalues",
+    "dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/EmptyStateView.d",
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/EmptyStateView.dia",
+    "index-unit-output-path" : "/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/EmptyStateView.o",
+    "llvm-bc" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/EmptyStateView.bc",
+    "object" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/EmptyStateView.o",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/EmptyStateView.swiftdeps",
+    "swiftmodule" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/EmptyStateView~partial.swiftmodule"
+  },
+  "/Users/paulopierrondi/Downloads/provadoria/ios/ProvadorIA/Views/ErrorStateView.swift" : {
+    "const-values" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ErrorStateView.swiftconstvalues",
+    "dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ErrorStateView.d",
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ErrorStateView.dia",
+    "index-unit-output-path" : "/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ErrorStateView.o",
+    "llvm-bc" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ErrorStateView.bc",
+    "object" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ErrorStateView.o",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ErrorStateView.swiftdeps",
+    "swiftmodule" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ErrorStateView~partial.swiftmodule"
+  },
+  "/Users/paulopierrondi/Downloads/provadoria/ios/ProvadorIA/Views/FeedView.swift" : {
+    "const-values" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/FeedView.swiftconstvalues",
+    "dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/FeedView.d",
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/FeedView.dia",
+    "index-unit-output-path" : "/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/FeedView.o",
+    "llvm-bc" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/FeedView.bc",
+    "object" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/FeedView.o",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/FeedView.swiftdeps",
+    "swiftmodule" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/FeedView~partial.swiftmodule"
+  },
+  "/Users/paulopierrondi/Downloads/provadoria/ios/ProvadorIA/Views/HomeView.swift" : {
+    "const-values" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/HomeView.swiftconstvalues",
+    "dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/HomeView.d",
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/HomeView.dia",
+    "index-unit-output-path" : "/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/HomeView.o",
+    "llvm-bc" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/HomeView.bc",
+    "object" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/HomeView.o",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/HomeView.swiftdeps",
+    "swiftmodule" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/HomeView~partial.swiftmodule"
+  },
+  "/Users/paulopierrondi/Downloads/provadoria/ios/ProvadorIA/Views/OnboardingView.swift" : {
+    "const-values" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/OnboardingView.swiftconstvalues",
+    "dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/OnboardingView.d",
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/OnboardingView.dia",
+    "index-unit-output-path" : "/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/OnboardingView.o",
+    "llvm-bc" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/OnboardingView.bc",
+    "object" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/OnboardingView.o",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/OnboardingView.swiftdeps",
+    "swiftmodule" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/OnboardingView~partial.swiftmodule"
+  },
+  "/Users/paulopierrondi/Downloads/provadoria/ios/ProvadorIA/Views/ProfileView.swift" : {
+    "const-values" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProfileView.swiftconstvalues",
+    "dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProfileView.d",
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProfileView.dia",
+    "index-unit-output-path" : "/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProfileView.o",
+    "llvm-bc" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProfileView.bc",
+    "object" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProfileView.o",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProfileView.swiftdeps",
+    "swiftmodule" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ProfileView~partial.swiftmodule"
+  },
+  "/Users/paulopierrondi/Downloads/provadoria/ios/ProvadorIA/Views/ReviewsView.swift" : {
+    "const-values" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ReviewsView.swiftconstvalues",
+    "dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ReviewsView.d",
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ReviewsView.dia",
+    "index-unit-output-path" : "/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ReviewsView.o",
+    "llvm-bc" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ReviewsView.bc",
+    "object" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ReviewsView.o",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ReviewsView.swiftdeps",
+    "swiftmodule" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ReviewsView~partial.swiftmodule"
+  },
+  "/Users/paulopierrondi/Downloads/provadoria/ios/ProvadorIA/Views/ShimmerLoadingView.swift" : {
+    "const-values" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ShimmerLoadingView.swiftconstvalues",
+    "dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ShimmerLoadingView.d",
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ShimmerLoadingView.dia",
+    "index-unit-output-path" : "/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ShimmerLoadingView.o",
+    "llvm-bc" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ShimmerLoadingView.bc",
+    "object" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ShimmerLoadingView.o",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ShimmerLoadingView.swiftdeps",
+    "swiftmodule" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/ShimmerLoadingView~partial.swiftmodule"
+  },
+  "/Users/paulopierrondi/Downloads/provadoria/ios/ProvadorIA/Views/TryOnCardView.swift" : {
+    "const-values" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnCardView.swiftconstvalues",
+    "dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnCardView.d",
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnCardView.dia",
+    "index-unit-output-path" : "/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnCardView.o",
+    "llvm-bc" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnCardView.bc",
+    "object" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnCardView.o",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnCardView.swiftdeps",
+    "swiftmodule" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnCardView~partial.swiftmodule"
+  },
+  "/Users/paulopierrondi/Downloads/provadoria/ios/ProvadorIA/Views/TryOnResultView.swift" : {
+    "const-values" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnResultView.swiftconstvalues",
+    "dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnResultView.d",
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnResultView.dia",
+    "index-unit-output-path" : "/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnResultView.o",
+    "llvm-bc" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnResultView.bc",
+    "object" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnResultView.o",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnResultView.swiftdeps",
+    "swiftmodule" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnResultView~partial.swiftmodule"
+  },
+  "/Users/paulopierrondi/Downloads/provadoria/ios/ProvadorIA/Views/TryOnView.swift" : {
+    "const-values" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnView.swiftconstvalues",
+    "dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnView.d",
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnView.dia",
+    "index-unit-output-path" : "/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnView.o",
+    "llvm-bc" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnView.bc",
+    "object" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnView.o",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnView.swiftdeps",
+    "swiftmodule" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/TryOnView~partial.swiftmodule"
+  },
+  "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/paulopierrondi/Downloads/provadoria/ios/build/Build/Intermediates.noindex/ProvadorIA.build/Debug-iphonesimulator/ProvadorIA.build/Objects-normal/x86_64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}
