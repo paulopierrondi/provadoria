@@ -29,3 +29,4 @@ Thumbs.db
 *.db
 test_e2e.db
 .vercel
+ios/build/
