@@ -1,16 +1,16 @@
 import os
 import json
 import base64
-from typing import List
+from typing import List, Optional
 import google.generativeai as genai
 from app.core.config import settings
 
 genai.configure(api_key=settings.GEMINI_API_KEY)
 
-model_vision = genai.GenerativeModel("gemini-2.0-flash-exp")
-model_text = genai.GenerativeModel("gemini-2.0-flash")
+model_vision = genai.GenerativeModel("gemini-2.5-flash-image")
+model_text = genai.GenerativeModel("gemini-3-flash-preview")
 
-async def generate_tryon(user_photo_b64: str, clothing_photo_b64: str, clothing_description: str | None) -> dict:
+async def generate_tryon(user_photo_b64: str, clothing_photo_b64: str, clothing_description: Optional[str]) -> dict:
     """Gera um virtual try-on usando Gemini Flash com visao."""
     
     prompt = f"""Voce e um estilista virtual. Analise a foto da pessoa e a foto da roupa.
