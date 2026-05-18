@@ -1,0 +1,28 @@
+# Environment
+.env
+.venv
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# iOS
+ios/ProvadorIA/*.xcuserdata
+ios/ProvadorIA/*.xcworkspace/xcuserdata
+ios/ProvadorIA/DerivedData/
+ios/ProvadorIA/build/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
