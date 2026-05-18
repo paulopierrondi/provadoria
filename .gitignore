@@ -28,3 +28,4 @@ Thumbs.db
 *.log
 *.db
 test_e2e.db
+.vercel
