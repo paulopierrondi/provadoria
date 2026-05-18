@@ -131,23 +131,23 @@ struct HomeView: View {
             
             HStack(spacing: 12) {
                 StatCard(
-                    icon: "camera.viewfinder",
                     value: "\(stats.tryOns)",
                     label: "Try-ons",
+                    icon: "camera.viewfinder",
                     color: .appAccentCyan
                 )
                 
                 StatCard(
-                    icon: "star.bubble",
                     value: "\(stats.reviews)",
                     label: "Reviews",
+                    icon: "star.bubble",
                     color: .appAccentPurple
                 )
                 
                 StatCard(
-                    icon: "arrow.up.heart",
                     value: "\(stats.votes)",
                     label: "Votos",
+                    icon: "arrow.up.heart",
                     color: .appAccentPink
                 )
             }
@@ -179,12 +179,6 @@ struct HomeView: View {
     }
 }
 
-struct UserStats {
-    var tryOns: Int
-    var reviews: Int
-    var votes: Int
-}
-
 struct TrendingItem: Identifiable {
     let id = UUID()
     let name: String
@@ -199,32 +193,6 @@ struct TrendingItem: Identifiable {
             TrendingItem(name: "Calça Wide Leg", category: "Calças", color: "Creme"),
             TrendingItem(name: "Saia Plissada", category: "Saias", color: "Vinho")
         ]
-    }
-}
-
-struct StatCard: View {
-    let icon: String
-    let value: String
-    let label: String
-    let color: Color
-    
-    var body: some View {
-        VStack(spacing: 8) {
-            Image(systemName: icon)
-                .font(.system(size: 20))
-                .foregroundColor(color)
-            
-            Text(value)
-                .font(.title2.weight(.bold))
-                .foregroundColor(.white)
-            
-            Text(label)
-                .font(.caption)
-                .foregroundColor(.gray)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 16)
-        .glassCard()
     }
 }
 

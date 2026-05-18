@@ -86,12 +86,13 @@ struct StatCard: View {
     let value: String
     let label: String
     let icon: String
+    var color: Color = .appAccentCyan
     
     var body: some View {
         VStack(spacing: 8) {
             Image(systemName: icon)
                 .font(.title2)
-                .foregroundColor(.appAccentCyan)
+                .foregroundColor(color)
             
             Text(value)
                 .font(.title3.weight(.bold))

@@ -131,11 +131,10 @@ actor APIService {
             Review(
                 id: dto.id,
                 tryOnId: dto.tryon_id,
-                userName: "Usuário",
-                userAvatar: "person.circle.fill",
                 rating: dto.rating,
                 comment: dto.comment,
-                createdAt: ISO8601DateFormatter().date(from: dto.created_at) ?? Date()
+                createdAt: ISO8601DateFormatter().date(from: dto.created_at) ?? Date(),
+                reviewerName: "Usuário"
             )
         }
     }

@@ -1,0 +1,38 @@
+name: ProvadorIA
+options:
+  bundleIdPrefix: com.paulopierrondi
+  developmentLanguage: pt-BR
+  deploymentTarget:
+    iOS: "18.0"
+settings:
+  base:
+    PRODUCT_BUNDLE_IDENTIFIER: com.paulopierrondi.provadoria
+    SWIFT_VERSION: "6.0"
+    CURRENT_PROJECT_VERSION: 1
+    MARKETING_VERSION: 1.0.0
+    DEVELOPMENT_TEAM: 8ULNGWJZ6B
+    CODE_SIGN_STYLE: Automatic
+    TARGETED_DEVICE_FAMILY: 1
+    ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    INFOPLIST_KEY_CFBundleDisplayName: ProvadorIA
+    INFOPLIST_KEY_UILaunchScreen_Generation: YES
+    INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+    INFOPLIST_KEY_UIRequiredDeviceCapabilities: [arm64]
+    INFOPLIST_KEY_UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+    INFOPLIST_KEY_NSPhotoLibraryUsageDescription: "Permita acesso às fotos para fazer try-on virtual com IA."
+    INFOPLIST_KEY_NSCameraUsageDescription: "Permita acesso à câmera para tirar fotos do seu corpo e roupas."
+
+targets:
+  ProvadorIA:
+    type: application
+    platform: iOS
+    sources:
+      - path: ProvadorIA
+    info:
+      path: ProvadorIA/Info.plist
+      properties:
+        CFBundleAllowMixedLocalizations: true
+        CFBundleLocalizations:
+          - pt-BR
+        UILaunchScreen: {}
+        ITSAppUsesNonExemptEncryption: false

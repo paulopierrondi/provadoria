@@ -168,8 +168,8 @@ struct PhotoUploadCard: View {
                         )
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
                                 .stroke(style: StrokeStyle(lineWidth: 1, dash: [6]))
+                                .foregroundColor(Color.white.opacity(0.1))
                         )
                 }
                 
