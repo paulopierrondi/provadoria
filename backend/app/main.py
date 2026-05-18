@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api import routes
 from app.core.config import settings
+from app.models.tryon import Base, engine
 
 app = FastAPI(title=settings.APP_NAME, version="0.1.0")
 
@@ -13,6 +14,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Create tables on startup (for dev/Railway without migrations)
+Base.metadata.create_all(bind=engine)
 
 app.include_router(routes.router, prefix="/api/v1")
 
