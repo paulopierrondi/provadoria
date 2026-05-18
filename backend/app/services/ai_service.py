@@ -13,7 +13,10 @@ model_text = genai.GenerativeModel("gemini-3-flash-preview")
 async def generate_tryon(user_photo_b64: str, clothing_photo_b64: str, clothing_description: Optional[str]) -> dict:
     """Gera um virtual try-on usando Gemini Flash com visao."""
     
-    prompt = f"""Voce e um estilista virtual. Analise a foto da pessoa e a foto da roupa.
+    has_user_photo = user_photo_b64 and len(user_photo_b64) > 10
+    has_clothing_photo = clothing_photo_b64 and len(clothing_photo_b64) > 10
+    
+    prompt = f"""Voce e um estilista virtual. { 'Analise a foto da pessoa e a foto da roupa.' if has_user_photo and has_clothing_photo else 'Crie uma analise de estilo baseada na descricao fornecida.' }
 Descricao da roupa: {clothing_description or 'Nao fornecida'}.
 
 Retorne APENAS um JSON valido com este formato:
@@ -26,14 +29,24 @@ Retorne APENAS um JSON valido com este formato:
 }}
 """
     
-    user_image = base64.b64decode(user_photo_b64)
-    clothing_image = base64.b64decode(clothing_photo_b64)
+    contents = [prompt]
     
-    response = model_vision.generate_content([
-        {"mime_type": "image/jpeg", "data": user_image},
-        {"mime_type": "image/jpeg", "data": clothing_image},
-        prompt
-    ])
+    if has_user_photo:
+        try:
+            user_image = base64.b64decode(user_photo_b64)
+            contents.insert(0, {"mime_type": "image/jpeg", "data": user_image})
+        except Exception:
+            pass
+    
+    if has_clothing_photo:
+        try:
+            clothing_image = base64.b64decode(clothing_photo_b64)
+            contents.insert(0 if len(contents) == 1 else 1, {"mime_type": "image/jpeg", "data": clothing_image})
+        except Exception:
+            pass
+    
+    model = model_vision if len(contents) > 1 else model_text
+    response = model.generate_content(contents)
     
     text = response.text.strip()
     if text.startswith("```"):
