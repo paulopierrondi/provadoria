@@ -1,0 +1,21 @@
+# Deliverfile — ProvadorIA App Store metadata
+
+app_identifier "com.paulopierrondi.provadoria"
+username "pierrondi@gmail.com"
+team_id "126198026"
+
+# Skip binary upload (we use xcrun altool)
+skip_binary_upload true
+
+# Metadata
+metadata_path "./fastlane/metadata"
+
+# Screenshots
+screenshots_path "./fastlane/screenshots"
+
+# Submit options
+submit_for_review false
+automatic_release false
+
+# Precheck
+precheck_include_in_app_purchases false

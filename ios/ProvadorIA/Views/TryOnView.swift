@@ -205,7 +205,8 @@ struct PhotoUploadCard: View {
                 }
                 
                 Text(title)
-                    .neuralCaption()
+                    .font(.system(size: 11, weight: .medium, design: .monospaced))
+                    .tracking(0.8)
                     .foregroundColor(isCompleted ? .electricCyan : .gray)
             }
         }
