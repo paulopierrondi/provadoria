@@ -198,8 +198,10 @@ struct DeleteAccountRow: View {
         Task {
             do {
                 try await APIService.shared.deleteAccount()
+                await APIService.shared.clearAuth()
                 await MainActor.run {
                     isDeleting = false
+                    UserDefaults.standard.removeObject(forKey: "hasSeenOnboarding")
                 }
             } catch {
                 await MainActor.run {

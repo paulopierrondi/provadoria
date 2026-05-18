@@ -1,8 +1,10 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var stats = UserStats(tryOns: 12, reviews: 8, votes: 45)
-    @State private var trendingItems = TrendingItem.samples
+    @State private var stats = UserStats(tryOns: 0, reviews: 0, votes: 0)
+    @State private var trendingItems: [TryOn] = []
+    @State private var isLoading = false
+    @State private var loadError = false
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -18,6 +20,26 @@ struct HomeView: View {
         .background(Color.neuralVoid.ignoresSafeArea())
         .navigationTitle("Início")
         .navigationBarTitleDisplayMode(.large)
+        .task {
+            await loadData()
+        }
+    }
+    
+    private func loadData() async {
+        isLoading = true
+        defer { isLoading = false }
+        do {
+            let feed = try await APIService.shared.fetchFeed()
+            trendingItems = Array(feed.prefix(5))
+            stats = UserStats(
+                tryOns: feed.count,
+                reviews: 0,
+                votes: feed.reduce(0) { $0 + $1.votes }
+            )
+            loadError = false
+        } catch {
+            loadError = true
+        }
     }
     
     private var headerSection: some View {
@@ -149,15 +171,39 @@ struct HomeView: View {
                 
                 Spacer()
                 
-                Text("Ver todos")
-                    .neuralCaption()
-                    .foregroundColor(.electricCyan)
+                NavigationLink(destination: FeedView()) {
+                    Text("Ver todos")
+                        .neuralCaption()
+                        .foregroundColor(.electricCyan)
+                }
             }
             
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 16) {
-                    ForEach(trendingItems) { item in
-                        TrendingCard(item: item)
+            if isLoading {
+                ShimmerLoadingView()
+            } else if loadError {
+                EmptyStateView(
+                    icon: "wifi.slash",
+                    title: "Sem conexão",
+                    message: "Não foi possível carregar as tendências.",
+                    actionTitle: "Tentar novamente",
+                    action: { Task { await loadData() } }
+                )
+                .frame(height: 200)
+            } else if trendingItems.isEmpty {
+                EmptyStateView(
+                    icon: "tshirt",
+                    title: "Nenhuma tendência ainda",
+                    message: "Seja o primeiro a experimentar uma roupa!",
+                    actionTitle: "Experimentar",
+                    action: {}
+                )
+                .frame(height: 200)
+            } else {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 16) {
+                        ForEach(trendingItems) { item in
+                            TrendingCard(tryOn: item)
+                        }
                     }
                 }
             }
@@ -165,25 +211,8 @@ struct HomeView: View {
     }
 }
 
-struct TrendingItem: Identifiable {
-    let id = UUID()
-    let name: String
-    let category: String
-    let color: String
-    
-    static var samples: [TrendingItem] {
-        [
-            TrendingItem(name: "Camisa Linho", category: "Camisas", color: "Bege"),
-            TrendingItem(name: "Vestido Midi", category: "Vestidos", color: "Preto"),
-            TrendingItem(name: "Blazer Oversized", category: "Blazers", color: "Cinza"),
-            TrendingItem(name: "Calça Wide Leg", category: "Calças", color: "Creme"),
-            TrendingItem(name: "Saia Plissada", category: "Saias", color: "Vinho")
-        ]
-    }
-}
-
 struct TrendingCard: View {
-    let item: TrendingItem
+    let tryOn: TryOn
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -200,12 +229,12 @@ struct TrendingCard: View {
                         .stroke(Color.electricCyan.opacity(0.1), lineWidth: 1)
                 )
             
-            Text(item.name)
+            Text(tryOn.description)
                 .font(.subheadline.weight(.semibold))
                 .foregroundColor(.neuralWhite)
-                .lineLimit(1)
+                .lineLimit(2)
             
-            Text("\(item.category) · \(item.color)")
+            Text("\(tryOn.votes) votos")
                 .neuralCaption()
                 .foregroundColor(.gray)
         }
