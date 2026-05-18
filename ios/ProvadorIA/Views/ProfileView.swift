@@ -1,72 +1,170 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @State private var userName = "Você"
+    @State private var userName = "Marina"
+    @State private var lastName = "Souza"
     @State private var stats = UserStats(tryOns: 12, reviews: 8, votes: 45)
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(spacing: 28) {
-                profileHeader
-                statsGrid
-                settingsSection
+            VStack(spacing: 32) {
+                headerSection
+                statsSection
+                planCard
+                indexSection
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal, 24)
             .padding(.vertical, 16)
         }
-        .background(Color.neuralVoid.ignoresSafeArea())
-        .navigationTitle("Perfil")
-        .navigationBarTitleDisplayMode(.large)
+        .background(Color.cherryBone.ignoresSafeArea())
     }
     
-    private var profileHeader: some View {
-        VStack(spacing: 16) {
-            ZStack {
-                Circle()
-                    .fill(LinearGradient.cyanGradient)
-                    .frame(width: 100, height: 100)
-                    .cyanGlow()
+    private var headerSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Editora · São Paulo")
+                .eyebrow()
+            
+            HStack(spacing: 0) {
+                Text(userName)
+                    .font(.system(size: 48, weight: .regular, design: .serif))
+                    .foregroundColor(.cherryInk)
+                Text(" \(lastName)")
+                    .font(.system(size: 48, weight: .regular, design: .serif))
+                    .italic()
+                    .foregroundColor(.cherryInk)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    private var statsSection: some View {
+        HStack(spacing: 0) {
+            StatItem(value: "\(stats.tryOns)", label: "Edições")
+            Rectangle()
+                .fill(Color.cherryLine)
+                .frame(width: 1, height: 40)
+            StatItem(value: "8,7", label: "Caimento médio")
+            Rectangle()
+                .fill(Color.cherryLine)
+                .frame(width: 1, height: 40)
+            StatItem(value: "\(stats.tryOns)", label: "Arquivo")
+        }
+        .padding(.vertical, 16)
+        .background(Color.cherryPaper)
+        .overlay(
+            Rectangle()
+                .stroke(Color.cherryLine, lineWidth: 1)
+        )
+    }
+    
+    private var planCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Vire premium.")
+                        .font(.system(size: 20, weight: .regular, design: .serif))
+                        .foregroundColor(.cherryBone)
+                    Text("Try-ons ilimitados.")
+                        .font(.system(size: 20, weight: .regular, design: .serif))
+                        .italic()
+                        .foregroundColor(.cherryBone)
+                }
                 
-                Image(systemName: "person.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50, height: 50)
-                    .foregroundColor(.neuralWhite)
+                Spacer()
+                
+                Text("R$ 14,90")
+                    .font(.system(size: 24, weight: .regular, design: .serif))
+                    .italic()
+                    .foregroundColor(.cherryBone)
             }
             
-            Text(userName)
-                .font(.system(size: 24, weight: .bold, design: .rounded))
-                .foregroundColor(.neuralWhite)
+            Button(action: {}) {
+                Text("Assinar →")
+                    .font(.system(size: 15, weight: .semibold, design: .default))
+                    .foregroundColor(.cherryInk)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 14)
+                    .background(Color.cherryBone)
+            }
+        }
+        .padding(20)
+        .background(Color.cherryInk)
+    }
+    
+    private var indexSection: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            Text("Índice — conta")
+                .font(.system(size: 20, weight: .regular, design: .serif))
+                .foregroundColor(.cherryInk)
             
-            Text("Membro desde Maio 2026")
-                .neuralBody()
-                .foregroundColor(.gray)
+            VStack(spacing: 0) {
+                IndexRow(number: 1, label: "Edições salvas", sublabel: "\(stats.tryOns) looks")
+                IndexRow(number: 2, label: "Reviews escritas", sublabel: "\(stats.reviews) análises")
+                IndexRow(number: 3, label: "Votos recebidos", sublabel: "\(stats.votes) curtidas")
+                IndexRow(number: 4, label: "Notificações", sublabel: "Ativadas")
+                IndexRow(number: 5, label: "Privacidade", sublabel: "Pública")
+                IndexRow(number: 6, label: "Excluir conta", sublabel: "Remover todos os dados", isDestructive: true)
+            }
+        }
+    }
+}
+
+struct StatItem: View {
+    let value: String
+    let label: String
+    
+    var body: some View {
+        VStack(spacing: 4) {
+            Text(value)
+                .font(.system(size: 28, weight: .regular, design: .serif))
+                .foregroundColor(.cherryInk)
+            
+            Text(label)
+                .font(.system(size: 10, weight: .regular, design: .monospaced))
+                .tracking(0.5)
+                .foregroundColor(.cherryMid)
         }
         .frame(maxWidth: .infinity)
-        .padding(24)
-        .neuralCard()
     }
+}
+
+struct IndexRow: View {
+    let number: Int
+    let label: String
+    let sublabel: String
+    var isDestructive: Bool = false
     
-    private var statsGrid: some View {
-        LazyVGrid(columns: [
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible())
-        ], spacing: 12) {
-            NeuralStatCard(value: "\(stats.tryOns)", label: "Try-Ons", icon: "camera.viewfinder", color: .electricCyan)
-            NeuralStatCard(value: "\(stats.votes)", label: "Votos", icon: "heart.fill", color: .neonPink)
-            NeuralStatCard(value: "\(stats.reviews)", label: "Reviews", icon: "star.fill", color: .neonPurple)
+    var body: some View {
+        HStack(spacing: 16) {
+            Text(String(format: "%02d", number))
+                .font(.system(size: 12, weight: .regular, design: .monospaced))
+                .tracking(0.5)
+                .foregroundColor(.cherryMid)
+                .frame(width: 28)
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text(label)
+                    .font(.system(size: 16, weight: .regular, design: .serif))
+                    .italic()
+                    .foregroundColor(isDestructive ? .cherryAccent : .cherryInk)
+                Text(sublabel)
+                    .font(.system(size: 12, weight: .regular, design: .default))
+                    .foregroundColor(.cherryMid)
+            }
+            
+            Spacer()
+            
+            Image(systemName: "chevron.right")
+                .font(.system(size: 12, weight: .medium))
+                .foregroundColor(.cherryMid)
         }
-    }
-    
-    private var settingsSection: some View {
-        VStack(spacing: 12) {
-            NeuralSettingRow(icon: "crown.fill", title: "Premium", subtitle: "Desbloquear try-ons ilimitados", color: .appWarning)
-            NeuralSettingRow(icon: "bell.fill", title: "Notificações", subtitle: "Lembretes de desafios", color: .electricCyan)
-            NeuralSettingRow(icon: "share.fill", title: "Compartilhar", subtitle: "Convide amigos", color: .neonPurple)
-            NeuralSettingRow(icon: "questionmark.circle.fill", title: "Ajuda", subtitle: "FAQ e suporte", color: .gray)
-            DeleteAccountRow()
-        }
+        .padding(.vertical, 14)
+        .overlay(
+            Rectangle()
+                .fill(Color.cherryLine)
+                .frame(height: 1),
+            alignment: .bottom
+        )
     }
 }
 
@@ -74,7 +172,7 @@ struct NeuralStatCard: View {
     let value: String
     let label: String
     let icon: String
-    var color: Color = .electricCyan
+    var color: Color = .cherryAccent
     
     var body: some View {
         VStack(spacing: 8) {
@@ -84,15 +182,20 @@ struct NeuralStatCard: View {
             
             Text(value)
                 .font(.system(size: 20, weight: .bold, design: .rounded))
-                .foregroundColor(.neuralWhite)
+                .foregroundColor(.cherryInk)
             
             Text(label)
-                .neuralCaption()
-                .foregroundColor(.gray)
+                .font(.system(size: 11, weight: .medium, design: .monospaced))
+                .tracking(0.5)
+                .foregroundColor(.cherryMid)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 20)
-        .neuralCard()
+        .background(Color.cherryPaper)
+        .overlay(
+            Rectangle()
+                .stroke(Color.cherryLine, lineWidth: 1)
+        )
     }
 }
 
@@ -109,27 +212,31 @@ struct NeuralSettingRow: View {
                 .foregroundColor(color)
                 .frame(width: 40, height: 40)
                 .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(color.opacity(0.15))
+                    Rectangle()
+                        .fill(color.opacity(0.1))
                 )
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .font(.body.weight(.semibold))
-                    .foregroundColor(.neuralWhite)
+                    .foregroundColor(.cherryInk)
                 Text(subtitle)
-                    .neuralCaption()
-                    .foregroundColor(.gray)
+                    .font(.system(size: 12, weight: .regular, design: .default))
+                    .foregroundColor(.cherryMid)
             }
             
             Spacer()
             
             Image(systemName: "chevron.right")
-                .foregroundColor(.gray)
+                .foregroundColor(.cherryMid)
                 .font(.caption)
         }
         .padding(16)
-        .neuralCard()
+        .background(Color.cherryPaper)
+        .overlay(
+            Rectangle()
+                .stroke(Color.cherryLine, lineWidth: 1)
+        )
     }
 }
 
@@ -147,35 +254,39 @@ struct DeleteAccountRow: View {
             HStack(spacing: 16) {
                 Image(systemName: "trash.fill")
                     .font(.title3)
-                    .foregroundColor(.appError)
+                    .foregroundColor(.cherryAccent)
                     .frame(width: 40, height: 40)
                     .background(
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(Color.appError.opacity(0.15))
+                        Rectangle()
+                            .fill(Color.cherryAccent.opacity(0.1))
                     )
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Excluir Conta")
                         .font(.body.weight(.semibold))
-                        .foregroundColor(.appError)
+                        .foregroundColor(.cherryAccent)
                     Text("Remover todos os dados")
-                        .neuralCaption()
-                        .foregroundColor(.gray)
+                        .font(.system(size: 12, weight: .regular, design: .default))
+                        .foregroundColor(.cherryMid)
                 }
 
                 Spacer()
 
                 if isDeleting {
                     ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .appError))
+                        .progressViewStyle(CircularProgressViewStyle(tint: .cherryAccent))
                 } else {
                     Image(systemName: "chevron.right")
-                        .foregroundColor(.gray)
+                        .foregroundColor(.cherryMid)
                         .font(.caption)
                 }
             }
             .padding(16)
-            .neuralCard()
+            .background(Color.cherryPaper)
+            .overlay(
+                Rectangle()
+                    .stroke(Color.cherryLine, lineWidth: 1)
+            )
         }
         .disabled(isDeleting)
         .alert("Excluir Conta", isPresented: $showConfirmation) {

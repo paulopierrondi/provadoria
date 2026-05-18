@@ -9,8 +9,7 @@ struct ContentView: View {
                 HomeView()
             }
             .tabItem {
-                Image(systemName: "house")
-                Text("Início")
+                Label("Capa", systemImage: "book.closed")
             }
             .tag(0)
             
@@ -18,8 +17,7 @@ struct ContentView: View {
                 TryOnView()
             }
             .tabItem {
-                Image(systemName: "camera.viewfinder")
-                Text("Try-On")
+                Label("Ensaio", systemImage: "camera.viewfinder")
             }
             .tag(1)
             
@@ -27,8 +25,7 @@ struct ContentView: View {
                 FeedView()
             }
             .tabItem {
-                Image(systemName: "photo.stack")
-                Text("Feed")
+                Label("Arquivo", systemImage: "archivebox")
             }
             .tag(2)
             
@@ -36,12 +33,40 @@ struct ContentView: View {
                 ProfileView()
             }
             .tabItem {
-                Image(systemName: "person")
-                Text("Perfil")
+                Label("Eu", systemImage: "person")
             }
             .tag(3)
         }
-        .tint(.electricCyan)
+        .tint(.cherryAccent)
+        .onAppear {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor(Color.cherryBone)
+            
+            appearance.stackedLayoutAppearance.normal.iconColor = UIColor(Color.cherryMid)
+            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
+                .foregroundColor: UIColor(Color.cherryMid),
+                .font: UIFont.systemFont(ofSize: 11, weight: .medium)
+            ]
+            appearance.stackedLayoutAppearance.selected.iconColor = UIColor(Color.cherryAccent)
+            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
+                .foregroundColor: UIColor(Color.cherryAccent),
+                .font: UIFont.systemFont(ofSize: 11, weight: .semibold)
+            ]
+            
+            UITabBar.appearance().standardAppearance = appearance
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+            
+            let navAppearance = UINavigationBarAppearance()
+            navAppearance.configureWithOpaqueBackground()
+            navAppearance.backgroundColor = UIColor(Color.cherryBone)
+            navAppearance.titleTextAttributes = [.foregroundColor: UIColor(Color.cherryInk)]
+            navAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(Color.cherryInk)]
+            
+            UINavigationBar.appearance().standardAppearance = navAppearance
+            UINavigationBar.appearance().compactAppearance = navAppearance
+            UINavigationBar.appearance().scrollEdgeAppearance = navAppearance
+        }
     }
 }
 

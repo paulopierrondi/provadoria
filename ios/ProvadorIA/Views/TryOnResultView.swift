@@ -5,33 +5,19 @@ struct TryOnResultView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var showShareSheet = false
     @State private var showSavedAlert = false
+    @State private var showBeforeAfter = false
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(spacing: 24) {
-                resultImageSection
-                ratingSection
-                fitAssessmentSection
-                styleTipsSection
-                occasionsSection
+            VStack(spacing: 0) {
+                coverMasthead
+                coverHero
+                beforeAfterToggle
+                articleBody
                 actionButtons
             }
-            .padding(.horizontal, 20)
-            .padding(.vertical, 16)
         }
-        .background(Color.neuralVoid.ignoresSafeArea())
-        .navigationTitle("Resultado")
-        .navigationBarTitleDisplayMode(.large)
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        .toolbarBackground(Color.neuralVoid, for: .navigationBar)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button("Fechar") {
-                    dismiss()
-                }
-                .foregroundColor(.electricCyan)
-            }
-        }
+        .background(Color.cherryInk.ignoresSafeArea())
         .sheet(isPresented: $showShareSheet) {
             ShareSheet(items: [shareText])
         }
@@ -46,212 +32,302 @@ struct TryOnResultView: View {
         "Confira meu look no ProvadorIA! \(tryOn.description) — Avaliação: \(String(format: "%.1f", tryOn.rating))/10"
     }
     
-    private var resultImageSection: some View {
-        VStack(spacing: 12) {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(
-                    LinearGradient(
-                        colors: [
-                            Color.electricCyan.opacity(0.2),
-                            Color.neonPurple.opacity(0.2),
-                            Color.neonPink.opacity(0.1)
-                        ],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-                .frame(height: 380)
-                .overlay(
-                    VStack(spacing: 16) {
-                        Image(systemName: "person.fill.viewfinder")
-                            .font(.system(size: 60))
-                            .foregroundStyle(LinearGradient.cyanGradient)
-                        
-                        Text(tryOn.description)
-                            .neuralBody()
-                            .foregroundColor(.neuralWhite)
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal, 32)
-                        
-                        Text("Preview gerado por IA")
-                            .neuralCaption()
-                            .foregroundColor(.gray)
-                    }
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(
-                            LinearGradient(
-                                colors: [.electricCyan.opacity(0.5), .neonPurple.opacity(0.5)],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 2
-                        )
-                )
-                .cyanGlow()
-            
-            HStack(spacing: 8) {
-                Image(systemName: "arrow.left.arrow.right")
-                    .font(.caption)
-                    .foregroundColor(.electricCyan)
-                
-                Text("Antes / Depois")
-                    .neuralCaption()
-                    .foregroundColor(.gray)
-                
-                Spacer()
+    private var coverMasthead: some View {
+        HStack {
+            Button(action: { dismiss() }) {
+                HStack(spacing: 4) {
+                    Image(systemName: "arrow.left")
+                        .font(.system(size: 14, weight: .medium))
+                    Text("Voltar")
+                        .font(.system(size: 14, weight: .medium, design: .default))
+                }
+                .foregroundColor(.cherryBone)
             }
+            
+            Spacer()
+            
+            HStack(spacing: 4) {
+                Text("Provador")
+                    .font(.system(size: 14, weight: .regular, design: .serif))
+                    .foregroundColor(.cherryBone)
+                Text("ia")
+                    .font(.system(size: 14, weight: .regular, design: .serif))
+                    .italic()
+                    .foregroundColor(.cherryAccent)
+            }
+            
+            Spacer()
+            
+            Button(action: { showShareSheet = true }) {
+                Text("Compartilhar")
+                    .font(.system(size: 14, weight: .medium, design: .default))
+                    .foregroundColor(.cherryBone)
+            }
+        }
+        .padding(.horizontal, 24)
+        .padding(.vertical, 16)
+    }
+    
+    private var coverHero: some View {
+        ZStack(alignment: .topLeading) {
+            LinearGradient(
+                colors: [.cherryAccent, .cherryAccentDeep],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .frame(height: 480)
+            
+            VStack(alignment: .leading, spacing: 12) {
+                Text("O LOOK DE HOJE")
+                    .eyebrow()
+                    .foregroundColor(.cherryBone.opacity(0.8))
+                
+                Text("Cai ")
+                    .font(.system(size: 56, weight: .regular, design: .serif))
+                    .foregroundColor(.cherryBone)
+                +
+                Text("perfeito.")
+                    .font(.system(size: 56, weight: .regular, design: .serif))
+                    .italic()
+                    .foregroundColor(.cherryBone)
+                
+                Text(tryOn.description)
+                    .font(.system(size: 13, weight: .regular, design: .default))
+                    .foregroundColor(.cherryBone.opacity(0.9))
+                    .lineLimit(2)
+                    .frame(maxWidth: 240, alignment: .leading)
+            }
+            .padding(.horizontal, 24)
+            .padding(.vertical, 32)
+            
+            VStack(alignment: .trailing, spacing: 4) {
+                Spacer()
+                HStack {
+                    Spacer()
+                    VStack(alignment: .trailing, spacing: 0) {
+                        Text("Caimento")
+                            .font(.system(size: 11, weight: .regular, design: .monospaced))
+                            .tracking(1.5)
+                            .textCase(.uppercase)
+                            .foregroundColor(.cherryBone.opacity(0.8))
+                        
+                        Text(String(format: "%.1f", tryOn.rating))
+                            .font(.system(size: 80, weight: .regular, design: .serif))
+                            .italic()
+                            .foregroundColor(.cherryBone)
+                    }
+                }
+            }
+            .padding(.horizontal, 24)
+            .padding(.vertical, 24)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Spacer()
+                Text("Marina Souza")
+                    .font(.system(size: 13, weight: .medium, design: .default))
+                    .foregroundColor(.cherryBone)
+                Text("Gerado por Gemini 2.0")
+                    .font(.system(size: 11, weight: .regular, design: .monospaced))
+                    .tracking(0.5)
+                    .foregroundColor(.cherryBone.opacity(0.7))
+            }
+            .padding(.horizontal, 24)
+            .padding(.vertical, 24)
         }
     }
     
-    private var ratingSection: some View {
+    private var beforeAfterToggle: some View {
         HStack(spacing: 16) {
-            VStack(spacing: 4) {
-                Text(String(format: "%.1f", tryOn.rating))
-                    .font(.system(size: 36, weight: .bold, design: .rounded))
-                    .foregroundStyle(LinearGradient.cyanGradient)
-                
-                Text("de 10")
-                    .neuralCaption()
-                    .foregroundColor(.gray)
+            Button(action: { showBeforeAfter = false }) {
+                Text("Resultado")
+                    .font(.system(size: 13, weight: .medium, design: .monospaced))
+                    .tracking(0.5)
+                    .foregroundColor(!showBeforeAfter ? .cherryBone : .cherryMid)
+                    .padding(.vertical, 8)
+                    .overlay(
+                        Rectangle()
+                            .fill(!showBeforeAfter ? Color.cherryBone : Color.clear)
+                            .frame(height: 1),
+                        alignment: .bottom
+                    )
             }
-            .frame(width: 80)
             
-            Divider()
-                .background(Color.white.opacity(0.1))
-            
-            VStack(alignment: .leading, spacing: 8) {
-                HStack(spacing: 4) {
-                    ForEach(1...5, id: \.self) { index in
-                        Image(systemName: index <= Int(tryOn.rating / 2) ? "star.fill" : "star")
-                            .font(.caption)
-                            .foregroundColor(.appWarning)
-                    }
-                }
-                
-                Text(ratingDescription)
-                    .neuralBody()
-                    .foregroundColor(.neuralWhite)
+            Button(action: { showBeforeAfter = true }) {
+                Text("Antes / Depois")
+                    .font(.system(size: 13, weight: .medium, design: .monospaced))
+                    .tracking(0.5)
+                    .foregroundColor(showBeforeAfter ? .cherryBone : .cherryMid)
+                    .padding(.vertical, 8)
+                    .overlay(
+                        Rectangle()
+                            .fill(showBeforeAfter ? Color.cherryBone : Color.clear)
+                            .frame(height: 1),
+                        alignment: .bottom
+                    )
             }
             
             Spacer()
         }
-        .padding(16)
-        .neuralCard()
+        .padding(.horizontal, 24)
+        .padding(.vertical, 16)
     }
     
-    private var ratingDescription: String {
-        switch tryOn.rating {
-        case 0..<5: return "Precisa de ajustes"
-        case 5..<7: return "Bom ajuste"
-        case 7..<9: return "Excelente ajuste"
-        default: return "Ajuste perfeito!"
-        }
-    }
-    
-    private var fitAssessmentSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack(spacing: 8) {
-                Image(systemName: "ruler")
-                    .foregroundColor(.electricCyan)
-                Text("Avaliação do Ajuste")
-                    .neuralTitle()
-                    .foregroundColor(.neuralWhite)
+    private var articleBody: some View {
+        VStack(alignment: .leading, spacing: 32) {
+            // Analysis header
+            HStack(spacing: 16) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Análise · Caimento")
+                        .font(.system(size: 20, weight: .regular, design: .serif))
+                        .foregroundColor(.cherryBone)
+                    Text("\(tryOn.description) · R$ 289")
+                        .font(.system(size: 13, weight: .regular, design: .default))
+                        .foregroundColor(.cherryMid)
+                }
+                
+                Spacer()
             }
             
-            Text(tryOn.fitAssessment)
-                .neuralBody()
-                .foregroundColor(.gray)
-                .lineSpacing(4)
-        }
-        .padding(16)
-        .neuralCard()
-    }
-    
-    private var styleTipsSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack(spacing: 8) {
-                Image(systemName: "lightbulb")
-                    .foregroundColor(.neonPurple)
-                Text("Dicas de Estilo")
-                    .neuralTitle()
-                    .foregroundColor(.neuralWhite)
+            // Score rows
+            VStack(spacing: 16) {
+                ScoreRow(label: "Caimento", value: tryOn.rating)
+                ScoreRow(label: "Cor", value: min(tryOn.rating + 0.3, 10.0))
+                ScoreRow(label: "Estilo", value: min(tryOn.rating + 0.1, 10.0))
+                ScoreRow(label: "Tamanho ideal", value: tryOn.rating)
             }
             
-            VStack(alignment: .leading, spacing: 10) {
-                ForEach(Array(tryOn.styleTips.enumerated()), id: \.offset) { index, tip in
-                    HStack(alignment: .top, spacing: 10) {
-                        Text("\(index + 1)")
-                            .font(.system(size: 11, weight: .bold, design: .monospaced))
-                            .foregroundColor(.neonPurple)
-                            .frame(width: 22, height: 22)
-                            .background(Color.neonPurple.opacity(0.15))
-                            .cornerRadius(6)
-                        
-                        Text(tip)
-                            .neuralBody()
-                            .foregroundColor(.gray)
-                            .lineSpacing(2)
-                        
-                        Spacer()
+            Divider()
+                .background(Color.cherryMid.opacity(0.3))
+            
+            // Style tips
+            VStack(alignment: .leading, spacing: 16) {
+                Text("Edit · Como compor")
+                    .font(.system(size: 20, weight: .regular, design: .serif))
+                    .foregroundColor(.cherryBone)
+                
+                VStack(alignment: .leading, spacing: 12) {
+                    ForEach(Array(tryOn.styleTips.enumerated()), id: \.offset) { index, tip in
+                        HStack(alignment: .top, spacing: 12) {
+                            Text("\(index + 1)")
+                                .font(.system(size: 14, weight: .regular, design: .serif))
+                                .italic()
+                                .foregroundColor(.cherryAccent)
+                                .frame(width: 24)
+                            
+                            Text(tip)
+                                .font(.system(size: 14, weight: .regular, design: .default))
+                                .foregroundColor(.cherryBone.opacity(0.9))
+                                .lineSpacing(2)
+                            
+                            Spacer()
+                        }
+                    }
+                }
+            }
+            
+            Divider()
+                .background(Color.cherryMid.opacity(0.3))
+            
+            // Occasions
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Veja também — ocasiões")
+                    .font(.system(size: 14, weight: .medium, design: .monospaced))
+                    .tracking(0.5)
+                    .textCase(.uppercase)
+                    .foregroundColor(.cherryMid)
+                
+                FlowLayout(spacing: 8) {
+                    ForEach(tryOn.occasions, id: \.self) { occasion in
+                        Text(occasion)
+                            .font(.system(size: 12, weight: .medium, design: .default))
+                            .foregroundColor(.cherryBone)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                            .overlay(
+                                Rectangle()
+                                    .stroke(Color.cherryMid.opacity(0.5), lineWidth: 1)
+                            )
                     }
                 }
             }
         }
-        .padding(16)
-        .neuralCard()
-    }
-    
-    private var occasionsSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack(spacing: 8) {
-                Image(systemName: "calendar.badge.clock")
-                    .foregroundColor(.neonPink)
-                Text("Ocasiões Recomendadas")
-                    .neuralTitle()
-                    .foregroundColor(.neuralWhite)
-            }
-            
-            FlowLayout(spacing: 8) {
-                ForEach(tryOn.occasions, id: \.self) { occasion in
-                    Text(occasion)
-                        .neuralTag()
-                }
-            }
-        }
-        .padding(16)
-        .neuralCard()
+        .padding(.horizontal, 24)
+        .padding(.vertical, 24)
     }
     
     private var actionButtons: some View {
-        VStack(spacing: 12) {
+        HStack(spacing: 12) {
             Button(action: {
                 HapticFeedback.medium()
-                showShareSheet = true
             }) {
                 HStack(spacing: 8) {
-                    Image(systemName: "square.and.arrow.up")
-                    Text("Compartilhar")
+                    Text("Comprar (R$ 289)")
+                        .font(.system(size: 15, weight: .semibold, design: .default))
                 }
+                .foregroundColor(.cherryInk)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 16)
+                .background(Color.cherryBone)
             }
-            .buttonStyle(NeuralButtonStyle())
             
             Button(action: {
                 HapticFeedback.success()
-                saveToGallery()
+                showSavedAlert = true
             }) {
                 HStack(spacing: 8) {
-                    Image(systemName: "square.and.arrow.down")
-                    Text("Salvar na Galeria")
+                    Image(systemName: "bookmark")
+                    Text("Salvar")
                 }
+                .font(.system(size: 15, weight: .semibold, design: .default))
+                .foregroundColor(.cherryBone)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 16)
+                .overlay(
+                    Rectangle()
+                        .stroke(Color.cherryBone, lineWidth: 1)
+                )
             }
-            .buttonStyle(SecondaryNeuralButtonStyle())
         }
+        .padding(.horizontal, 24)
+        .padding(.vertical, 16)
+        .background(Color.cherryInk)
     }
     
     private func saveToGallery() {
         showSavedAlert = true
+    }
+}
+
+struct ScoreRow: View {
+    let label: String
+    let value: Double
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            Text(label)
+                .font(.system(size: 14, weight: .regular, design: .default))
+                .foregroundColor(.cherryMid)
+                .frame(width: 100, alignment: .leading)
+            
+            GeometryReader { geo in
+                ZStack(alignment: .leading) {
+                    Rectangle()
+                        .fill(Color.cherryMid.opacity(0.2))
+                        .frame(height: 2)
+                    
+                    Rectangle()
+                        .fill(Color.cherryAccent)
+                        .frame(width: geo.size.width * CGFloat(value / 10.0), height: 2)
+                }
+            }
+            .frame(height: 2)
+            
+            Text(String(format: "%.1f", value))
+                .font(.system(size: 14, weight: .medium, design: .monospaced))
+                .tracking(0.5)
+                .foregroundColor(.cherryBone)
+                .frame(width: 40, alignment: .trailing)
+        }
     }
 }
 

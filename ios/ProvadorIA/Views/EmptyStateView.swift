@@ -6,59 +6,50 @@ struct EmptyStateView: View {
     let message: String
     var actionTitle: String? = nil
     var action: (() -> Void)? = nil
-
+    
     var body: some View {
-        VStack(spacing: 20) {
-            Spacer()
-
+        VStack(spacing: 16) {
             Image(systemName: icon)
-                .font(.system(size: 56, weight: .light))
-                .foregroundStyle(Color.electricCyan.opacity(0.5))
-
+                .font(.system(size: 48))
+                .foregroundColor(.cherryMid.opacity(0.5))
+            
             Text(title)
-                .font(.system(size: 20, weight: .semibold, design: .rounded))
-                .foregroundColor(.neuralWhite)
-                .multilineTextAlignment(.center)
-
+                .font(.system(size: 20, weight: .regular, design: .serif))
+                .foregroundColor(.cherryInk)
+            
             Text(message)
-                .font(.system(size: 16))
-                .foregroundColor(.neuralWhite.opacity(0.6))
+                .font(.system(size: 14, weight: .regular, design: .default))
+                .foregroundColor(.cherryMid)
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, 32)
-
+                .lineSpacing(2)
+            
             if let actionTitle = actionTitle, let action = action {
-                Button {
-                    HapticFeedback.medium()
-                    action()
-                } label: {
+                Button(action: action) {
                     Text(actionTitle)
-                        .font(.system(size: 16, weight: .semibold, design: .rounded))
-                        .foregroundColor(.neuralWhite)
+                        .font(.system(size: 15, weight: .semibold, design: .default))
+                        .foregroundColor(.cherryInk)
                         .padding(.horizontal, 24)
                         .padding(.vertical, 12)
-                        .background(Color.electricCyan.opacity(0.15))
                         .overlay(
-                            RoundedRectangle(cornerRadius: 12)
-                                .stroke(Color.electricCyan.opacity(0.3), lineWidth: 1)
+                            Rectangle()
+                                .stroke(Color.cherryInk, lineWidth: 1)
                         )
-                        .cornerRadius(12)
                 }
                 .padding(.top, 8)
             }
-
-            Spacer()
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.neuralVoid.ignoresSafeArea())
+        .padding(24)
+        .frame(maxWidth: .infinity)
     }
 }
 
 #Preview {
     EmptyStateView(
-        icon: "tshirt",
-        title: "Nenhum look ainda",
-        message: "Experimente sua primeira roupa e ela aparecerá aqui.",
-        actionTitle: "Experimentar Agora",
+        icon: "archivebox",
+        title: "Arquivo vazio",
+        message: "Nenhuma edição encontrada ainda.",
+        actionTitle: "Experimentar",
         action: {}
     )
+    .background(Color.cherryBone)
 }

@@ -12,6 +12,7 @@
 		0FE16B5320533FAD7C30448A /* ProvadorIAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0B03F49E7F0A7BBAB7E49 /* ProvadorIAApp.swift */; };
 		1BAF5641DA13FD7879543D21 /* TryOnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E333EC173178DF858ACDEF /* TryOnView.swift */; };
 		38BA30414940BD636D0E9C69 /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971E91CE8E3AB20EB00605B /* ErrorStateView.swift */; };
+		43EF9AC68CFA595ABA7EA8CD /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 03ECB56CB4248D639FEE9C88 /* PrivacyInfo.xcprivacy */; };
 		5406D46B21F4F70809A35302 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E860B8BD6F79A2C15D3D4BD /* Assets.xcassets */; };
 		56AAC14F32EF3DEF93A1C102 /* TryOnCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C81C94F665FA14325439D0 /* TryOnCardView.swift */; };
 		64E3C36E3CEE9EF99EDBDF23 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18AC9D088AFA7CEB353AD68 /* HomeView.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03ECB56CB4248D639FEE9C88 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		13E3A397FCED21FB03484D7E /* ShimmerLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerLoadingView.swift; sourceTree = "<group>"; };
 		14462F746E61D05675069970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4094F8068ECA4C3D01F37E92 /* ProvadorIAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvadorIAUITests.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				7E860B8BD6F79A2C15D3D4BD /* Assets.xcassets */,
 				77C5001C1FA3D6A68DAA36E9 /* ContentView.swift */,
 				14462F746E61D05675069970 /* Info.plist */,
+				03ECB56CB4248D639FEE9C88 /* PrivacyInfo.xcprivacy */,
 				76A0B03F49E7F0A7BBAB7E49 /* ProvadorIAApp.swift */,
 				E2E42A23C64AD86E0E685FF3 /* Models */,
 				B7FFDD1E09ABB970D7851D75 /* Services */,
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5406D46B21F4F70809A35302 /* Assets.xcassets in Resources */,
+				43EF9AC68CFA595ABA7EA8CD /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +322,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 8ULNGWJZ6B;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -444,7 +448,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8ULNGWJZ6B;
 				ENABLE_NS_ASSERTIONS = NO;

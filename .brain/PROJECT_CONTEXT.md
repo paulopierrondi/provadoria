@@ -1,7 +1,7 @@
 # Project Brain Context
 
-Generated: `2026-05-18 09:07:11`
-Tool that refreshed this file: `sync`
+Generated: `2026-05-18 17:30:12`
+Tool that refreshed this file: `kimi`
 Local Obsidian vault: `/Users/paulopierrondi/Documents/Obsidian Vault`
 Repository: `/Users/paulopierrondi/Downloads/provadoria`
 
@@ -537,7 +537,7 @@ When starting a new repo or machine, run `brain-sync`, `brain-preflight --all`, 
 
 # Linear Project Map
 
-Updated: 2026-05-17
+Updated: 2026-05-18
 
 This map links Linear projects to local repos and Obsidian project notes. It is mapping metadata only.
 
@@ -641,7 +641,7 @@ Pick work in this order:
 
 # Linear Cleanup Backlog
 
-Updated: 2026-05-17
+Updated: 2026-05-18
 
 This note is for cleanup proposals. Do not treat it as permission to bulk-edit Linear.
 
@@ -1052,6 +1052,7 @@ Antes de implementar, revisar ou fazer deploy, o agente deve escolher os checkli
 - Mobile/iOS: [[04_Areas/Coding/Checklists/Platform Mobile iOS Checklist]]
 - iOS app quality: [[04_Areas/Coding/Checklists/iOS App Preflight Checklist]]
 - App Store Connect upload: [[04_Areas/Coding/Checklists/App Store Connect Upload Runbook]]
+- **🚨 Apple reject resolution (LEITURA OBRIGATÓRIA antes de tocar em qualquer reject):** [[04_Areas/Coding/Checklists/Apple Reject Resolution Audit Checklist]]
 - Android app quality: [[04_Areas/Coding/Checklists/Android App Preflight Checklist]]
 - Python/Data: [[04_Areas/Coding/Checklists/Platform Python Data Checklist]]
 - IA/LLM: [[04_Areas/Coding/Checklists/AI Integrations Checklist]]
@@ -1273,6 +1274,10 @@ tags:
 ## Evidencia
 
 - [ ] Paths dos screenshots registrados na nota do projeto.
+- [ ] Cada screenshot de QA tem interpretacao humana registrada: o que passou, o que falhou, se bloqueia release e qual e o proximo passo.
+- [ ] Screenshot em simulador/device compartilhado com outros apps/agentes nao conta como evidencia final sem confirmar bundle/app/processo.
+- [ ] Para iOS/App Store, a evidencia final precisa mostrar produto real em uso, nao apenas login/tour; login/tour conta somente como evidencia auxiliar.
+- [ ] Push/ASC ficam bloqueados ate todos os fluxos core terem screenshot ou video curto com resultado pass/fail registrado.
 - [ ] Se screenshot contem dado sensivel, nao anexar ao vault; registrar apenas que foi verificado.
 - [ ] Falhas visuais viram item no projeto ou Learning Inbox.
 
@@ -1285,20 +1290,7 @@ project/marketing/
   composer/
     template.html      # brand gradient + headline + frame + footer
     manifest.json      # {shots: [{id, raw, pt:{eyebrow,headline,subhead}, en:{...}}, ...]}
-    render.mjs         # itera manifest, renderiza 1320x2868 em pt+en
-    package.json       # playwright
-  store-screenshots/
-    raw/               # capturas do device fisico (iPhone Pro Max, status bar limpa)
-      02-daily.png
-      03-feature.png
-      ...
-    iphone-69-pt/      # output final pt-BR
-    iphone-69-en/      # output final en-US
-```
-
-Fluxo: capturar raws no device fisico -> editar manifest com copy -> `node render.mjs` -> upload no ASC. Re-render < 30s para todo o set.
-
-Implementacao de referencia: `Downloads/bandle-br/marketing/composer/` (Bandle BR, 2026-0
+    render.mjs         #
 ...[truncated]
 
 ## 04_Areas/Coding/Checklists/Web App Preflight Checklist.md
@@ -1399,6 +1391,10 @@ tags:
 - [ ] Metadata, screenshots, descricao e notas de review batem com o app real.
 - [ ] Support URL, Privacy URL e Terms URL retornam `200 text/html` antes da submissao.
 - [ ] Se o dominio do produto nao estiver pronto, usar `https://www.pierrondi.dev/apps/<app-slug>/support`, `/privacy` e `/terms` como fallback oficial.
+- [ ] Gate de release registrado no vault antes de push/upload: comandos, build number, simulator/device, screenshots, pass/fail humano, blockers e decisao final.
+- [ ] Se houver outro chat/agente/processo trabalhando no app, usar simulador/device isolado ou registrar conflito; screenshot de device compartilhado nao conta como evidencia final sem confirmar app/bundle/processo.
+- [ ] Push/ASC bloqueados se qualquer fluxo core abrir web indevidamente, mostrar app errado, ficar preso em login sem demo account/demo mode, tiver texto truncado, placeholder visual ou acao principal nao validada.
+- [ ] Fluxos nativos minimos testados no app instalado: Auth/demo, Home, Planner/AI planner, Coach, Devotional, Records e Settings/sign-out.
 - [ ] IAP/subscriptions estao visiveis, funcionais e explicados.
 - [ ] Privacy policy e App Privacy Details batem com SDKs e coleta real.
 - [ ] Privacy manifest (`PrivacyInfo.xcprivacy`) bate com dominios reais usados em producao.
@@ -1684,6 +1680,14 @@ Este arquivo guarda inventario e identificadores nao-secretos para trabalhos App
 | App-specific shared secret / IAP shared secret | NUNCA em Markdown | Railway/Vercel/GitHub Actions/secret manager | Segredo real para validacao de compras/subscricoes. |
 | Provisioning profiles / certificates | NUNCA em Markdown | Apple Developer, Keychain, CI signing store | Material sensivel de assinatura. |
 
+## App Records E Signing Metadata
+
+| Projeto | App Store Connect App ID | Bundle ID | SKU | Provisioning profile | Status |
+|---|---:|---|---|---|---|
+| FaithSchool | `6764325629` | `com.faithschool.app` | TBD | App Store automatic signing / `App` scheme | `1.0.3 (32)` submetido para review em 2026-05-18; estado `WAITING_FOR_REVIEW` |
+| VouDeQue | `6770621754` | `com.paulopierrondi.voudeque` | `voudeque-2026` | `VouDeQue App Store` | App record criado, build `1.0 (1)` enviado e `VALID` em 2026-05-18 |
+| ProvadorIA | `6770621817` | `com.paulopierrondi.provadoria` | `provadoria-2026` | `ProvadorIA App Store` | App record criado, build `1.0 (1)` enviado e `VALID` em 2026-05-18 |
+
 ## Regra de uso para coders
 
 - Para qualquer trabalho de App Store Connect, TestFlight, upload, IAP, APNS, signing, entitlement ou review notes, ler este arquivo antes de pedir valores ao Paulo.
@@ -1722,6 +1726,8 @@ tags:
 Updated: 2026-05-15
 
 Este e o caminho pratico para upload de build iOS para App Store Connect/TestFlight. Use este runbook quando Claude Code, Codex, Kimi ou Gemini estiverem fazendo archive/upload.
+
+> 🚨 **Se o app foi REJEITADO pela Apple e voce esta vindo aqui pra resubmeter:** PARE. Leia [[04_Areas/Coding/Checklists/Apple Reject Resolution Audit Checklist]] PRIMEIRO. Reject literal cobre ~30% do real problem space — audit completo evita iteracao custosa.
 
 ## Answer First
 
@@ -1846,12 +1852,7 @@ Working path:
 
 Observed success:
 
-- `xcodebuild -exportArchive` completed with `Uploaded App` and `** EXPORT SUCCEEDED **`.
-- Build reached App Store Connect processing and became `VALID` about 90 seconds later.
-
-Observed failures and fixes:
-
-- `No Devices Registered for Provisioning`: agent tried de
+- `x
 ...[truncated]
 
 ## 04_Areas/Marketing/Marketing MOC.md
@@ -3173,6 +3174,35 @@ provadoria/
 
 - Use esta nota para manter o estado atual do projeto, decisoes abertas, comandos canonicos e riscos.
 - As sessoes locais de Codex, Claude Code, Kimi e Gemini foram indexadas no vault quando estavam disponiveis em disco.
+
+## 2026-05-18 — App Store Connect record e upload inicial
+
+- App record criado no App Store Connect:
+  - Nome: `ProvadorIA`
+  - App Store Connect app id: `6770621817`
+  - Bundle ID: `com.paulopierrondi.provadoria`
+  - SKU: `provadoria-2026`
+  - Primary locale: `pt-BR`
+- Bundle ID registrado via App Store Connect API antes do app record:
+  - Identifier: `com.paulopierrondi.provadoria`
+  - Bundle resource id: `W67YQF32PG`
+- Provisioning profile App Store criado via App Store Connect API:
+  - Nome: `ProvadorIA App Store`
+  - Usado para signing manual no release local.
+  - Conteudo do `.mobileprovision` nao foi registrado no vault.
+- Build enviado:
+  - Comando: `cd /Users/paulopierrondi/Downloads/provadoria/ios && ./release.sh`
+  - Delivery/build upload id: `201543d7-ddb2-4a88-bdc7-8c5aaeffaae6`
+  - Version/build: `1.0` / `1`
+  - Processing state: `VALID`
+  - Non-exempt encryption: `false`
+- Arquivos ajustados para permitir release sem Xcode account logada:
+  - `ios/release.sh`: signing manual com `ProvadorIA App Store`.
+  - `ios/exportOptions.plist`: `signingStyle=manual` e provisioning profile por bundle id.
+  - `ios/ProvadorIA/Info.plist`: `UISupportedInterfaceOrientations` completo para passar validação `90474`.
+- Riscos residuais:
+  - Build esta carregado/VALID, mas metadados, screenshots finais, privacy details, pricing/availability e submissao para review ainda precisam de gate separado antes de enviar para review.
+  - `ios/build/` contem artefatos locais gerados pelo archive/export e nao deve ser tratado como fonte canonica.
 
 ## AI History Snapshot
 

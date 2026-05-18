@@ -1,32 +1,37 @@
 import SwiftUI
 import UIKit
 
-// MARK: - Neural Interface Color Palette
+// MARK: - Cherry Editorial Color Palette
 
 extension Color {
-    // Backgrounds — Deep Space
-    static let neuralVoid = Color(hex: "050508")
-    static let neuralDark = Color(hex: "0A0A12")
-    static let neuralSurface = Color(hex: "12121E")
-    static let neuralPanel = Color(hex: "0A1628")
+    // Foundations
+    static let cherryBone = Color(hex: "F8DCD0")
+    static let cherryPaper = Color(hex: "FCE7DC")
+    static let cherryInk = Color(hex: "1A0E0A")
+    static let cherryMid = Color(hex: "8C6A5C")
+    static let cherryLine = Color(hex: "1A0E0A").opacity(0.14)
+    static let cherryAccent = Color(hex: "E63923")
+    static let cherryAccentDeep = Color(hex: "9F1F12")
     
-    // Accents — Electric Cyan & Neon Purple
-    static let electricCyan = Color(hex: "00F0FF")
-    static let electricCyanSoft = Color(hex: "88F5FF")
-    static let neonPurple = Color(hex: "B829F7")
-    static let neonPink = Color(hex: "FF2D8F")
-    static let neuralWhite = Color(hex: "E8F4F8")
-    
-    // Legacy aliases
-    static let appBackground = neuralVoid
-    static let appSurface = neuralDark
-    static let appSurfaceLight = neuralSurface
-    static let appAccentCyan = electricCyan
-    static let appAccentPurple = neonPurple
-    static let appAccentPink = neonPink
-    static let appSuccess = Color(hex: "10B981")
-    static let appWarning = Color(hex: "F59E0B")
-    static let appError = Color(hex: "EF4444")
+    // Legacy aliases for compatibility
+    static let neuralVoid = cherryBone
+    static let neuralDark = cherryPaper
+    static let neuralSurface = cherryPaper
+    static let neuralPanel = cherryPaper
+    static let electricCyan = cherryAccent
+    static let electricCyanSoft = cherryAccent.opacity(0.6)
+    static let neonPurple = cherryAccentDeep
+    static let neonPink = cherryAccent
+    static let neuralWhite = cherryInk
+    static let appBackground = cherryBone
+    static let appSurface = cherryPaper
+    static let appSurfaceLight = cherryPaper
+    static let appAccentCyan = cherryAccent
+    static let appAccentPurple = cherryAccentDeep
+    static let appAccentPink = cherryAccent
+    static let appSuccess = Color(hex: "2D6A4F")
+    static let appWarning = Color(hex: "B08900")
+    static let appError = Color(hex: "9B2226")
     
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
@@ -56,203 +61,176 @@ extension Color {
 // MARK: - Gradients
 
 extension LinearGradient {
-    static var cyanGradient: LinearGradient {
-        LinearGradient(colors: [.electricCyan, .neonPurple], startPoint: .leading, endPoint: .trailing)
+    static var accentGradient: LinearGradient {
+        LinearGradient(colors: [.cherryAccent, .cherryAccentDeep], startPoint: .topLeading, endPoint: .bottomTrailing)
     }
-    static var voidGradient: LinearGradient {
-        LinearGradient(colors: [.neuralDark, .neuralPanel], startPoint: .top, endPoint: .bottom)
+    static var paperGradient: LinearGradient {
+        LinearGradient(colors: [.cherryPaper, .cherryBone], startPoint: .top, endPoint: .bottom)
     }
-    static var glowGradient: LinearGradient {
-        LinearGradient(colors: [.electricCyan.opacity(0.3), .neonPurple.opacity(0.3)], startPoint: .topLeading, endPoint: .bottomTrailing)
+    static var inkGradient: LinearGradient {
+        LinearGradient(colors: [.cherryInk, Color(hex: "2A1A14")], startPoint: .top, endPoint: .bottom)
     }
 }
 
-// MARK: - Typography
+// MARK: - Typography (Editorial)
 
 extension Font {
-    static func neuralDisplay(size: CGFloat = 32, weight: Font.Weight = .bold) -> Font {
-        .system(size: size, weight: weight, design: .rounded)
+    static func display(size: CGFloat, weight: Font.Weight = .regular) -> Font {
+        .system(size: size, weight: weight, design: .serif)
     }
-    static func neuralTitle(size: CGFloat = 20, weight: Font.Weight = .semibold) -> Font {
-        .system(size: size, weight: weight, design: .rounded)
-    }
-    static func neuralBody(size: CGFloat = 16, weight: Font.Weight = .regular) -> Font {
+    static func editorial(size: CGFloat = 17, weight: Font.Weight = .regular) -> Font {
         .system(size: size, weight: weight, design: .default)
     }
-    static func neuralCaption(size: CGFloat = 11, weight: Font.Weight = .medium) -> Font {
+    static func monoLabel(size: CGFloat = 10, weight: Font.Weight = .regular) -> Font {
         .system(size: size, weight: weight, design: .monospaced)
     }
 }
 
 extension View {
-    func neuralDisplay() -> some View {
-        self.font(.system(size: 32, weight: .bold, design: .rounded))
+    func displayFont(size: CGFloat = 32, weight: Font.Weight = .regular) -> some View {
+        self.font(.system(size: size, weight: weight, design: .serif))
     }
-    func neuralTitle() -> some View {
-        self.font(.system(size: 20, weight: .semibold, design: .rounded))
+    func editorial(size: CGFloat = 16, weight: Font.Weight = .regular) -> some View {
+        self.font(.system(size: size, weight: weight, design: .default))
     }
-    func neuralBody() -> some View {
-        self.font(.system(size: 16, weight: .regular, design: .default))
+    func monoLabel(size: CGFloat = 10) -> some View {
+        self.font(.system(size: size, weight: .regular, design: .monospaced))
+            .tracking(1.8)
+            .textCase(.uppercase)
     }
-    func neuralCaption() -> some View {
-        self.font(.system(size: 11, weight: .medium, design: .monospaced))
-            .tracking(0.8)
+    func eyebrow() -> some View {
+        self.font(.system(size: 10, weight: .regular, design: .monospaced))
+            .tracking(2.4)
+            .textCase(.uppercase)
+            .foregroundColor(.cherryMid)
     }
 }
 
-// MARK: - View Modifiers
+// MARK: - View Modifiers (Editorial)
 
-struct NeuralCardModifier: ViewModifier {
+struct EditorialCardModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .background(
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(Color.neuralDark)
-            )
+            .background(Color.cherryPaper)
             .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(Color.electricCyan.opacity(0.15), lineWidth: 1)
-            )
-            .shadow(color: Color.electricCyan.opacity(0.10), radius: 20, x: 0, y: 4)
-    }
-}
-
-struct CyanGlowModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .shadow(color: Color.electricCyan.opacity(0.25), radius: 12, x: 0, y: 0)
-    }
-}
-
-struct GlassMorphismModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .background(.ultraThinMaterial)
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(Color.electricCyan.opacity(0.05))
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(Color.electricCyan.opacity(0.15), lineWidth: 1)
+                Rectangle()
+                    .stroke(Color.cherryLine, lineWidth: 1)
             )
     }
 }
 
-struct PressAnimationModifier: ViewModifier {
-    @State private var isPressed = false
+struct InkCardModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .scaleEffect(isPressed ? 0.97 : 1.0)
-            .animation(.easeInOut(duration: 0.15), value: isPressed)
-            .simultaneousGesture(
-                DragGesture(minimumDistance: 0)
-                    .onChanged { _ in isPressed = true }
-                    .onEnded { _ in isPressed = false }
-            )
+            .background(Color.cherryInk)
+            .foregroundColor(.cherryBone)
     }
 }
 
 extension View {
-    func neuralCard() -> some View {
-        modifier(NeuralCardModifier())
+    func editorialCard() -> some View {
+        modifier(EditorialCardModifier())
     }
-    func cyanGlow() -> some View {
-        modifier(CyanGlowModifier())
+    func inkCard() -> some View {
+        modifier(InkCardModifier())
     }
-    func glassMorphism() -> some View {
-        modifier(GlassMorphismModifier())
-    }
-    func pressAnimation() -> some View {
-        modifier(PressAnimationModifier())
-    }
-    func neuralTextField() -> some View {
+    func editorialTextField() -> some View {
         self
             .padding(12)
-            .background(Color.neuralSurface)
-            .cornerRadius(12)
+            .background(Color.cherryPaper)
             .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.electricCyan.opacity(0.2), lineWidth: 1)
+                Rectangle()
+                    .stroke(Color.cherryLine, lineWidth: 1)
             )
-    }
-    func glassCard() -> some View {
-        neuralCard()
-    }
-    func gradientBorder() -> some View {
-        self.overlay(
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(LinearGradient.cyanGradient, lineWidth: 1.5)
-        )
     }
 }
 
 // MARK: - Button Styles
 
+struct PrimaryEditorialButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.system(size: 16, weight: .semibold, design: .default))
+            .foregroundColor(.cherryBone)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 16)
+            .background(Color.cherryInk)
+            .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
+            .opacity(configuration.isPressed ? 0.9 : 1.0)
+            .animation(.easeInOut(duration: 0.15), value: configuration.isPressed)
+    }
+}
+
+struct SecondaryEditorialButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.system(size: 16, weight: .semibold, design: .default))
+            .foregroundColor(.cherryInk)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 16)
+            .background(Color.clear)
+            .overlay(
+                Rectangle()
+                    .stroke(Color.cherryInk, lineWidth: 1)
+            )
+            .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
+            .animation(.easeInOut(duration: 0.15), value: configuration.isPressed)
+    }
+}
+
+struct AccentEditorialButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.system(size: 16, weight: .semibold, design: .default))
+            .foregroundColor(.white)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 16)
+            .background(Color.cherryAccent)
+            .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
+            .opacity(configuration.isPressed ? 0.9 : 1.0)
+            .animation(.easeInOut(duration: 0.15), value: configuration.isPressed)
+    }
+}
+
+// Legacy compatibility
 struct NeuralButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: 16, weight: .semibold, design: .rounded))
-            .foregroundColor(.neuralWhite)
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 16)
-            .background(LinearGradient.cyanGradient)
-            .cornerRadius(14)
-            .scaleEffect(configuration.isPressed ? 0.97 : 1.0)
-            .opacity(configuration.isPressed ? 0.9 : 1.0)
-            .shadow(color: Color.electricCyan.opacity(configuration.isPressed ? 0.1 : 0.3), radius: 12, x: 0, y: 4)
-            .animation(.easeInOut(duration: 0.15), value: configuration.isPressed)
+            .buttonStyle(PrimaryEditorialButtonStyle())
     }
 }
 
 struct SecondaryNeuralButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: 16, weight: .semibold, design: .rounded))
-            .foregroundColor(.neuralWhite)
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 16)
-            .background(Color.neuralSurface)
-            .cornerRadius(14)
-            .overlay(
-                RoundedRectangle(cornerRadius: 14)
-                    .stroke(Color.electricCyan.opacity(0.2), lineWidth: 1)
-            )
-            .scaleEffect(configuration.isPressed ? 0.97 : 1.0)
-            .animation(.easeInOut(duration: 0.15), value: configuration.isPressed)
+            .buttonStyle(SecondaryEditorialButtonStyle())
     }
 }
 
-struct AccentButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .buttonStyle(NeuralButtonStyle())
-    }
-}
+// MARK: - Tag Style
 
-struct SecondaryButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .buttonStyle(SecondaryNeuralButtonStyle())
-    }
-}
-
-struct NeuralTagModifier: ViewModifier {
+struct EditorialTagModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 11, weight: .medium, design: .monospaced))
             .tracking(0.5)
-            .foregroundColor(.electricCyan)
+            .foregroundColor(.cherryInk)
             .padding(.horizontal, 12)
             .padding(.vertical, 6)
-            .background(Color.electricCyan.opacity(0.12))
-            .cornerRadius(8)
+            .background(Color.cherryPaper)
+            .overlay(
+                Rectangle()
+                    .stroke(Color.cherryLine, lineWidth: 1)
+            )
     }
 }
 
 extension View {
+    func editorialTag() -> some View {
+        modifier(EditorialTagModifier())
+    }
     func neuralTag() -> some View {
-        modifier(NeuralTagModifier())
+        editorialTag()
     }
 }
 
@@ -265,7 +243,7 @@ struct ShimmerModifier: ViewModifier {
             .overlay(
                 GeometryReader { geo in
                     LinearGradient(
-                        colors: [Color.clear, Color.electricCyan.opacity(0.15), Color.clear],
+                        colors: [Color.clear, Color.cherryAccent.opacity(0.08), Color.clear],
                         startPoint: .leading,
                         endPoint: .trailing
                     )
@@ -283,11 +261,14 @@ struct ShimmerModifier: ViewModifier {
 }
 
 extension View {
-    func neuralShimmer() -> some View {
+    func editorialShimmer() -> some View {
         modifier(ShimmerModifier())
     }
+    func neuralShimmer() -> some View {
+        editorialShimmer()
+    }
     func shimmer() -> some View {
-        modifier(ShimmerModifier())
+        editorialShimmer()
     }
 }
 
@@ -340,30 +321,30 @@ struct AsyncImageView: View {
             }
         }
         .frame(width: width, height: height)
-        .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+        .clipped()
     }
     
     private var placeholder: some View {
-        RoundedRectangle(cornerRadius: cornerRadius)
-            .fill(LinearGradient.voidGradient)
+        Rectangle()
+            .fill(Color.cherryPaper)
             .overlay(
                 Image(systemName: "photo")
                     .font(.system(size: 32))
-                    .foregroundColor(.gray.opacity(0.5))
+                    .foregroundColor(.cherryMid.opacity(0.5))
             )
     }
     
     private var errorPlaceholder: some View {
-        RoundedRectangle(cornerRadius: cornerRadius)
-            .fill(Color.neuralSurface)
+        Rectangle()
+            .fill(Color.cherryPaper)
             .overlay(
                 VStack(spacing: 8) {
                     Image(systemName: "exclamationmark.circle")
                         .font(.system(size: 28))
                         .foregroundColor(.appError)
                     Text("Erro ao carregar")
-                        .neuralCaption()
-                        .foregroundColor(.gray)
+                        .monoLabel()
+                        .foregroundColor(.cherryMid)
                 }
             )
     }
@@ -381,30 +362,30 @@ struct StepIndicator: View {
             ForEach(0..<totalSteps, id: \.self) { index in
                 VStack(spacing: 6) {
                     ZStack {
-                        Circle()
-                            .fill(index <= currentStep ? Color.electricCyan.opacity(0.2) : Color.neuralSurface)
+                        Rectangle()
+                            .fill(index <= currentStep ? Color.cherryAccent.opacity(0.15) : Color.cherryPaper)
                             .frame(width: 28, height: 28)
                         
                         if index < currentStep {
-                            Image(systemName: "checkmark")
+                            Text("✓")
                                 .font(.system(size: 12, weight: .bold))
-                                .foregroundColor(.electricCyan)
+                                .foregroundColor(.cherryAccent)
                         } else {
                             Text("\(index + 1)")
                                 .font(.system(size: 12, weight: .bold, design: .monospaced))
-                                .foregroundColor(index == currentStep ? .electricCyan : .gray)
+                                .foregroundColor(index == currentStep ? .cherryAccent : .cherryMid)
                         }
                     }
                     
                     Text(labels[index])
                         .font(.system(size: 10, weight: .medium, design: .monospaced))
-                        .foregroundColor(index == currentStep ? .electricCyan : .gray)
+                        .foregroundColor(index == currentStep ? .cherryAccent : .cherryMid)
                         .lineLimit(1)
                 }
                 
                 if index < totalSteps - 1 {
                     Rectangle()
-                        .fill(index < currentStep ? Color.electricCyan.opacity(0.4) : Color.neuralWhite.opacity(0.1))
+                        .fill(index < currentStep ? Color.cherryAccent.opacity(0.3) : Color.cherryLine)
                         .frame(height: 1)
                         .padding(.bottom, 20)
                 }
@@ -417,6 +398,6 @@ struct StepIndicator: View {
 
 struct AccentGradient: View {
     var body: some View {
-        LinearGradient.cyanGradient
+        LinearGradient.accentGradient
     }
 }

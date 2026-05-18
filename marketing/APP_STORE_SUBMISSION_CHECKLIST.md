@@ -1,154 +1,96 @@
 # ProvadorIA — App Store Submission Checklist
 
-## ✅ Pré-Submission (Antes de abrir o Xcode)
-
-- [x] Backend deployado no Railway (online)
-- [x] API endpoints testados e funcionando
-- [x] E2E tests passando (12/12)
-- [x] iOS UI Tests criados
-- [x] Landing page no ar (Vercel)
-- [x] App Icon (1024x1024) criado
-- [x] App Store Connect app record criado manualmente
-- [x] Bundle ID registrado: `com.paulopierrondi.provadoria`
-- [x] Provisioning Profile gerado pelo Xcode
+> Última atualização: 2026-05-17
+> Status: **PREPARE_FOR_SUBMISSION** (pronto para preencher dados restantes)
 
 ---
 
-## 📸 Screenshots (Obrigatório — 6.7" Display)
+## ✅ COMPLETADO AUTOMATICAMENTE
 
-### Required Screenshots (3 mínimo, 10 máximo)
-| # | Tela | Descrição |
-|---|------|-----------|
-| 1 | Tela Inicial / Feed | Shows app in use with real data |
-| 2 | Novo Try-On | Upload de foto da peça |
-| 3 | Resultado | Try-on gerado com avaliação |
-| 4 | Reviews | Reviews da comunidade com fotos |
-| 5 | Comunidade | Feed de try-ons |
-| 6 | Perfil | User profile com estatísticas |
-
-### Specs
-- **iPhone 15 Pro Max (6.7"):** 1290 x 2796 pixels
-- **iPhone 14 Pro (6.1"):** 1179 x 2556 pixels
-- **Formato:** PNG ou JPEG (sem alpha para JPEG)
-- **Sem transparência**
-
-### Dicas de Screenshot Profissional
-- Use o app com dados reais do backend
-- Horário do device: 9:41 AM (padrão Apple)
-- Wi-Fi cheio, bateria 100%
-- Sem notificações no topo
-- Texto em português
+| Item | Status | Detalhes |
+|------|--------|----------|
+| App Record | ✅ | Criado manualmente na ASC |
+| Build Upload | ✅ | Build 1.0 (1) — VALID, uploaded 10:38 PT |
+| Build Association | ✅ | Build vinculado à versão 1.0 via API |
+| Metadata (pt-BR) | ✅ | Preenchido via API |
+| Description | ✅ | "ProvadorIA é seu provador virtual com Inteligência Artificial..." |
+| Keywords | ✅ | `tryon,provador,roupa,moda,ia,ai,fitting,virtual,comprar,look,shopping` |
+| Marketing URL | ✅ | https://provadoria-landing.vercel.app |
+| Promotional Text | ✅ | "Visualize como qualquer roupa ficaria em você com IA. Pare de se arrepender das compras!" |
+| Support URL | ✅ | https://provadoria-landing.vercel.app |
+| Category Primary | ✅ | Lifestyle |
+| Category Secondary | ✅ | Shopping |
 
 ---
 
-## 🎬 App Preview Video (Opcional mas recomendado)
+## 📝 PENDENTE — MANUAL NO APP STORE CONNECT
 
-- [ ] Gravado em iPhone real (não simulador)
-- [ ] 15-30 segundos
-- [ ] Sem áudio (ou mudo se tiver)
-- [ ] Resolução: 886 x 1920 (portrait)
-- [ ] Formato: MOV, MP4, M4V
-- [ ] Tamanho: < 500 MB
-- [ ] Legendas em português
+### 1. Screenshots (OBRIGATÓRIO)
+- [ ] **6 screenshots** para iPhone 6.7" Display (1290×2796 px)
+- [ ] Idioma: **Português (Brasil)**
+- [ ] Telas sugeridas:
+  1. Onboarding / Tela inicial
+  2. Upload de foto da roupa
+  3. Resultado do try-on virtual
+  4. Feed da comunidade com reviews
+  5. Tela de review detalhada
+  6. Perfil / Compartilhamento
 
----
+> 💡 **Dica:** Use o simulador iPhone 16 Pro Max (Simulator > Device > iPhone 16 Pro Max) e capture com Cmd+S. Depois converta para 1290×2796 se necessário.
 
-## 📝 Metadados no App Store Connect
+### 2. App Privacy (OBRIGATÓRIO)
+Acesse: App Store Connect → App → App Privacy
 
-### App Information
-| Campo | Valor |
-|-------|-------|
-| Name | ProvadorIA: Try-On Virtual |
-| Subtitle | Experimente com IA antes |
-| Category (Primary) | Lifestyle |
-| Category (Secondary) | Shopping |
-| Content Rights | Não contém |
-| Age Rating | 4+ |
+| Dado | Uso | Rastreamento |
+|------|-----|-------------|
+| User ID | App Functionality | Não |
+| Photos | App Functionality | Não |
+| Usage Data | Analytics | Não |
 
-### Pricing
-| Campo | Valor |
-|-------|-------|
-| Price | Free |
-| In-App Purchases | Sim (Pro R$19,90/mês) |
+- [ ] Preencher formulário de privacidade
+- [ ] Confirmar que NÃO rastreia usuários
+- [ ] Publicar política de privacidade
 
-### Version Information
-| Campo | Valor |
-|-------|-------|
-| Version Number | 1.0.0 |
-| Build | 1 |
-| Copyright | 2026 Paulo Pierrondi |
-| Support URL | https://provadoria-landing.vercel.app |
-| Marketing URL | https://provadoria-landing.vercel.app |
-| Privacy Policy URL | https://provadoria-landing.vercel.app/privacy |
+### 3. Review Information (OBRIGATÓRIO)
+Acesse: App Store Connect → App → App Review Information
 
----
+- [ ] **Contact Information**
+  - First Name: Paulo
+  - Last Name: Pierrondi
+  - Phone: +55 11 99999-9999 *(atualizar)*
+  - Email: pierrondi@gmail.com
+- [ ] **App Review Information**
+  - Sign-in required? **Não** (autenticação anônima)
+  - Demo account: **Não necessário**
+  - Notes: "O app usa autenticação anônima. Não é necessário login. O usuário recebe um token JWT ao abrir o app pela primeira vez. Para exclusão de conta, vá em Perfil > Configurações > Excluir Conta. O try-on virtual usa IA generativa para simular o caimento de roupas."
+- [ ] **Attachment**: Não necessário
 
-## 🔐 App Privacy (Required)
-
-### Data Collection
-| Data Type | Collected? | Linked to User? | Tracking? |
-|-----------|-----------|-----------------|-----------|
-| User ID (anonymous) | ✅ | ❌ | ❌ |
-| Photos (optional, Pro) | ✅ | ❌ | ❌ |
-| Usage Data | ✅ | ❌ | ❌ |
-| Diagnostics | ✅ | ❌ | ❌ |
-
-### Privacy Policy Text
-```
-ProvadorIA respeita sua privacidade.
-
-• Usamos autenticação anônima (não coletamos nome, email ou telefone)
-• Fotos são processadas em tempo real e não armazenadas permanentemente
-• Você pode excluir sua conta e todos os dados a qualquer momento
-• Não vendemos dados a terceiros
-• Não usamos tracking para publicidade
-
-Para mais informações: suporte@provadoria.app
-```
+### 4. App Review Details
+- [ ] **Content Rights**: Não contém conteúdo de terceiros protegido
+- [ ] **Advertising Identifier**: Não usa IDFA
+- [ ] **Age Rating**: 4+ (conteúdo leve, moda)
 
 ---
 
-## 🚀 Build & Upload
+## 🚀 SUBMISSÃO
 
-```bash
-cd /Users/paulopierrondi/Downloads/provadoria/ios
-./release.sh
-```
+Quando tudo estiver preenchido:
 
-### release.sh faz:
-1. Limpa build anterior
-2. Arquiva com Xcode (Release)
-3. Valida com altool
-4. Faz upload para App Store Connect
-5. Envia metadados com Deliverfile
+1. [ ] Verificar se todos os campos obrigatórios estão verdes
+2. [ ] Clicar em **"Add for Review"**
+3. [ ] Aguardar email de confirmação da Apple
 
----
-
-## ⏱️ Timeline de Review
-
-| Etapa | Tempo |
-|-------|-------|
-| Upload do build | 10-30 min |
-| Processamento do build | 15-60 min |
-| Review da Apple | 24-48h (geralmente) |
-| **Total estimado** | **1-3 dias** |
+### Timeline Estimada
+- **Review da Apple**: 24–48h (geralmente)
+- **Possível rejeição**: Placeholder text, crashes, account deletion não funcional
+- **Após aprovação**: Pode ser lançado manualmente ou automaticamente
 
 ---
 
-## 🚨 Rejeições Comuns & Prevenção
+## 📎 REFERÊNCIAS
 
-| Rejeição | Causa | Prevenção |
-|----------|-------|-----------|
-| Guideline 2.1 — Performance | App crasha | Testar em device real |
-| Guideline 4.0 — Design | UI confusa | Seguir HIG da Apple |
-| Guideline 5.1.1 — Privacy | Política incompleta | Preencher App Privacy corretamente |
-| Guideline 2.3 — Accurate Metadata | Descrição enganosa | Ser honesto sobre o que o app faz |
-| Guideline 3.1.1 — In-App Purchase | Pagamento fora da App Store | Usar StoreKit para subscriptions |
-
----
-
-## 📞 Contatos de Suporte
-
-- **Email:** suporte@provadoria.app
-- **Landing Page:** https://provadoria-landing.vercel.app
-- **Backend Status:** https://api-production-c696.up.railway.app/health
+- **App Store Connect**: https://appstoreconnect.apple.com/apps/6770621817/appstore
+- **Landing Page**: https://provadoria-landing.vercel.app
+- **Backend**: https://api-production-c696.up.railway.app
+- **Bundle ID**: `com.paulopierrondi.provadoria`
+- **Team ID**: `8ULNGWJZ6B`

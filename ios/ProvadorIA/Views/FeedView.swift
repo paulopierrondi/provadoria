@@ -9,55 +9,60 @@ struct FeedView: View {
     @State private var isRefreshing = false
     
     enum FilterOption: String, CaseIterable {
-        case all = "Todos"
-        case trending = "Trending"
-        case recent = "Recentes"
-        case topRated = "Top Rated"
+        case all = "Tudo"
+        case dresses = "Vestidos"
+        case knit = "Tricot"
+        case coats = "Casacos"
+        case pants = "Calça"
+        case winter = "Inverno"
     }
     
     var filteredTryOns: [TryOn] {
         switch selectedFilter {
         case .all:
             return tryOns
-        case .trending:
-            return tryOns.sorted { $0.votes > $1.votes }
-        case .recent:
-            return tryOns.sorted { $0.createdAt > $1.createdAt }
-        case .topRated:
-            return tryOns.sorted { $0.rating > $1.rating }
+        case .dresses:
+            return tryOns.filter { $0.description.lowercased().contains("vestido") }
+        case .knit:
+            return tryOns.filter { $0.description.lowercased().contains("tricot") || $0.description.lowercased().contains("blusa") }
+        case .coats:
+            return tryOns.filter { $0.description.lowercased().contains("jaqueta") || $0.description.lowercased().contains("casaco") }
+        case .pants:
+            return tryOns.filter { $0.description.lowercased().contains("calça") || $0.description.lowercased().contains("saia") }
+        case .winter:
+            return tryOns.filter { $0.description.lowercased().contains("couro") || $0.description.lowercased().contains("blazer") }
         }
     }
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(spacing: 20) {
+            VStack(spacing: 0) {
+                mastheadSection
                 filterSection
                 
                 if isLoading {
                     ShimmerLoadingView()
                         .padding(.top, 20)
+                        .padding(.horizontal, 24)
                 } else if hasError {
                     ErrorStateView(message: errorMessage) {
                         Task { await loadFeed() }
                     }
+                    .padding(.horizontal, 24)
                 } else if filteredTryOns.isEmpty {
                     EmptyStateView(
-                        icon: "photo.stack",
-                        title: "Feed vazio",
-                        message: "Nenhum look encontrado. Seja o primeiro a compartilhar!"
+                        icon: "archivebox",
+                        title: "Arquivo vazio",
+                        message: "Nenhuma edição encontrada. Seja o primeiro a compartilhar!"
                     )
+                    .padding(.horizontal, 24)
                 } else {
-                    feedSection
+                    archiveGrid
                 }
             }
-            .padding(.horizontal, 16)
             .padding(.vertical, 16)
         }
-        .background(Color.neuralVoid.ignoresSafeArea())
-        .navigationTitle("Feed")
-        .navigationBarTitleDisplayMode(.large)
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        .toolbarBackground(Color.neuralVoid, for: .navigationBar)
+        .background(Color.cherryBone.ignoresSafeArea())
         .refreshable {
             await refreshFeed()
         }
@@ -66,42 +71,68 @@ struct FeedView: View {
         }
     }
     
+    private var mastheadSection: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Coleção")
+                    .font(.system(size: 28, weight: .regular, design: .serif))
+                    .foregroundColor(.cherryInk)
+                Text("\(tryOns.count) edições")
+                    .font(.system(size: 12, weight: .regular, design: .monospaced))
+                    .tracking(0.5)
+                    .foregroundColor(.cherryMid)
+            }
+            
+            Spacer()
+        }
+        .padding(.horizontal, 24)
+        .padding(.vertical, 16)
+    }
+    
     private var filterSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 10) {
+            HStack(spacing: 8) {
                 ForEach(FilterOption.allCases, id: \.self) { filter in
                     Button(action: {
                         HapticFeedback.light()
                         selectedFilter = filter
                     }) {
                         Text(filter.rawValue)
-                            .font(.subheadline.weight(.medium))
-                            .foregroundColor(selectedFilter == filter ? .neuralWhite : .gray)
+                            .font(.system(size: 13, weight: .medium, design: .default))
+                            .foregroundColor(selectedFilter == filter ? .cherryBone : .cherryInk)
                             .padding(.horizontal, 16)
                             .padding(.vertical, 8)
                             .background(
                                 selectedFilter == filter
-                                ? AnyView(
-                                    Capsule()
-                                        .fill(LinearGradient.cyanGradient)
-                                )
+                                ? AnyView(Rectangle().fill(Color.cherryInk))
                                 : AnyView(
-                                    Capsule()
-                                        .fill(Color.neuralSurface)
+                                    Rectangle()
+                                        .fill(Color.cherryPaper)
+                                        .overlay(
+                                            Rectangle()
+                                                .stroke(Color.cherryLine, lineWidth: 1)
+                                        )
                                 )
                             )
                     }
                 }
             }
+            .padding(.horizontal, 24)
         }
+        .padding(.vertical, 8)
     }
     
-    private var feedSection: some View {
-        LazyVStack(spacing: 20) {
-            ForEach(filteredTryOns) { tryOn in
-                TryOnCardView(tryOn: tryOn)
+    private var archiveGrid: some View {
+        LazyVGrid(columns: [
+            GridItem(.flexible(), spacing: 12),
+            GridItem(.flexible(), spacing: 12)
+        ], spacing: 12) {
+            ForEach(Array(filteredTryOns.enumerated()), id: \.element.id) { index, tryOn in
+                ArchiveCard(tryOn: tryOn, index: index)
             }
         }
+        .padding(.horizontal, 24)
+        .padding(.top, 8)
     }
     
     @MainActor
@@ -132,6 +163,64 @@ struct FeedView: View {
             errorMessage = error.localizedDescription
         }
         isRefreshing = false
+    }
+}
+
+struct ArchiveCard: View {
+    let tryOn: TryOn
+    let index: Int
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            ZStack(alignment: .bottomLeading) {
+                Rectangle()
+                    .fill(index == 0 ? Color.cherryAccent.opacity(0.15) : Color.cherryPaper)
+                    .frame(height: 200)
+                    .overlay(
+                        Image(systemName: "tshirt")
+                            .font(.system(size: 40))
+                            .foregroundColor(.cherryMid.opacity(0.4))
+                    )
+                    .overlay(
+                        Rectangle()
+                            .stroke(Color.cherryLine, lineWidth: 1)
+                    )
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Nº \(String(format: "%03d", index + 1))")
+                        .font(.system(size: 11, weight: .regular, design: .monospaced))
+                        .tracking(0.5)
+                        .foregroundColor(.cherryMid)
+                    
+                    Text(tryOn.description)
+                        .font(.system(size: 16, weight: .regular, design: .serif))
+                        .italic()
+                        .foregroundColor(.cherryInk)
+                        .lineLimit(2)
+                }
+                .padding(12)
+            }
+            
+            HStack {
+                Text(tryOn.createdAt.formatted(date: .abbreviated, time: .omitted))
+                    .font(.system(size: 10, weight: .regular, design: .monospaced))
+                    .tracking(0.5)
+                    .foregroundColor(.cherryMid)
+                
+                Spacer()
+                
+                Text(String(format: "%.1f", tryOn.rating))
+                    .font(.system(size: 22, weight: .regular, design: .serif))
+                    .italic()
+                    .foregroundColor(.cherryInk)
+            }
+            .padding(12)
+        }
+        .background(Color.cherryBone)
+        .overlay(
+            Rectangle()
+                .stroke(Color.cherryLine, lineWidth: 1)
+        )
     }
 }
 

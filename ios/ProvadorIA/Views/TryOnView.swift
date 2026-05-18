@@ -27,20 +27,17 @@ struct TryOnView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(spacing: 24) {
+            VStack(spacing: 32) {
+                headerSection
                 stepIndicatorSection
                 photoUploadSection
-                descriptionSection
+                directionNotesSection
                 generateButton
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal, 24)
             .padding(.vertical, 16)
         }
-        .background(Color.neuralVoid.ignoresSafeArea())
-        .navigationTitle("Novo Try-On")
-        .navigationBarTitleDisplayMode(.large)
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        .toolbarBackground(Color.neuralVoid, for: .navigationBar)
+        .background(Color.cherryBone.ignoresSafeArea())
         .fullScreenCover(item: $result) { tryOn in
             TryOnResultView(tryOn: tryOn)
         }
@@ -49,6 +46,24 @@ struct TryOnView: View {
         } message: {
             Text(errorMessage ?? "Ocorreu um erro inesperado.")
         }
+    }
+    
+    private var headerSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("DIREÇÃO DE ARTE")
+                .eyebrow()
+                .foregroundColor(.cherryAccent)
+            
+            Text("A peça, ")
+                .font(.system(size: 36, weight: .regular, design: .serif))
+                .foregroundColor(.cherryInk)
+            +
+            Text("em foco.")
+                .font(.system(size: 36, weight: .regular, design: .serif))
+                .italic()
+                .foregroundColor(.cherryInk)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     private var stepIndicatorSection: some View {
@@ -62,6 +77,54 @@ struct TryOnView: View {
     
     private var photoUploadSection: some View {
         VStack(spacing: 16) {
+            ZStack {
+                Rectangle()
+                    .fill(Color.cherryPaper)
+                    .frame(height: 350)
+                    .overlay(
+                        Rectangle()
+                            .stroke(style: StrokeStyle(lineWidth: 1, dash: [6]))
+                            .foregroundColor(Color.cherryMid.opacity(0.3))
+                    )
+                
+                VStack(spacing: 16) {
+                    Text("arraste a foto aqui")
+                        .font(.system(size: 24, weight: .regular, design: .serif))
+                        .italic()
+                        .foregroundColor(.cherryMid)
+                    
+                    HStack(spacing: 12) {
+                        PhotosPicker(selection: $userPhotoItem, matching: .images) {
+                            HStack(spacing: 8) {
+                                Image(systemName: "photo.on.rectangle")
+                                Text("Galeria")
+                            }
+                            .font(.system(size: 14, weight: .semibold, design: .default))
+                            .foregroundColor(.cherryBone)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 12)
+                            .background(Color.cherryInk)
+                        }
+                        
+                        Button(action: {}) {
+                            HStack(spacing: 8) {
+                                Image(systemName: "camera")
+                                Text("Câmera")
+                            }
+                            .font(.system(size: 14, weight: .semibold, design: .default))
+                            .foregroundColor(.cherryInk)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 12)
+                            .background(Color.clear)
+                            .overlay(
+                                Rectangle()
+                                    .stroke(Color.cherryInk, lineWidth: 1)
+                            )
+                        }
+                    }
+                }
+            }
+            
             HStack(spacing: 16) {
                 PhotoUploadCard(
                     title: "Sua foto",
@@ -82,18 +145,17 @@ struct TryOnView: View {
         }
     }
     
-    private var descriptionSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Descrição da roupa")
-                .neuralTitle()
-                .foregroundColor(.neuralWhite)
+    private var directionNotesSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("Notas da direção")
+                .font(.system(size: 20, weight: .regular, design: .serif))
+                .foregroundColor(.cherryInk)
             
-            TextEditor(text: $description)
-                .neuralBody()
-                .foregroundColor(.neuralWhite)
-                .scrollContentBackground(.hidden)
-                .frame(minHeight: 100)
-                .neuralTextField()
+            VStack(alignment: .leading, spacing: 12) {
+                DirectionNote(number: 1, title: "Fundo limpo", noteBody: "Prefira fundo neutro para melhor recorte da IA.")
+                DirectionNote(number: 2, title: "Corpo inteiro", noteBody: "A foto do corpo inteiro gera o melhor resultado.")
+                DirectionNote(number: 3, title: "Boa iluminação", noteBody: "Evite sombras fortes que confundem o modelo.")
+            }
         }
     }
     
@@ -102,33 +164,27 @@ struct TryOnView: View {
             if isGenerating {
                 HStack(spacing: 12) {
                     ProgressView()
-                        .tint(.neuralWhite)
+                        .tint(.cherryBone)
                     Text("Gerando preview...")
-                        .font(.system(size: 16, weight: .semibold, design: .rounded))
-                        .foregroundColor(.neuralWhite)
+                        .font(.system(size: 16, weight: .semibold, design: .default))
+                        .foregroundColor(.cherryBone)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
             } else {
                 HStack(spacing: 8) {
-                    Image(systemName: "sparkles")
-                    Text("Gerar Preview")
+                    Text("03 · Gerar try-on →")
+                        .font(.system(size: 16, weight: .semibold, design: .monospaced))
+                        .tracking(0.5)
                 }
-                .font(.system(size: 16, weight: .semibold, design: .rounded))
-                .foregroundColor(.neuralWhite)
+                .foregroundColor(.cherryBone)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
             }
         }
-        .background(
-            isFormValid && !isGenerating
-                ? AnyView(LinearGradient.cyanGradient)
-                : AnyView(Color.neuralSurface)
-        )
-        .cornerRadius(14)
+        .background(isFormValid && !isGenerating ? Color.cherryInk : Color.cherryMid.opacity(0.3))
         .disabled(!isFormValid || isGenerating)
         .opacity(isGenerating ? 0.7 : (isFormValid ? 1.0 : 0.5))
-        .shadow(color: Color.electricCyan.opacity(isFormValid && !isGenerating ? 0.3 : 0), radius: 12, x: 0, y: 4)
     }
     
     private func generateTryOn() {
@@ -159,6 +215,32 @@ struct TryOnView: View {
     }
 }
 
+struct DirectionNote: View {
+    let number: Int
+    let title: String
+    let noteBody: String
+    
+    var body: some View {
+        HStack(alignment: .top, spacing: 12) {
+            Text("\(number)")
+                .font(.system(size: 14, weight: .regular, design: .serif))
+                .italic()
+                .foregroundColor(.cherryAccent)
+                .frame(width: 24)
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.system(size: 15, weight: .semibold, design: .default))
+                    .foregroundColor(.cherryInk)
+                Text(noteBody)
+                    .font(.system(size: 13, weight: .regular, design: .default))
+                    .foregroundColor(.cherryMid)
+                    .lineSpacing(2)
+            }
+        }
+    }
+}
+
 struct PhotoUploadCard: View {
     let title: String
     let icon: String
@@ -175,39 +257,39 @@ struct PhotoUploadCard: View {
                             .resizable()
                             .scaledToFill()
                             .frame(width: 120, height: 160)
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                            .clipped()
                         
-                        Image(systemName: "checkmark.circle.fill")
-                            .font(.system(size: 22))
-                            .foregroundColor(.electricCyan)
-                            .background(Circle().fill(Color.neuralVoid))
-                            .offset(x: 4, y: -4)
+                        Image(systemName: "checkmark")
+                            .font(.system(size: 12, weight: .bold))
+                            .foregroundColor(.cherryAccent)
+                            .padding(6)
+                            .background(Color.cherryBone)
                     }
                 } else {
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(LinearGradient.voidGradient)
+                    Rectangle()
+                        .fill(Color.cherryPaper)
                         .frame(width: 120, height: 160)
                         .overlay(
                             VStack(spacing: 8) {
                                 Image(systemName: icon)
                                     .font(.system(size: 32))
-                                    .foregroundColor(.gray)
-                                Image(systemName: "plus.circle.fill")
-                                    .font(.system(size: 20))
-                                    .foregroundColor(.electricCyan)
+                                    .foregroundColor(.cherryMid)
+                                Image(systemName: "plus")
+                                    .font(.system(size: 16))
+                                    .foregroundColor(.cherryAccent)
                             }
                         )
                         .overlay(
-                            RoundedRectangle(cornerRadius: 16)
+                            Rectangle()
                                 .stroke(style: StrokeStyle(lineWidth: 1, dash: [6]))
-                                .foregroundColor(Color.electricCyan.opacity(0.15))
+                                .foregroundColor(Color.cherryMid.opacity(0.3))
                         )
                 }
                 
                 Text(title)
                     .font(.system(size: 11, weight: .medium, design: .monospaced))
                     .tracking(0.8)
-                    .foregroundColor(isCompleted ? .electricCyan : .gray)
+                    .foregroundColor(isCompleted ? .cherryAccent : .cherryMid)
             }
         }
         .onChange(of: photoItem) { _, newItem in

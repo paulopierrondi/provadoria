@@ -19,13 +19,11 @@ struct TryOnCardView: View {
             descriptionSection
             actionSection
         }
-        .background(Color.neuralDark)
-        .cornerRadius(16)
+        .background(Color.cherryPaper)
         .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.electricCyan.opacity(0.1), lineWidth: 1)
+            Rectangle()
+                .stroke(Color.cherryLine, lineWidth: 1)
         )
-        .shadow(color: Color.electricCyan.opacity(0.05), radius: 12, x: 0, y: 4)
         .sheet(isPresented: $showShareSheet) {
             ShareSheet(items: ["Confira este look no ProvadorIA! \(tryOn.description)"])
         }
@@ -37,30 +35,31 @@ struct TryOnCardView: View {
     private var userInfoSection: some View {
         HStack(spacing: 12) {
             ZStack {
-                Circle()
-                    .fill(Color.electricCyan.opacity(0.12))
-                    .frame(width: 40, height: 40)
+                Rectangle()
+                    .fill(Color.cherryInk)
+                    .frame(width: 32, height: 32)
                 
-                Image(systemName: tryOn.userAvatar)
-                    .font(.system(size: 20))
-                    .foregroundColor(.neuralWhite)
+                Text(String(tryOn.userName.prefix(1)))
+                    .font(.system(size: 14, weight: .medium, design: .serif))
+                    .foregroundColor(.cherryBone)
             }
             
             VStack(alignment: .leading, spacing: 2) {
                 Text(tryOn.userName)
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundColor(.neuralWhite)
+                    .font(.system(size: 15, weight: .semibold, design: .default))
+                    .foregroundColor(.cherryInk)
                 
                 Text(tryOn.createdAt.formatted(date: .abbreviated, time: .shortened))
-                    .neuralCaption()
-                    .foregroundColor(.gray)
+                    .font(.system(size: 11, weight: .regular, design: .monospaced))
+                    .tracking(0.5)
+                    .foregroundColor(.cherryMid)
             }
             
             Spacer()
             
             Button(action: { }) {
                 Image(systemName: "ellipsis")
-                    .foregroundColor(.gray)
+                    .foregroundColor(.cherryMid)
             }
         }
         .padding(16)
@@ -68,34 +67,30 @@ struct TryOnCardView: View {
     
     private var imageSection: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 16)
-                .fill(LinearGradient.voidGradient)
+            Rectangle()
+                .fill(Color.cherryBone)
                 .frame(height: 280)
                 .padding(.horizontal, 12)
             
             VStack(spacing: 12) {
                 Image(systemName: "person.fill.viewfinder")
                     .font(.system(size: 48))
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [.electricCyan.opacity(0.6), .neonPurple.opacity(0.6)],
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                    )
+                    .foregroundColor(.cherryMid.opacity(0.6))
                 
                 HStack(spacing: 16) {
-                    Label("Antes", systemImage: "person")
-                        .neuralCaption()
-                        .foregroundColor(.gray)
+                    Text("Antes")
+                        .font(.system(size: 12, weight: .medium, design: .monospaced))
+                        .tracking(0.5)
+                        .foregroundColor(.cherryMid)
                     
                     Image(systemName: "arrow.right")
                         .font(.caption)
-                        .foregroundColor(.electricCyan)
+                        .foregroundColor(.cherryAccent)
                     
-                    Label("Depois", systemImage: "person.fill")
-                        .neuralCaption()
-                        .foregroundColor(.electricCyan)
+                    Text("Depois")
+                        .font(.system(size: 12, weight: .medium, design: .monospaced))
+                        .tracking(0.5)
+                        .foregroundColor(.cherryAccent)
                 }
             }
             
@@ -113,37 +108,41 @@ struct TryOnCardView: View {
     
     private var ratingBadge: some View {
         HStack(spacing: 4) {
-            Image(systemName: "star.fill")
-                .font(.caption2)
-                .foregroundColor(.appWarning)
-            
             Text(String(format: "%.1f", tryOn.rating))
-                .font(.caption.weight(.bold))
-                .foregroundColor(.neuralWhite)
+                .font(.system(size: 14, weight: .bold, design: .serif))
+                .italic()
+                .foregroundColor(.cherryInk)
         }
         .padding(.horizontal, 10)
         .padding(.vertical, 6)
-        .background(Color.black.opacity(0.6))
-        .cornerRadius(10)
+        .background(Color.cherryBone)
+        .overlay(
+            Rectangle()
+                .stroke(Color.cherryLine, lineWidth: 1)
+        )
     }
     
     private var descriptionSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(tryOn.description)
-                .neuralBody()
-                .foregroundColor(.neuralWhite)
+                .font(.system(size: 15, weight: .regular, design: .default))
+                .foregroundColor(.cherryInk)
                 .lineLimit(2)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 6) {
                     ForEach(tryOn.occasions.prefix(3), id: \.self) { occasion in
                         Text(occasion)
-                            .neuralCaption()
-                            .foregroundColor(.gray)
+                            .font(.system(size: 11, weight: .medium, design: .monospaced))
+                            .tracking(0.3)
+                            .foregroundColor(.cherryMid)
                             .padding(.horizontal, 8)
                             .padding(.vertical, 4)
-                            .background(Color.neuralSurface)
-                            .cornerRadius(6)
+                            .background(Color.cherryBone)
+                            .overlay(
+                                Rectangle()
+                                    .stroke(Color.cherryLine, lineWidth: 1)
+                            )
                     }
                 }
             }
@@ -158,18 +157,19 @@ struct TryOnCardView: View {
                 HStack(spacing: 6) {
                     Image(systemName: isVoted ? "arrow.up.heart.fill" : "arrow.up.heart")
                         .font(.system(size: 18))
-                        .foregroundColor(isVoted ? .electricCyan : .gray)
+                        .foregroundColor(isVoted ? .cherryAccent : .cherryMid)
                     
                     Text("\(voteCount)")
-                        .font(.subheadline.weight(.medium))
-                        .foregroundColor(isVoted ? .electricCyan : .gray)
+                        .font(.system(size: 14, weight: .medium, design: .default))
+                        .foregroundColor(isVoted ? .cherryAccent : .cherryMid)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 12)
             }
             
-            Divider()
-                .background(Color.white.opacity(0.06))
+            Rectangle()
+                .fill(Color.cherryLine)
+                .frame(width: 1)
             
             Button(action: {
                 HapticFeedback.light()
@@ -178,18 +178,19 @@ struct TryOnCardView: View {
                 HStack(spacing: 6) {
                     Image(systemName: "star.bubble")
                         .font(.system(size: 18))
-                        .foregroundColor(.gray)
+                        .foregroundColor(.cherryMid)
                     
                     Text("Reviews")
-                        .font(.subheadline.weight(.medium))
-                        .foregroundColor(.gray)
+                        .font(.system(size: 14, weight: .medium, design: .default))
+                        .foregroundColor(.cherryMid)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 12)
             }
             
-            Divider()
-                .background(Color.white.opacity(0.06))
+            Rectangle()
+                .fill(Color.cherryLine)
+                .frame(width: 1)
             
             Button(action: {
                 HapticFeedback.light()
@@ -197,7 +198,7 @@ struct TryOnCardView: View {
             }) {
                 Image(systemName: "square.and.arrow.up")
                     .font(.system(size: 18))
-                    .foregroundColor(.gray)
+                    .foregroundColor(.cherryMid)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
             }
@@ -238,5 +239,5 @@ struct TryOnCardView: View {
         TryOnCardView(tryOn: TryOn.sample)
             .padding(.horizontal, 16)
     }
-    .background(Color.neuralVoid)
+    .background(Color.cherryBone)
 }

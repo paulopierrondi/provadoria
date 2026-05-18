@@ -8,23 +8,24 @@ struct ProvadorIAApp: App {
         if ProcessInfo.processInfo.arguments.contains("--uitest-reset") {
             UserDefaults.standard.removeObject(forKey: "hasSeenOnboarding")
         }
+        
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(Color.neuralVoid)
+        appearance.backgroundColor = UIColor(Color.cherryBone)
         
-        appearance.stackedLayoutAppearance.normal.iconColor = UIColor.gray
-        appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gray]
-        appearance.stackedLayoutAppearance.selected.iconColor = UIColor(Color.electricCyan)
-        appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor(Color.electricCyan)]
+        appearance.stackedLayoutAppearance.normal.iconColor = UIColor(Color.cherryMid)
+        appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor(Color.cherryMid)]
+        appearance.stackedLayoutAppearance.selected.iconColor = UIColor(Color.cherryAccent)
+        appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor(Color.cherryAccent)]
         
         UITabBar.appearance().standardAppearance = appearance
         UITabBar.appearance().scrollEdgeAppearance = appearance
         
         let navAppearance = UINavigationBarAppearance()
         navAppearance.configureWithOpaqueBackground()
-        navAppearance.backgroundColor = UIColor(Color.neuralVoid)
-        navAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navAppearance.backgroundColor = UIColor(Color.cherryBone)
+        navAppearance.titleTextAttributes = [.foregroundColor: UIColor(Color.cherryInk)]
+        navAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(Color.cherryInk)]
         
         UINavigationBar.appearance().standardAppearance = navAppearance
         UINavigationBar.appearance().compactAppearance = navAppearance
@@ -35,10 +36,8 @@ struct ProvadorIAApp: App {
         WindowGroup {
             if hasSeenOnboarding {
                 ContentView()
-                    .preferredColorScheme(.dark)
             } else {
                 OnboardingView()
-                    .preferredColorScheme(.dark)
             }
         }
     }

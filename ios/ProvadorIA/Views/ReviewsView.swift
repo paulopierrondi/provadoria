@@ -4,123 +4,89 @@ struct ReviewsView: View {
     let tryOnId: String
     @State private var reviews: [Review] = []
     @State private var isLoading = true
-    @State private var hasError = false
-    @State private var averageRating: Double = 0
+    @State private var newComment = ""
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(spacing: 20) {
-                ratingHeader
-                reviewsList
+            VStack(spacing: 0) {
+                if isLoading {
+                    ShimmerLoadingView()
+                        .padding(.horizontal, 24)
+                } else {
+                    VStack(spacing: 0) {
+                        ForEach(Array(reviews.enumerated()), id: \.element.id) { index, review in
+                            ReviewRow(review: review)
+                            
+                            if index < reviews.count - 1 {
+                                Rectangle()
+                                    .fill(Color.cherryLine)
+                                    .frame(height: 1)
+                                    .padding(.horizontal, 24)
+                            }
+                        }
+                    }
+                }
             }
-            .padding(.horizontal, 20)
             .padding(.vertical, 16)
         }
-        .background(Color.neuralVoid.ignoresSafeArea())
+        .background(Color.cherryBone.ignoresSafeArea())
         .navigationTitle("Reviews")
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        .toolbarBackground(Color.neuralVoid, for: .navigationBar)
+        .navigationBarTitleDisplayMode(.large)
         .task {
             await loadReviews()
         }
     }
     
-    private var ratingHeader: some View {
-        VStack(spacing: 12) {
-            Text(String(format: "%.1f", averageRating))
-                .font(.system(size: 56, weight: .bold, design: .rounded))
-                .foregroundStyle(LinearGradient.cyanGradient)
-            
-            HStack(spacing: 4) {
-                ForEach(1...5, id: \.self) { index in
-                    Image(systemName: index <= Int(averageRating.rounded()) ? "star.fill" : "star")
-                        .foregroundColor(.appWarning)
-                        .font(.title3)
-                }
-            }
-            
-            Text("\(reviews.count) reviews")
-                .neuralBody()
-                .foregroundColor(.gray)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(24)
-        .neuralCard()
-    }
-    
-    private var reviewsList: some View {
-        VStack(spacing: 12) {
-            if isLoading {
-                ShimmerLoadingView()
-            } else if hasError {
-                ErrorStateView(message: "Não foi possível carregar os reviews.") {
-                    Task { await loadReviews() }
-                }
-            } else if reviews.isEmpty {
-                EmptyStateView(
-                    icon: "star.bubble",
-                    title: "Sem reviews",
-                    message: "Ninguém avaliou ainda. Seja o primeiro!"
-                )
-            } else {
-                ForEach(reviews) { review in
-                    ReviewCard(review: review)
-                }
-            }
-        }
-    }
-    
-    @MainActor
     private func loadReviews() async {
         isLoading = true
-        hasError = false
-        
-        do {
-            reviews = try await APIService.shared.fetchReviews(tryOnId: tryOnId)
-            if !reviews.isEmpty {
-                let total = reviews.reduce(0) { $0 + $1.rating }
-                averageRating = Double(total) / Double(reviews.count)
-            }
-            isLoading = false
-        } catch {
-            isLoading = false
-            hasError = true
-        }
+        // Simulate loading
+        try? await Task.sleep(nanoseconds: 500_000_000)
+        reviews = Review.samples
+        isLoading = false
     }
 }
 
-struct ReviewCard: View {
+struct ReviewRow: View {
     let review: Review
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                HStack(spacing: 4) {
-                    ForEach(1...5, id: \.self) { index in
-                        Image(systemName: index <= review.rating ? "star.fill" : "star")
-                            .foregroundColor(.appWarning)
-                            .font(.caption)
-                    }
+            HStack(spacing: 12) {
+                Rectangle()
+                    .fill(Color.cherryInk)
+                    .frame(width: 32, height: 32)
+                    .overlay(
+                        Text(String(review.reviewerName.prefix(1)))
+                            .font(.system(size: 14, weight: .medium, design: .serif))
+                            .foregroundColor(.cherryBone)
+                    )
+                
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(review.reviewerName)
+                        .font(.system(size: 15, weight: .semibold, design: .default))
+                        .foregroundColor(.cherryInk)
+                    
+                    Text(review.createdAt.formatted(date: .abbreviated, time: .shortened))
+                        .font(.system(size: 11, weight: .regular, design: .monospaced))
+                        .tracking(0.5)
+                        .foregroundColor(.cherryMid)
                 }
                 
                 Spacer()
                 
-                Text(review.reviewerName)
-                    .font(.subheadline.weight(.medium))
-                    .foregroundColor(.neuralWhite)
+                Text("\(review.rating)/5")
+                    .font(.system(size: 14, weight: .medium, design: .monospaced))
+                    .tracking(0.5)
+                    .foregroundColor(.cherryAccent)
             }
             
             Text(review.comment)
-                .neuralBody()
-                .foregroundColor(.gray)
-                .lineLimit(4)
-            
-            Text(review.createdAt, style: .relative)
-                .neuralCaption()
-                .foregroundColor(.gray.opacity(0.6))
+                .font(.system(size: 14, weight: .regular, design: .default))
+                .foregroundColor(.cherryInk.opacity(0.9))
+                .lineSpacing(2)
         }
-        .padding(16)
-        .neuralCard()
+        .padding(.horizontal, 24)
+        .padding(.vertical, 16)
     }
 }
 

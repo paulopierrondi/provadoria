@@ -3,125 +3,112 @@ import SwiftUI
 struct OnboardingView: View {
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
     @State private var currentPage = 0
-
-    let pages: [OnboardingPage] = [
+    
+    let pages = [
         OnboardingPage(
-            icon: "viewfinder",
-            title: "ProvadorIA",
-            subtitle: "Experimente roupas com Inteligência Artificial",
-            description: "Visualize como qualquer peça ficaria em você antes de comprar. Basta uma foto sua e uma foto da roupa."
+            eyebrow: "EDIÇÃO 01",
+            title: "Veja como fica em *você*.",
+            description: "Experimente qualquer roupa virtualmente com IA antes de comprar.",
+            accentWord: "você"
         ),
         OnboardingPage(
-            icon: "wand.and.stars",
-            title: "IA Poderosa",
-            subtitle: "Resultados realistas em segundos",
-            description: "Nossa IA analisa seu estilo, corpo e preferências para criar visualizações incríveis e personalizadas."
+            eyebrow: "DIREÇÃO DE ARTE",
+            title: "A peça, *em foco.*",
+            description: "Envie sua foto e a foto da roupa. A IA faz o resto em segundos.",
+            accentWord: "em foco"
         ),
         OnboardingPage(
-            icon: "person.3.fill",
-            title: "Comunidade",
-            subtitle: "Descubra e compartilhe looks",
-            description: "Explore try-ons de outros usuários, vote nos favoritos e compartilhe seus próprios experimentos."
+            eyebrow: "COLEÇÃO",
+            title: "Cai *perfeito.*",
+            description: "Receba análise de caimento, nota e dicas de estilo personalizadas.",
+            accentWord: "perfeito"
         )
     ]
-
+    
     var body: some View {
         ZStack {
-            Color.neuralVoid.ignoresSafeArea()
-
+            Color.cherryBone.ignoresSafeArea()
+            
             VStack(spacing: 0) {
                 Spacer()
-
-                TabView(selection: $currentPage) {
-                    ForEach(0..<pages.count, id: \.self) { index in
-                        OnboardingPageView(page: pages[index])
-                            .tag(index)
-                    }
-                }
-                .tabViewStyle(.page(indexDisplayMode: .never))
-                .frame(height: 420)
-
-                Spacer()
-
-                HStack(spacing: 8) {
-                    ForEach(0..<pages.count, id: \.self) { index in
-                        RoundedRectangle(cornerRadius: 2)
-                            .fill(currentPage == index ? Color.electricCyan : Color.electricCyan.opacity(0.3))
-                            .frame(width: currentPage == index ? 24 : 8, height: 4)
-                            .animation(.easeInOut(duration: 0.2), value: currentPage)
-                    }
-                }
-                .padding(.bottom, 32)
-
-                Button {
-                    HapticFeedback.medium()
-                    if currentPage < pages.count - 1 {
-                        withAnimation {
-                            currentPage += 1
-                        }
+                
+                VStack(alignment: .leading, spacing: 16) {
+                    Text(pages[currentPage].eyebrow)
+                        .eyebrow()
+                        .foregroundColor(.cherryAccent)
+                    
+                    let parts = pages[currentPage].title.split(separator: "*", omittingEmptySubsequences: false)
+                    if parts.count >= 3 {
+                        Text(parts[0])
+                            .font(.system(size: 40, weight: .regular, design: .serif))
+                            .foregroundColor(.cherryInk)
+                        +
+                        Text(parts[1])
+                            .font(.system(size: 40, weight: .regular, design: .serif))
+                            .italic()
+                            .foregroundColor(.cherryAccent)
+                        +
+                        Text(parts[2])
+                            .font(.system(size: 40, weight: .regular, design: .serif))
+                            .foregroundColor(.cherryInk)
                     } else {
-                        hasSeenOnboarding = true
+                        Text(pages[currentPage].title)
+                            .font(.system(size: 40, weight: .regular, design: .serif))
+                            .foregroundColor(.cherryInk)
                     }
-                } label: {
-                    Text(currentPage < pages.count - 1 ? "Próximo" : "Começar")
-                        .font(.system(size: 17, weight: .semibold, design: .rounded))
-                        .foregroundColor(.neuralWhite)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 18)
-                        .background(LinearGradient.cyanGradient)
-                        .cornerRadius(16)
+                    
+                    Text(pages[currentPage].description)
+                        .font(.system(size: 16, weight: .regular, design: .default))
+                        .foregroundColor(.cherryMid)
+                        .lineSpacing(4)
                 }
-                .pressAnimation()
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 24)
-                .padding(.bottom, 48)
+                
+                Spacer()
+                
+                VStack(spacing: 24) {
+                    HStack(spacing: 8) {
+                        ForEach(0..<pages.count, id: \.self) { index in
+                            Rectangle()
+                                .fill(currentPage == index ? Color.cherryAccent : Color.cherryLine)
+                                .frame(width: currentPage == index ? 24 : 8, height: 2)
+                                .animation(.easeInOut(duration: 0.3), value: currentPage)
+                        }
+                    }
+                    
+                    Button(action: {
+                        HapticFeedback.medium()
+                        if currentPage < pages.count - 1 {
+                            withAnimation {
+                                currentPage += 1
+                            }
+                        } else {
+                            hasSeenOnboarding = true
+                        }
+                    }) {
+                        HStack(spacing: 8) {
+                            Text(currentPage < pages.count - 1 ? "Continuar →" : "Começar →")
+                                .font(.system(size: 16, weight: .semibold, design: .default))
+                        }
+                        .foregroundColor(.cherryBone)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 16)
+                        .background(Color.cherryInk)
+                    }
+                }
+                .padding(.horizontal, 24)
+                .padding(.bottom, 32)
             }
         }
     }
 }
 
 struct OnboardingPage {
-    let icon: String
+    let eyebrow: String
     let title: String
-    let subtitle: String
     let description: String
-}
-
-struct OnboardingPageView: View {
-    let page: OnboardingPage
-
-    var body: some View {
-        VStack(spacing: 24) {
-            ZStack {
-                Circle()
-                    .fill(Color.electricCyan.opacity(0.1))
-                    .frame(width: 140, height: 140)
-
-                Circle()
-                    .stroke(Color.electricCyan.opacity(0.3), lineWidth: 1)
-                    .frame(width: 120, height: 120)
-
-                Image(systemName: page.icon)
-                    .font(.system(size: 48, weight: .light))
-                    .foregroundStyle(Color.electricCyan)
-            }
-
-            Text(page.title)
-                .font(.system(size: 34, weight: .bold, design: .rounded))
-                .foregroundColor(.neuralWhite)
-
-            Text(page.subtitle)
-                .font(.system(size: 18, weight: .semibold, design: .rounded))
-                .foregroundColor(.electricCyan)
-                .multilineTextAlignment(.center)
-
-            Text(page.description)
-                .font(.system(size: 16, weight: .regular))
-                .foregroundColor(.neuralWhite.opacity(0.7))
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 32)
-                .lineSpacing(4)
-        }
-    }
+    let accentWord: String
 }
 
 #Preview {
