@@ -1,132 +1,107 @@
-# ProvadorIA — Sessão de Redesign + Preparação ASC
+# ProvadorIA — Sessão Final (2026-05-18)
 
-**Data**: 2026-05-18
-**Objetivo**: Aplicar redesign cherry editorial, validar checklists, criar materiais de marketing, preparar para publicação no ASC
+## Status: Build 3 enviado ✅ | Backend deploy bloqueado ⚠️
 
-## O que foi entregue
+### Entregues nesta sessão
 
-### 1. Redesign iOS completo (Cherry Editorial)
-- **Extensions.swift**: Nova paleta cherry (bone, paper, ink, mid, line, accent, accentDeep), tipografia editorial (serif display, mono labels), novos modifiers e button styles
-- **ContentView.swift**: Novo tab bar com labels "Capa · Ensaio · Arquivo · Eu"
-- **HomeView.swift**: Masthead editorial, hero com accent gradient, "Próximo ensaio", lista de edições recentes
-- **TryOnView.swift**: Tela "Ensaio" com eyebrow, H1 serif, progress steps, drop zone, dicas numeradas
-- **TryOnResultView.swift**: Tela hero dark (ink bg), cover masthead, nota gigante, score rows, análise, dicas, ocasiões
-- **FeedView.swift**: "Arquivo" com filter chips, grid 2 colunas de mini-capas
-- **ProfileView.swift**: "Eu" com header editorial, stats, plan card ink, índice numerado
-- **TryOnCardView.swift**: Card editorial com bordas 1px, sem sombras, sem corner radius
-- **OnboardingView.swift**: Onboarding editorial com serif italic headlines
-- **EmptyStateView, ErrorStateView, ShimmerLoadingView, ReviewsView**: Atualizados para cherry
-- **ProvadorIAApp.swift**: Sem preferredColorScheme, usa cherryBone para nav/tab appearance
+1. **Build 3 enviado para ASC** (Delivery UUID: 25a62d0b-213f-4f55-b9d5-ef2215cf3528)
+   - Corrigido: duplicate version (incrementado de 1 → 3 via agvtool)
+   - Corrigido: missing orientations (adicionadas 4 orientações no Info.plist)
+   - Upload: 588KB payload, 96.2MB/s
+   - Status: processing no TestFlight
 
-### 2. Landing page reescrita
-- HTML/CSS completo em `landing/index.html` com design editorial cherry
-- Nav fixa, hero split, marquee de marcas, método 3 colunas, showcase grid, stack, pricing, FAQ, footer ink
-- Fontes: Instrument Serif, Inter, JetBrains Mono
-- Sem corner radius, sem sombras, bordas 1px
+2. **Redesign cherry editorial completo**
+   - 12 views SwiftUI reescritas
+   - Design system: bone, ink, accent, editorial display/mono/body
+   - Zero border radius, 1px borders, sem sombras
+   - Tabs: Capa · Ensaio · Arquivo · Eu
 
-### 3. Legal pages criadas
-- `landing/legal/privacy.html`
-- `landing/legal/terms.html`
-- `landing/legal/support.html`
-- Também copiadas para `backend/app/static/` com rotas FastAPI
+3. **Landing + legal pages**
+   - `landing/index.html` — cherry editorial completo
+   - `landing/legal/{privacy,terms,support}.html`
+   - Rotas FastAPI em `backend/app/main.py`
 
-### 4. Privacy manifest
-- `ios/ProvadorIA/PrivacyInfo.xcprivacy` criado e incluído no projeto via xcodegen
-- Declara PhotoLibrary usage e tracking domains
+### Bloqueio: Railway deploy
 
-### 5. Build e projeto
-- Build number: 2 (incrementado de 1)
-- Version: 1.0.0
-- Projeto regenerado com xcodegen
-- Build compila com sucesso (apenas warnings de actor isolation)
-- App icon 1024px sem alpha: OK
+**Problema**: Serviço `api` no Railway continua retornando 404 para `/`, `/privacy`, `/terms`, `/support` mesmo após múltiplos deploys e commits de invalidação de cache.
 
-### 6. Marketing materials
-- `marketing/metadata.md` com copy, keywords, ASO
-- Screenshots de referência copiados para `marketing/screenshots/`
+**Verificado**:
+- Código está correto (main.py tem as rotas)
+- Arquivos estáticos existem (`backend/app/static/`)
+- Localmente funciona (uvicorn serve 200 para todas as rotas)
+- Railway parece usar cache antigo ou ignorar railway.toml root
 
-### 7. Commit
-- `be6a0ea` — feat: cherry editorial redesign + privacy manifest + legal pages + build 2
-- `bb6674f` — fix: invalidate docker cache for backend deploy
-- `d3b7fc5` — fix: invalidate root docker cache
+**Impacto**: Apple rejeita app se Support/Privacy URLs não respondem 200.
 
-## Bloqueios encontrados
+### Checklist para publicar
 
-### Railway deploy não reflete código novo
-- Serviço "api" no Railway continua servindo versão antiga mesmo após múltiplos deploys
-- As rotas `/privacy`, `/terms`, `/support`, `/` retornam 404 no ambiente production
-- Localmente (uvicorn) todas as rotas funcionam perfeitamente
-- Possíveis causas: cache de Docker layers, configuração de serviço não usando railway.toml, ou healthcheck impedindo rollout
-- **Ação necessária**: Resolver deploy do backend antes de submeter para review da Apple
+| Item | Status | Notas |
+|------|--------|-------|
+| Build no ASC | ✅ Pronto | Build 3, aguardar "Processing Complete" |
+| Redesign iOS | ✅ Pronto | Todas as 12 views |
+| Landing page | ✅ Pronto | HTML/CSS cherry editorial |
+| Legal pages | ✅ Pronto | HTML criados, rotas adicionadas |
+| Backend deploy | ⚠️ Bloqueado | Railway 404 — ver soluções abaixo |
+| Screenshots | ⚠️ Pendente | Precisa tirar no simulador iPhone 16 Pro Max |
+| ASC metadata | ⚠️ Pendente | Preencher nome, subtítulo, descrição, URLs |
 
-### URLs públicas
-- `https://api-production-c696.up.railway.app/privacy` → 404 (precisa ser 200)
-- `https://api-production-c696.up.railway.app/terms` → 404 (precisa ser 200)
-- `https://api-production-c696.up.railway.app/support` → 404 (precisa ser 200)
-- `https://api-production-c696.up.railway.app/` → 404 (precisa ser 200)
+### Soluções para o backend (escolher uma)
 
-## Checklist pré-publicação (status)
+**Opção A — Vercel (recomendado, 2 min)**:
+```bash
+cd landing/legal && npx vercel --prod
+# Vai gerar URL tipo https://provadoria-legal.vercel.app
+# Depois configurar no ASC:
+# Privacy: https://provadoria-legal.vercel.app/privacy.html
+# Support: https://provadoria-legal.vercel.app/support.html
+```
 
-### iOS App Preflight
-- [x] Bundle ID correto: com.paulopierrondi.provadoria
-- [x] Version/build atualizados: 1.0.0 / 2
-- [x] Privacy manifest incluso
-- [x] App icon 1024px sem alpha
-- [x] Build compila
-- [ ] Backend online com landing + legal pages respondendo 200
-- [ ] Screenshots finais em dimensões corretas
-- [ ] Upload do build para ASC
-- [ ] Metadata, screenshots, descricao preenchidos no ASC
-- [ ] Demo account configurado (se necessario)
+**Opção B — Railway service separado**:
+- No dashboard do Railway, criar novo serviço "static" apontando para `landing/`
+- Ou verificar se o serviço atual está usando o Dockerfile correto (pode estar usando Nixpacks)
 
-### Screenshots
-- [ ] iPhone 6.7" (1290x2796) — 6 screenshots
-- [ ] iPhone 6.5" (1242x2688) — 6 screenshots
-- [ ] iPad 12.9" (2048x2732) — 6 screenshots (opcional)
+**Opção C — GitHub Pages**:
+- Criar repo `provadoria-legal`, fazer push dos 3 HTMLs
+- Habilitar GitHub Pages no settings
+- URL: `https://paulopierrondi.github.io/provadoria-legal/privacy.html`
 
-### ASO
-- [x] Título, subtítulo, keywords, descrição, what's new
-- [ ] Screenshots compostos com headline + device frame
+### Screenshots necessários
 
-## Próximos passos para publicar hoje
+**iPhone 16 Pro Max (1290×2796)** — 6 telas:
+1. Capa (Home com masthead e hero)
+2. Ensaio (TryOn com drop zones)
+3. Resultado (TryOnResult com score)
+4. Arquivo (Feed com grid)
+5. Perfil (Profile com stats)
+6. Onboarding (telas de intro)
 
-1. **Resolver deploy do backend**
-   - Opção A: Verificar no dashboard do Railway se o serviço "api" está usando o Dockerfile correto
-   - Opção B: Fazer deploy manual das páginas legais em outro host (Vercel, Netlify, GitHub Pages)
-   - Opção C: Usar `railway deploy` com `--no-cache` ou similar
+**Comando para status bar limpa**:
+```bash
+xcrun simctl boot "iPhone 16 Pro Max"
+xcrun simctl status_bar "iPhone 16 Pro Max" --time 9:41 --batteryState charged --batteryLevel 100 --cellularMode active --cellularBars 4 --wifiBars 3 --operatorName " "
+```
 
-2. **Tirar screenshots no simulador**
-   - Rodar app no iPhone 16 Pro Max (simulador)
-   - Status bar: 9:41, bateria 100%, sinal cheio
-   - Capturar 6 telas: Capa, Ensaio, Resultado, Arquivo, Perfil, Onboarding
-   - Recomendo usar `xcrun simctl status_bar` para configurar status bar limpa
+Capturar com Cmd+S no simulador (salva na área de trabalho).
 
-3. **Upload do build**
-   - `cd ios && ./release.sh`
-   - Verificar build aparece como VALID no ASC
-   - Anexar build à versão 1.0
+### Próximos passos (ordem)
 
-4. **Preencher ASC metadata**
-   - Nome: ProvadorIA
-   - Subtítulo: Experimente roupas com IA
-   - Descrição: usar copy de `marketing/metadata.md`
-   - Keywords: usar lista do metadata
-   - Support URL: https://api-production-c696.up.railway.app/support (ou outra que responda 200)
-   - Privacy URL: https://api-production-c696.up.railway.app/privacy
-   - Marketing URL: https://api-production-c696.up.railway.app/
-   - Screenshots: upload por locale e device class
-
+1. **Esperar build 3** aparecer como "Ready to Submit" no ASC (5-30 min)
+2. **Resolver URLs** legais usando uma das opções acima
+3. **Tirar screenshots** no simulador
+4. **Preencher ASC**: nome, subtítulo, descrição, keywords, URLs, screenshots
 5. **Submeter para review**
-   - Confirmar todas as URLs respondem 200
-   - Confirmar demo account funciona (se aplicável)
-   - Preencher App Review Information
-   - Enviar para review
 
-## Decisões importantes
+### Metadata para copiar no ASC
 
-- **Design**: Paleta cherry (bone #F8DCD0, ink #1A0E0A, accent #E63923) aplicada em todo o app
-- **Tipografia**: SF Pro para UI, New York (system serif) para display, SF Mono para labels
-- **Sem corner radius**: Magazine = esquinas vivas. Exceções: avatar redondo, status bar, home indicator
-- **Sem sombras**: Hierarquia vem de tipografia + cor + espaço
-- **Tabs renomeadas**: Capa / Ensaio / Arquivo / Eu (em vez de Início / Try-On / Feed / Perfil)
-- **Landing**: Reescrita do zero em HTML/CSS estático, não Next.js/Astro
+- **Nome**: ProvadorIA
+- **Subtítulo**: Experimente roupas com IA
+- **Descrição**: usar `marketing/metadata.md` → seção "App Store Description"
+- **Keywords**: usar `marketing/metadata.md` → seção "Keywords"
+- **Support URL**: (URL que responde 200)
+- **Privacy URL**: (URL que responde 200)
+- **Marketing URL**: (opcional, landing page)
+
+### Commits desta sessão
+
+- `2e382a4` — fix: build 3 uploaded, orientations fix, agvtool version bump
+- (commits anteriores na sessão compartada)

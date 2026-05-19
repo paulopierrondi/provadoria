@@ -1,7 +1,7 @@
 # Project Brain Context
 
-Generated: `2026-05-18 17:30:12`
-Tool that refreshed this file: `kimi`
+Generated: `2026-05-18 21:43:19`
+Tool that refreshed this file: `sync`
 Local Obsidian vault: `/Users/paulopierrondi/Documents/Obsidian Vault`
 Repository: `/Users/paulopierrondi/Downloads/provadoria`
 
@@ -701,15 +701,15 @@ This note is for cleanup proposals. Do not treat it as permission to bulk-edit L
 
 # Linear Git Sync Report
 
-Generated: `2026-05-18 09:06:33`
+Generated: `2026-05-18 21:42:24`
 
 This report is safe to keep in Obsidian. It stores Git metadata and Linear mapping hints only, never API keys, env values, cookies or deploy secrets.
 
 ## Summary
 
 - Local Git repositories scanned: `35`
-- Repositories with local changes: `35`
-- Repositories ahead of upstream: `9`
+- Repositories with local changes: `34`
+- Repositories ahead of upstream: `10`
 - Repositories behind upstream: `1`
 - Repositories needing Linear project mapping: `22`
 
@@ -718,20 +718,20 @@ This report is safe to keep in Obsidian. It stores Git metadata and Linear mappi
 | Repo | Branch | Dirty | Ahead/Behind | Last commit | Linear project hint | Dirty sample |
 | --- | --- | --- | --- | --- | --- | --- |
 | servicenow-superapp | main | 6 | +41/-0 | 28db44d 2026-05-14 docs: update CHANGELOG with PaymentsRepository and MoneyFormatter tests | Needs Linear project mapping | M AGENTS.md; ?? .brain/; ?? .github/workflows/claude.yml; ?? CLAUDE.md; ?? GEMINI.md; ?? KIMI.md |
-| ppt_engine | main | 7 | +10/-0 | cda1137 2026-05-10 feat(spec-to-png): real Manus style — icons + topology + servicenow brand | PPT_Formation | M AGENTS.md;  M CLAUDE.md; ?? .brain/; ?? .env.local.bak; ?? .github/; ?? GEMINI.md |
-| fashioncore | codex/mobile-ai-gateway-merge | 2 | +7/-0 | 7744be9 2026-05-18 feat(stylist): IntentRouter image-aware + paid-channels baseline gate (AGE-1481) | Fashion Stylist AI | M .brain/PROJECT_CONTEXT.md; ?? artifacts/baselines/ |
-| investcoach_ai | main | 42 | +4/-0 | 04e0f56 2026-05-18 fix(orchestrator): wire coachAgent supplement to UNKNOWN intent + relax eval regex | Investcoach_ai | M .env.example;  M AGENTS.MD;  M CLAUDE.md;  D InvestCoachSwiftUI/appstore-assets/iphone-6-5/01-chat-coach.png;  D InvestCoachSwiftUI/appstore-assets/iphone-6-5/02-onboarding-rapido.png;  D InvestCoachSwiftUI/appstore-assets/iphone-6-5/03-perfil-e-assinatura.png |
-| mytone-app | main | 21 | +3/-0 | b81eca7 2026-05-15 fix(fastlane): fail-fast ASC app check + create_asc_app lane | Needs Linear project mapping | M .github/workflows/claude.yml;  M AGENTS.md;  M CLAUDE.md;  M GEMINI.md;  M KIMI.md;  M ios/MyTone.xcodeproj/project.pbxproj |
-| faithschool-web | main | 36 | +3/-0 | 8c5e082 2026-05-18 test(ai-safety): end-to-end smoke test for bible + risk guards | Faith | M AGENTS.md;  M CLAUDE.md;  M ios/App/App.xcodeproj/project.pbxproj;  M ios/App/CapApp-SPM/Sources/CapApp-SPM/FaithDevotionalView.swift;  M ios/App/CapApp-SPM/Sources/CapApp-SPM/FaithDomain.swift;  M ios/App/CapApp-SPM/Sources/CapApp-SPM/FaithFirebaseSnapshotProvider.swift |
-| pierrondi-ia | main | 21 | +2/-0 | 1a8b750 2026-05-18 feat(portfolio-intelligence): adapter bridging Recommendation → createApproval | Pierrondi Marketing OS / Pierrondi.ia Apple Design Redesign / Agentcore Website | M .brain/CLAUDE_CLOUD_CONTEXT.md;  M .brain/PROJECT_CONTEXT.md;  M .github/workflows/claude.yml;  M AGENTS.md;  M CLAUDE.md;  M GEMINI.md |
+| ppt_engine | main | 7 | +10/-0 | cda1137 2026-05-10 feat(spec-to-png): real Manus style — icons + topology + servicenow brand | PPT_Formation | M .gitignore;  M AGENTS.md;  M CLAUDE.md; ?? .brain/; ?? .github/; ?? GEMINI.md |
+| fashioncore | main | 1 | +3/-0 | e7eeb9e 2026-05-18 fix: dynamic fallback + updated Gemini fallback models | Fashion Stylist AI | M .brain/PROJECT_CONTEXT.md |
+| mytone-app | main | 36 | +3/-0 | b81eca7 2026-05-15 fix(fastlane): fail-fast ASC app check + create_asc_app lane | Needs Linear project mapping | M .github/workflows/claude.yml;  M AGENTS.md;  M CLAUDE.md;  M GEMINI.md;  M KIMI.md;  M ios/MyTone.xcodeproj/project.pbxproj |
+| faithschool-web | main | 137 | +3/-0 | 8c5e082 2026-05-18 test(ai-safety): end-to-end smoke test for bible + risk guards | Faith | M .gitignore;  M AGENTS.md;  M CLAUDE.md;  M README.md;  M capacitor.config.ts;  M docs/SPEC.md |
+| pierrondi-ia | main | 24 | +2/-0 | 1a8b750 2026-05-18 feat(portfolio-intelligence): adapter bridging Recommendation → createApproval | Pierrondi Marketing OS / Pierrondi.ia Apple Design Redesign / Agentcore Website | M .brain/CLAUDE_CLOUD_CONTEXT.md;  M .brain/PROJECT_CONTEXT.md;  M .github/workflows/claude.yml;  M AGENTS.md;  M CLAUDE.md;  M GEMINI.md |
 | SADA | main | 7 | +1/-1 | 358efd1 2026-05-07 Refactor duplicated app patterns | Needs Linear project mapping | M CLAUDE.md; ?? .brain/; ?? .github/; ?? AGENTS.md; ?? GEMINI.md; ?? KIMI.md |
+| adivinha-app | main | 9 | +1/-0 | f784ba6 2026-05-18 fix(legal): route Terms/Privacy/Support links to live Railway prod URL | Needs Linear project mapping | M .brain/CLAUDE_CLOUD_CONTEXT.md;  M .brain/PROJECT_CONTEXT.md;  M .github/workflows/claude.yml;  M AGENTS.md;  M CLAUDE.md;  M GEMINI.md |
 | nowassistdemofactory | main | 6 | +1/-0 | 8f0485a 2026-05-18 feat(build): policy-gated mode picker + demo proof exporter (AGE-1464) | nowassistdemo | ?? .brain/; ?? .github/workflows/claude.yml; ?? AGENTS.md; ?? CLAUDE.md; ?? GEMINI.md; ?? KIMI.md |
+| aura-affirmations | main | 2 | +1/-0 | 4ae7879 2026-05-18 fix(auth): clear stale errors + user-friendly fallback in Apple Sign-In | Needs Linear project mapping | M .brain/PROJECT_CONTEXT.md;  M ios/Aura/Info.plist |
 | csdm-validator | main | 9 | +0/-0 | fdf40c6 2026-05-13 feat(coach): Snovai-inspired features — Snap Context, zero retention badge, persistent memory | csdm_validator / Design System Consistency | M .claude/settings.json;  M AGENTS.md;  M CLAUDE.md; ?? .agents/skills/ui-ux-pro-max/; ?? .brain/; ?? .claude/worktrees/ |
-| pierrondi-marketing | main | 1 | +0/-0 | f577fc4 2026-05-18 feat: Creative Factory pipeline — script, voice, captions, render | Needs Linear project mapping | M .brain/PROJECT_CONTEXT.md |
-| provadoria | main | 7 | +0/-0 | de0d8ca 2026-05-18 fix(railway): add root Dockerfile for Railway build | Needs Linear project mapping | M .brain/PROJECT_CONTEXT.md;  M AGENTS.md;  M CLAUDE.md; ?? .brain/README.md; ?? .brain/SESSION_NOTES.md; ?? GEMINI.md |
-| parabens-ai-br | main | 1 | +0/-0 | d07dda5 2026-05-18 fix(railway): increase healthcheck timeout to 300s | Needs Linear project mapping | M .brain/PROJECT_CONTEXT.md |
+| specialapp | main | 3 | +0/-0 | e5635e6 2026-05-18 fix(ios): correct APIClient instantiation (remove .shared) | Needs Linear project mapping | M .brain/PROJECT_CONTEXT.md;  m .claude/worktrees/vigorous-einstein-10fb90;  M ios/SpecialApp.xcodeproj/project.pbxproj |
+| parabens-ai-br | main | 2 | +0/-0 | d07dda5 2026-05-18 fix(railway): increase healthcheck timeout to 300s | Needs Linear project mapping | M .brain/PROJECT_CONTEXT.md;  D docker-compose.yml.bak |
 | pierrondi-site | main | 8 | +0/-0 | c74f30c 2026-05-16 chore(deploy): add scripts/redeploy.sh + document GitHub auto-deploy | Needs Linear project mapping | M .brain/PROJECT_CONTEXT.md;  M AGENTS.md;  M CLAUDE.md;  M GEMINI.md;  M KIMI.md; ?? .brain/CLAUDE_CLOUD_CONTEXT.md |
-| creative-video-factory | main | 10 | +0/-0 | b6dd584 2026-05-17 docs(.brain): guardrail apontando pra canonical creative pipeline em Pierrondi.ia | Needs Linear project mapping | M .brain/CLAUDE_CLOUD_CONTEXT.md; ?? .brain/CLAUDE_PROMPTS.md; ?? .brain/PROJECT_CONTEXT.md; ?? .brain/README.md; ?? .brain/SESSION_NOTES.md; ?? .github/ |
+| voudeque | main | 35 | +0/-0 | be09177 2026-05-18 marketing: ASO keywords, social campaign, App Store checklist, video scripts | Needs Linear project mapping | M .brain/PROJECT_CONTEXT.md;  M .brain/SESSION_NOTES.md;  M backend/tests/test_api.py;  M ios/VouDeQue.xcodeproj/project.pbxproj;  M ios/VouDeQue/ContentView.swift;  M ios/VouDeQue/Info.plist |
 
 ## Linear Project Coverage
 
@@ -740,7 +740,17 @@ This report is safe to keep in Obsidian. It stores Git metadata and Linear mappi
 | csdm_validator / Design System Consistency | 5 |
 | Faith | 1 |
 | Fashion Stylist AI | 1 |
-| fifa26bolao - Bolao Expre
+| fifa26bolao - Bolao Express | 1 |
+| Investcoach_ai | 1 |
+| Needs Linear project mapping | 22 |
+| nowassistdemo | 1 |
+| Pierrondi Marketing OS / Pierrondi.ia Apple Design Redesign / Agentcore Website | 1 |
+| PPT_Formation | 1 |
+| ServiceNow Agent Army | 1 |
+
+## Repository Map
+
+| Repo | Kind | Branch | Dirty | Ahead/Behind |
 ...[truncated]
 
 ## 04_Areas/Product/Product Revenue MOC.md
@@ -2443,6 +2453,10 @@ Criativo atual:
 No repo /Users/paulopierrondi/Downloads/pierrondi-ia, use o pipeline existente de video factory. Antes de mexer, rode/consulte o preflight do video. Gere apenas draft/review, sem publicar automaticamente. Use RENDER_BACKEND=ffmpeg como default e registre output paths, renderId, scriptId, custos, blockers e proximos passos no vault.
 ```
 
+## Kimi Claw - radar diario de video ads
+
+2026-05-18: prompt operacional criado para tarefa diaria no Kimi Claw as 22:40, com pesquisa avancada de video ads por plataforma, ranking de tendencias, matriz de IA por custo-beneficio, prompts por ferramenta e backlog de criativos. Arquivo: `/Users/paulopierrondi/Documents/Codex/2026-05-18/quero-um-prompt-para-o-kimi-2/kimi-claw-daily-video-ads-intelligence-prompt.md`.
+
 
 ## 04_Areas/Marketing/Marketing Growth Backlog.md
 
@@ -3106,9 +3120,9 @@ repo_name: "provadoria"
 repo_path: "/Users/paulopierrondi/Downloads/provadoria"
 repo_kind: "repo"
 branch: "main"
-dirty_files: 7
+dirty_files: 1
 remote: "https://github.com/paulopierrondi/provadoria.git"
-generated_at: "2026-05-18 09:06:29"
+generated_at: "2026-05-18 21:42:17"
 tags:
   - project
   - git
@@ -3121,8 +3135,8 @@ tags:
 - Tipo: `repo`
 - Repo kind: `repo`
 - Branch: `main`
-- Arquivos alterados agora: `7`
-- Ultimo commit: `de0d8ca 2026-05-18 fix(railway): add root Dockerfile for Railway build`
+- Arquivos alterados agora: `1`
+- Ultimo commit: `2e382a4 2026-05-18 fix: build 3 uploaded, orientations fix, agvtool version bump`
 - Remote: `https://github.com/paulopierrondi/provadoria.git`
 - Marcadores encontrados: `README.md, CLAUDE.md, AGENTS.md, GEMINI.md`
 
@@ -3174,35 +3188,6 @@ provadoria/
 
 - Use esta nota para manter o estado atual do projeto, decisoes abertas, comandos canonicos e riscos.
 - As sessoes locais de Codex, Claude Code, Kimi e Gemini foram indexadas no vault quando estavam disponiveis em disco.
-
-## 2026-05-18 — App Store Connect record e upload inicial
-
-- App record criado no App Store Connect:
-  - Nome: `ProvadorIA`
-  - App Store Connect app id: `6770621817`
-  - Bundle ID: `com.paulopierrondi.provadoria`
-  - SKU: `provadoria-2026`
-  - Primary locale: `pt-BR`
-- Bundle ID registrado via App Store Connect API antes do app record:
-  - Identifier: `com.paulopierrondi.provadoria`
-  - Bundle resource id: `W67YQF32PG`
-- Provisioning profile App Store criado via App Store Connect API:
-  - Nome: `ProvadorIA App Store`
-  - Usado para signing manual no release local.
-  - Conteudo do `.mobileprovision` nao foi registrado no vault.
-- Build enviado:
-  - Comando: `cd /Users/paulopierrondi/Downloads/provadoria/ios && ./release.sh`
-  - Delivery/build upload id: `201543d7-ddb2-4a88-bdc7-8c5aaeffaae6`
-  - Version/build: `1.0` / `1`
-  - Processing state: `VALID`
-  - Non-exempt encryption: `false`
-- Arquivos ajustados para permitir release sem Xcode account logada:
-  - `ios/release.sh`: signing manual com `ProvadorIA App Store`.
-  - `ios/exportOptions.plist`: `signingStyle=manual` e provisioning profile por bundle id.
-  - `ios/ProvadorIA/Info.plist`: `UISupportedInterfaceOrientations` completo para passar validação `90474`.
-- Riscos residuais:
-  - Build esta carregado/VALID, mas metadados, screenshots finais, privacy details, pricing/availability e submissao para review ainda precisam de gate separado antes de enviar para review.
-  - `ios/build/` contem artefatos locais gerados pelo archive/export e nao deve ser tratado como fonte canonica.
 
 ## AI History Snapshot
 
