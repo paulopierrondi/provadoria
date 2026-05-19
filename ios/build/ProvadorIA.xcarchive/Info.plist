@@ -15,7 +15,7 @@
 		<key>CFBundleShortVersionString</key>
 		<string>1.0</string>
 		<key>CFBundleVersion</key>
-		<string>1</string>
+		<string>3</string>
 		<key>SigningIdentity</key>
 		<string>Apple Distribution: PAULO HENRIQUE CARNEIRO PIERRONDI (8ULNGWJZ6B)</string>
 		<key>Team</key>
@@ -24,7 +24,7 @@
 	<key>ArchiveVersion</key>
 	<integer>2</integer>
 	<key>CreationDate</key>
-	<date>2026-05-18T17:36:49Z</date>
+	<date>2026-05-19T00:36:03Z</date>
 	<key>Name</key>
 	<string>ProvadorIA</string>
 	<key>SchemeName</key>

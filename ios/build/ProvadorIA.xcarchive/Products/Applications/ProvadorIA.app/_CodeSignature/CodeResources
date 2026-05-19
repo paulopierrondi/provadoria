@@ -18,11 +18,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		xMdYM32WR1WlPoYEhJzUk57H2rw=
+		xWKk7452f8P2iVw+iBhesZ7RN6w=
 		</data>
 		<key>PkgInfo</key>
 		<data>
 		n57qDP4tZfLD1rCS43W0B4LQjzE=
+		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		SVtLPAjQGxM2q1u7+/bnyjdQQ+c=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
@@ -50,6 +54,13 @@
 			<key>hash2</key>
 			<data>
 			MwDHsvcqjckMB8kVU4IwLPhdSgyLt3uwHs8HspV0lM4=
+			</data>
+		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			tG8id7iqkcrX7gSQPZLflwrPmWs2B9Ev6NIJS3iXM+4=
 			</data>
 		</dict>
 		<key>embedded.mobileprovision</key>
