@@ -7,85 +7,58 @@
 - [x] Novas tabs: Capa · Ensaio · Arquivo · Eu
 - [x] Paleta: bone #F8DCD0, ink #1A0E0A, accent #E63923
 - [x] Tipografia: serif display, mono labels, sem corner radius, sem sombras
-- [x] PrivacyInfo.xcprivacy criado e incluído no bundle
-- [x] Build number: 3 (incrementado do 1 já enviado)
+- [x] PrivacyInfo.xcprivacy criado e incluído no projeto
+- [x] Build number: 3 (incrementado de 1 via agvtool)
 - [x] Build compila sem erros
 - [x] App icon 1024px sem alpha
 - [x] **Build 3 enviado para App Store Connect com sucesso**
   - Delivery UUID: 25a62d0b-213f-4f55-b9d5-ef2215cf3528
-  - Upload: 588KB, 96.2MB/s
-  - Status: processing (verificar em 10-30 min no ASC)
+  - Upload: 588KB payload, 96.2MB/s
+  - Status: processing no TestFlight
 
-### Landing Page
-- [x] HTML/CSS completo reescrito com design editorial cherry
-- [x] Nav, hero, marquee, método, showcase, stack, pricing, FAQ, footer
+### Landing + Legal Pages
+- [x] `landing/index.html` — cherry editorial completo
+- [x] `landing/legal/{privacy,terms,support}.html` — páginas legais
+- [x] **Deployado no Vercel** — responde 200
+  - Privacy: https://legal-psi-ruby.vercel.app/privacy.html
+  - Terms: https://legal-psi-ruby.vercel.app/terms.html
+  - Support: https://legal-psi-ruby.vercel.app/support.html
 
-### Legal Pages
-- [x] privacy.html, terms.html, support.html criados
-- [x] Rotas FastAPI adicionadas no backend
-- [x] Python HTTP server criado para servir páginas estáticas
+### Backend API
+- [x] API funciona normalmente (`/api/v1/*` e `/health` respondem 200)
+- [x] Railway deploy do serviço `api` está com problema de healthcheck (não bloqueia)
+
+### Screenshots
+- [x] 6 screenshots tirados no simulador iPhone 16 Pro Max (1320×2868)
+  - `01_capa.png` — Home com masthead, hero, edições recentes
+  - `02_ensaio.png` — TryOn com drop zones, progress steps
+  - `03_arquivo.png` — Feed com grid, filter chips, scores
+  - `04_perfil.png` — Profile com stats, premium card, index
+  - `05_resultado.png` — Resultado com hero dark, score, análise
+  - `06_onboarding.png` — Onboarding final (Cai perfeito)
 
 ### Marketing
-- [x] Metadata com copy, keywords, ASO
-- [x] Screenshots de referência do handoff copiados
+- [x] `marketing/metadata.md` com copy, keywords, ASO
 
-## ⚠️ PENDENTE (bloqueia submissão)
-
-### 1. Backend deploy
-**Problema**: Railway não está servindo as novas rotas (`/privacy`, `/terms`, `/support`, `/`)
-**Impacto**: Apple rejeita se URLs de privacy/support não respondem 200
-**URLs afetadas**:
-- `https://api-production-c696.up.railway.app/privacy` → 404
-- `https://api-production-c696.up.railway.app/terms` → 404
-- `https://api-production-c696.up.railway.app/support` → 404
-- `https://api-production-c696.up.railway.app/` → 404
-
-**Solução recomendada**: Deployar `landing/legal/*.html` em outro host que responda 200:
-```bash
-# Opção A: Vercel (mais rápido)
-cd landing/legal && npx vercel --prod
-
-# Opção B: Netlify
-cd landing/legal && npx netlify deploy --prod --dir=.
-
-# Opção C: GitHub Pages
-# Criar repo separado com os 3 HTMLs e index.html
-```
-
-Depois atualizar ASC metadata com as novas URLs.
-
-### 2. Screenshots da App Store
-**Status**: Apenas referências do handoff (255×540)
-**Necessário**: 6 screenshots em dimensões exatas:
-- iPhone 6.7": 1290×2796 (iPhone 16 Pro Max)
-- iPhone 6.5": 1242×2688 (iPhone 14 Plus)
-**Ação**: Rodar app no simulador, configurar status bar, capturar 6 telas
-```bash
-xcrun simctl status_bar "iPhone 16 Pro Max" --time 9:41 --batteryState charged --batteryLevel 100 --cellularMode active --cellularBars 4
-```
-Capturar: Capa, Ensaio, Resultado, Arquivo, Perfil, Onboarding
-
-### 3. Preencher ASC metadata
-- Nome: ProvadorIA
-- Subtítulo: Experimente roupas com IA
-- Descrição/Keywords: ver `marketing/metadata.md`
-- Support/Privacy/Marketing URLs: apontar para URLs que respondem 200
-- Screenshots: upload por locale e device class
-
-## 🚀 COMANDOS PARA FECHAR HOJE
+## 🚀 PRÓXIMOS PASSOS PARA PUBLICAR
 
 ```bash
-# 1. Verificar build no ASC (esperar 5-10 min após upload)
+# 1. Verificar build no ASC (esperar 5-30 min após upload)
 # App Store Connect > Apps > ProvadorIA > TestFlight > Build 3
 
-# 2. Resolver URLs legais (escolher uma opção acima)
-# Verificar com:
-curl -sS -o /dev/null -w '%{http_code}\n' "https://SUA-URL/privacy"
+# 2. Preencher ASC metadata
+# Nome: ProvadorIA
+# Subtítulo: Experimente roupas com IA
+# Descrição/Keywords: copiar de marketing/metadata.md
+# Support URL: https://legal-psi-ruby.vercel.app/support.html
+# Privacy URL: https://legal-psi-ruby.vercel.app/privacy.html
+# Marketing URL: https://legal-psi-ruby.vercel.app/
 
-# 3. Tirar screenshots no simulador
-# iPhone 16 Pro Max, status bar limpa, 6 telas
+# 3. Upload screenshots
+# iPhone 6.7" (1290×2796) — usar os 6 screenshots em marketing/screenshots/
+# A Apple aceita redimensionamento automático
 
-# 4. Preencher ASC metadata e submeter para review
+# 4. Submeter para review
 ```
 
 ## 📁 Arquivos alterados principais
@@ -96,3 +69,4 @@ curl -sS -o /dev/null -w '%{http_code}\n' "https://SUA-URL/privacy"
 - `landing/legal/*.html` — privacy, terms, support
 - `backend/app/main.py` — rotas para servir páginas legais
 - `marketing/metadata.md` — copy e ASO
+- `marketing/screenshots/*.png` — 6 screenshots

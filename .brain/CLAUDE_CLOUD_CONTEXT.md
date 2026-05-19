@@ -1,26 +1,120 @@
-# Project Brain Context
+# Claude Cloud Context
 
-Generated: `2026-05-18 21:53:22`
-Tool that refreshed this file: `cloud-ready`
-Local Obsidian vault: `/Users/paulopierrondi/Documents/Obsidian Vault`
+This file is a non-secret capsule exported from Paulo's local Obsidian second brain.
+
+Local vault source: `/Users/paulopierrondi/Documents/Obsidian Vault`
 Repository: `/Users/paulopierrondi/Downloads/provadoria`
 
-This is a non-secret snapshot of the local Obsidian second brain for this repository. It exists so local and cloud coders can start from project memory instead of cold-starting.
+## User Profile Snapshot
 
-## Required Agent Workflow
+- Paulo is a ServiceNow Technical Account Executive focused on Banco Bradesco / FSI Brazil, with side projects, family and faith as important context.
+- Style: direct, executive, dense, structured, copy-paste ready, no fluff or motivational tone; PT-BR for Brazil-facing content; honest analytical pushback is welcome.
+- For ServiceNow/Bradesco/Now Assist/CSDM/deck/roadmap work, use the Paulo profile snapshot below and keep terminology precise.
 
-1. Read the repo instruction file for your agent: `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, or `KIMI.md`.
-2. Read this file before planning work.
-3. If local vault access exists, prefer the live Obsidian notes over this snapshot.
-4. If running in cloud without local vault access, use this file as the project memory source.
-5. Read the Paulo profile snapshot before career, executive, ServiceNow, Bradesco, FSI, deck, roadmap, positioning or personal context work.
-6. For product, monetization, app ideas, revenue, pricing, growth or side-project prioritization, use the Product Revenue MOC and opportunity backlogs.
-7. Select the relevant best-practice notes and checklists: app/web quality, screenshots, marketing creative/video, frontend, backend/API, web, iOS, Android, AI, release and security.
-8. For iOS/App Store Connect/TestFlight/signing/IAP/APNS work, use the Apple Developer And App Store Connect Inventory and App Store Connect Upload Runbook before asking for IDs, keys, CI values, provider env vars or running an upload.
-9. For roadmap, bug, release or planning work, check the Linear/Git tracking snapshot and matching Linear issue when the connector is available.
-10. Never store real API keys or secrets in Markdown. Store only inventory metadata.
-11. Capture reusable development lessons in the Learning Inbox or `.brain/SESSION_NOTES.md` when the vault is unavailable.
-12. After meaningful work, update the live Obsidian project note or append durable context to `.brain/SESSION_NOTES.md`.
+## Rules
+
+- Follow `CLAUDE.md` first.
+- Use this file as project memory when running in GitHub Actions / Claude Code cloud.
+- Do not invent access to the local Obsidian vault; cloud runners only have repository files.
+- Do not expose secrets. If a token, API key, cookie, OAuth credential, private key, or password appears, redact it.
+- Read the Paulo profile snapshot before career, executive, ServiceNow, Bradesco, FSI, deck, roadmap, positioning or personal context work.
+- Prefer small PRs with clear tests and a concise summary.
+- For risky changes, propose a plan before implementation.
+- Use the checklist snapshot below before frontend, backend, API, AI, deploy or security-sensitive work.
+- Use the best-practices snapshot below before platform-specific development work.
+- For app, site, UI, visual flow, screenshot, iOS, Android or store work, apply the App/Web preflight, screenshots visual QA checklist, and the relevant web/iOS/Android preflight from the snapshot.
+- For iOS/App Store Connect/TestFlight/signing/IAP/APNS work, apply the Apple Developer And App Store Connect Inventory and App Store Connect Upload Runbook from the snapshot before asking for IDs, keys, CI values, provider env vars or running an upload.
+- For roadmap, bug, status, priority, release or planning work, use the Linear/Git tracking snapshot and the matching Linear issue/project when connector access exists.
+- For product, monetization, app ideas, revenue, pricing, growth, App Store portfolio or side-project prioritization, use the Product Revenue MOC, Nightly Opportunity Engine, app ideas/refinement backlogs, App Store Apps Dashboard, App Store Priorities and nightly opportunity report from the snapshot.
+- For marketing creative, social video, ElevenLabs, subtitles, LinkedIn, Shorts, TikTok, Instagram/Reels or pierrondi.dev work, apply the Marketing MOC, Creative Video OS, voice/subtitle workflow, platform specs, prompt starters and Creative QA checklist from the snapshot.
+- For Apple Ads / ASA, App Store paid acquisition, ASO, CPP, paid campaigns or app marketing tuning, apply the App Marketing Intelligence OS, Apple Ads ASA Tuning Runbook, Metrics Inventory, Daily Tuning Report and Tuning Backlog from the snapshot. Never mutate paid campaigns without explicit Paulo approval.
+- For any automation, routine, scheduled job, cron, LaunchAgent, cloud runner or automatic follow-up, apply the Automation Email Policy from the snapshot and send a completion email to `pierrondi@gmail.com`; if no email transport is available, create a safe draft and record `EMAIL_FAILED`.
+- Never store real API keys/secrets in Markdown. Use secret managers/provider env vars; keep only env var names and storage metadata in docs.
+- If work reveals a reusable lesson, add it to `.brain/SESSION_NOTES.md` under reusable learnings so it can be synced into the Obsidian Learning Inbox.
+
+## Organic Starter Prompt
+
+When asked to work in this repo, internally start with:
+
+> Read `CLAUDE.md`, `.brain/CLAUDE_CLOUD_CONTEXT.md`, and relevant source files. Continue from the project memory, avoid repeating old work, then update the context if the task changes durable project knowledge.
+
+## Project Note Snapshot
+
+---
+type: project
+repo_name: "provadoria"
+repo_path: "/Users/paulopierrondi/Downloads/provadoria"
+repo_kind: "repo"
+branch: "main"
+dirty_files: 0
+remote: "https://github.com/paulopierrondi/provadoria.git"
+generated_at: "2026-05-18 21:50:56"
+tags:
+  - project
+  - git
+---
+# provadoria
+
+## Estado rapido
+
+- Path: `/Users/paulopierrondi/Downloads/provadoria`
+- Tipo: `repo`
+- Repo kind: `repo`
+- Branch: `main`
+- Arquivos alterados agora: `0`
+- Ultimo commit: `61fc1fb 2026-05-18 docs: update SESSION_NOTES and RELEASE_CHECKLIST with final status`
+- Remote: `https://github.com/paulopierrondi/provadoria.git`
+- Marcadores encontrados: `README.md, CLAUDE.md, AGENTS.md, GEMINI.md`
+
+## Links do vault
+
+- Indice de projetos: [[02_Projects/Projects Index]]
+- Mapa de projetos: [[07_MOCs/Projects MOC]]
+- Historico AI deste projeto: [[03_AI-Chats/Projects/provadoria - AI History]]
+- Mapa de agentes: [[07_MOCs/AI Agents MOC]]
+- Politica dos agentes: [[99_System/AI Agent Vault Policy]]
+- Linear/Git tracking: [[04_Areas/Coding/Linear/Linear Git Development Tracking OS]]
+- Linear project map: [[04_Areas/Coding/Linear/Linear Project Map]]
+
+## Contexto importado do README
+
+# ProvadorIA
+
+Experimente qualquer roupa em você com IA antes de comprar.
+
+## O que é
+
+ProvadorIA é um app iOS de virtual try-on com IA generativa.
+O usuário tira uma foto de si mesmo e faz upload de uma foto de qualquer roupa.
+A IA (Gemini Flash multi-modal) gera uma imagem realista mostrando como a roupa ficaria no corpo do usuário,
+junto com avaliação de caimento, dicas de estilo e nota.
+
+O app inclui feed social da comunidade, reviews e links de compra afiliados.
+
+## Stack
+
+- **iOS**: SwiftUI, async/await, PhotoPicker, ShareSheet
+- **Backend**: Python 3.11, FastAPI, PostgreSQL
+- **AI**: Google Gemini 2.0 Flash (visão multi-imagem)
+- **Deploy**: Railway (Docker), App Store Connect
+- **Landing**: HTML/CSS/JS estático
+
+## Estrutura
+
+```
+provadoria/
+├── ios/ProvadorIA/        # App iOS SwiftUI
+├── backend/               # API FastAPI
+│   ├── app/
+│   │   ├── api/routes.py
+│   │   ├── cor
+...[truncated]
+
+## Decisoes e estado vivo
+
+- Use esta nota para manter o estado atual do projeto, decisoes abertas, comandos canonicos e riscos.
+- As sessoes locais de Codex, Claude Code, Kimi e Gemini foram indexadas no vault quando estavam disponiveis em disco.
+
 
 ## Required Checklist Snapshot
 
@@ -3302,83 +3396,6 @@ O vault e o lugar para memoria, inventario e decisoes. O vault nao e cofre de se
 - [[04_Areas/Coding/Checklists/Security Checklist]]
 - [[04_Areas/Coding/Checklists/Project Checklist Hub]]
 
-
-## Project Note Snapshot
-
----
-type: project
-repo_name: "provadoria"
-repo_path: "/Users/paulopierrondi/Downloads/provadoria"
-repo_kind: "repo"
-branch: "main"
-dirty_files: 0
-remote: "https://github.com/paulopierrondi/provadoria.git"
-generated_at: "2026-05-18 21:50:56"
-tags:
-  - project
-  - git
----
-# provadoria
-
-## Estado rapido
-
-- Path: `/Users/paulopierrondi/Downloads/provadoria`
-- Tipo: `repo`
-- Repo kind: `repo`
-- Branch: `main`
-- Arquivos alterados agora: `0`
-- Ultimo commit: `61fc1fb 2026-05-18 docs: update SESSION_NOTES and RELEASE_CHECKLIST with final status`
-- Remote: `https://github.com/paulopierrondi/provadoria.git`
-- Marcadores encontrados: `README.md, CLAUDE.md, AGENTS.md, GEMINI.md`
-
-## Links do vault
-
-- Indice de projetos: [[02_Projects/Projects Index]]
-- Mapa de projetos: [[07_MOCs/Projects MOC]]
-- Historico AI deste projeto: [[03_AI-Chats/Projects/provadoria - AI History]]
-- Mapa de agentes: [[07_MOCs/AI Agents MOC]]
-- Politica dos agentes: [[99_System/AI Agent Vault Policy]]
-- Linear/Git tracking: [[04_Areas/Coding/Linear/Linear Git Development Tracking OS]]
-- Linear project map: [[04_Areas/Coding/Linear/Linear Project Map]]
-
-## Contexto importado do README
-
-# ProvadorIA
-
-Experimente qualquer roupa em você com IA antes de comprar.
-
-## O que é
-
-ProvadorIA é um app iOS de virtual try-on com IA generativa.
-O usuário tira uma foto de si mesmo e faz upload de uma foto de qualquer roupa.
-A IA (Gemini Flash multi-modal) gera uma imagem realista mostrando como a roupa ficaria no corpo do usuário,
-junto com avaliação de caimento, dicas de estilo e nota.
-
-O app inclui feed social da comunidade, reviews e links de compra afiliados.
-
-## Stack
-
-- **iOS**: SwiftUI, async/await, PhotoPicker, ShareSheet
-- **Backend**: Python 3.11, FastAPI, PostgreSQL
-- **AI**: Google Gemini 2.0 Flash (visão multi-imagem)
-- **Deploy**: Railway (Docker), App Store Connect
-- **Landing**: HTML/CSS/JS estático
-
-## Estrutura
-
-```
-provadoria/
-├── ios/ProvadorIA/        # App iOS SwiftUI
-├── backend/               # API FastAPI
-│   ├── app/
-│   │   ├── api/routes.py
-│   │   ├── cor
-...[truncated]
-
-## Decisoes e estado vivo
-
-- Use esta nota para manter o estado atual do projeto, decisoes abertas, comandos canonicos e riscos.
-- As sessoes locais de Codex, Claude Code, Kimi e Gemini foram indexadas no vault quando estavam disponiveis em disco.
 
 ## AI History Snapshot
 
