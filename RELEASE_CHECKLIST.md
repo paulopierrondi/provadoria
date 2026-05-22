@@ -16,13 +16,14 @@
   - Upload: 577KB payload, 116.3MB/s
   - Status: processing no TestFlight
 
-### Fixes anti-rejeição (build 4)
-- [x] Info.plist: NSPhotoLibraryUsageDescription + NSCameraUsageDescription + API_BASE_URL produção
+### Fixes anti-rejeição (build 4 → 5)
+- [x] Info.plist: NSPhotoLibraryUsageDescription + NSPhotoLibraryAddUsageDescription + NSCameraUsageDescription + API_BASE_URL produção
 - [x] APIService.swift: fallback de localhost para `https://api-production-c696.up.railway.app`
 - [x] PrivacyInfo.xcprivacy: domínio corrigido para `api-production-c696.up.railway.app`
 - [x] ProfileView.swift: paywall não-funcional removido da UI
 - [x] TryOnView.swift: botão Câmera sem ação removido
 - [x] TryOnResultView.swift: botão "Comprar" sem ação removido
+- [x] TryOnResultView.swift: botão "Salvar" agora salva imagem real na galeria via `PHPhotoLibrary`
 - [x] FeedView.swift + HomeView.swift: AsyncImage para carregar imagens reais do backend
 - [x] Error handling: `localizedDescription` removido das mensagens exibidas ao usuário
 
@@ -85,13 +86,13 @@
    - Clicar em "Add for Review"
 
 ## 📁 Arquivos alterados nesta sessão
-- `ios/ProvadorIA/Info.plist` — build 4, permissões, API_BASE_URL
+- `ios/ProvadorIA/Info.plist` — build 5, permissões (incl. Add), API_BASE_URL
 - `ios/ProvadorIA/Services/APIService.swift` — fallback produção
 - `ios/ProvadorIA/PrivacyInfo.xcprivacy` — domínio correto
 - `ios/ProvadorIA/Views/ProfileView.swift` — paywall removido
 - `ios/ProvadorIA/Views/TryOnView.swift` — botão câmera removido
-- `ios/ProvadorIA/Views/TryOnResultView.swift` — botão comprar removido
+- `ios/ProvadorIA/Views/TryOnResultView.swift` — botão comprar removido + salvamento real na galeria
 - `ios/ProvadorIA/Views/FeedView.swift` — AsyncImage + error amigável
 - `ios/ProvadorIA/Views/HomeView.swift` — AsyncImage + error amigável
-- `ios/project.yml` — build 4
-- `ios/ProvadorIA.xcodeproj/project.pbxproj` — build 4
+- `ios/project.yml` — build 5
+- `ios/ProvadorIA.xcodeproj/project.pbxproj` — build 5
