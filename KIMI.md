@@ -1,5 +1,141 @@
 
 
+<!-- BACKGROUND_CODERS_START -->
+## Background Coders Protocol
+
+Este projeto usa o modelo Background Coders embutido nos coders atuais: Codex, Claude Code, Kimi CLI, Gemini CLI e Google Antigravity.
+
+Cursor Background Agent esta dormente e nao deve ser roteado por padrao.
+
+### Required context
+
+Leia antes de planejar/editar:
+
+- `.brain/BACKGROUND_CODER_CONTEXT.md`
+- `.brain/HUB_COUNCIL_CONTEXT.md`
+- `.brain/PROJECT_CONTEXT.md`
+- `AGENTS.md`
+- `GEMINI.md`
+- `CODEX_RULES.md`
+
+### Routing
+
+| Trabalho | Coder padrao | Regra |
+| --- | --- | --- |
+| Varredura ampla, triagem barata, relatorio, backlog, docs | Kimi CLI | read-only/report-first |
+| Patch seguro, testes, integracao, validacao local | Codex | executor principal |
+| Bug dificil, arquitetura, compliance, App Store/release risk | Claude Code | especialista senior |
+| Checagem independente, tarefas Google/MCP, utilitario CLI, validacao terminal | Gemini CLI | usar `GEMINI.md` como memoria hierarquica; manter paridade com `AGENTS.md` |
+| Orquestracao agent-first, navegador/Chrome, multi-folder/worktree, subagentes, artefatos | Google Antigravity | ler `AGENTS.md` + `GEMINI.md`; vault fora do workspace exige acesso explicito ou snapshot `.brain` |
+| PR remoto via Cursor | Cursor Background Agent | dormant; somente se Paulo ativar explicitamente |
+
+### Budget gate
+
+Antes de iniciar background work, declarar:
+
+- owner: `codex`, `claude`, `kimi`, `gemini` ou `antigravity`;
+- registry id: `provadoria`;
+- repo/projeto;
+- uma tarefa ou uma issue Linear;
+- artefato esperado;
+- stop condition;
+- human gate quando envolver secrets, deploy, App Store/TestFlight, paid ads, producao, migrations, social publishing, force push ou multi-repo.
+
+### Branch policy
+
+- Codex: `codex/<linear-id>-<short-task>`
+- Claude: `claude/<linear-id>-<short-task>`
+- Kimi: preferir relatorio sem branch; se editar, usar escopo explicito
+- Gemini: `gemini/<linear-id>-<short-task>` quando editar codigo
+- Antigravity: `antigravity/<linear-id>-<short-task>` ou worktree isolada do Project
+- Cursor: nao usar sem pedido explicito do Paulo
+
+### Handoff
+
+Todo output deve trazer: o que mudou/encontrou, arquivos tocados/revisados, comandos/testes, risco residual, proxima acao exata e se Obsidian/Linear precisa atualizar.
+<!-- BACKGROUND_CODERS_END -->
+
+<!-- CURSOR_BACKGROUND_AGENT_START -->
+## Cursor Background Agent Protocol
+
+Cursor Background Agent is currently dormant. Paulo is not opening Cursor for now.
+
+Do not route background work to Cursor by default. Use the active Background Coders model:
+
+- Kimi CLI: broad scan, cheap triage, reports, backlog, docs.
+- Codex: safe patch, tests, integration, local verification.
+- Claude Code: hard bug, architecture, compliance, App Store/release risk.
+- Gemini CLI: independent Google-model CLI validation, MCP checks, terminal utility tasks.
+- Google Antigravity: agent-first orchestration, Chrome/browser verification, multi-folder/worktree tasks, artifacts.
+
+Cursor may only be used if Paulo explicitly activates it.
+
+### Required context
+
+Read before editing:
+
+- `AGENTS.md`
+- `CODEX_RULES.md`
+- `.brain/PROJECT_CONTEXT.md`
+- `.brain/HUB_COUNCIL_CONTEXT.md`
+- `.brain/CURSOR_BACKGROUND_AGENT_CONTEXT.md`
+- `.cursor/rules/010-paulo-agent-hub.mdc`
+- `.cursor/rules/020-cursor-background-agent.mdc`
+
+### Scope and branch
+
+- Registry id: `provadoria`
+- Branch pattern if explicitly activated: `cursor/<linear-id>-<short-task>` or `cursor/<short-task>`.
+- One issue/task per branch.
+- Keep diffs small and reversible.
+
+### Handoff
+
+Final summary must include:
+
+- what changed;
+- files touched;
+- commands/tests run;
+- risks or blockers;
+- exact Obsidian/Linear update for the local operator.
+
+### Hard stops
+
+Stop and ask for local Codex/Claude/Gemini/Antigravity/Paulo handoff before secrets, `.env`, production deploys, App Store/TestFlight submission, paid ads, social publishing, production migrations, force push, multi-repo changes or macOS signing assumptions.
+<!-- CURSOR_BACKGROUND_AGENT_END -->
+
+<!-- HUB_COUNCIL_TRIGGER_START -->
+# Hub de Agentes / Product Council - Required Coder Gate
+
+Este projeto e gerenciado pelo Hub de Agentes de Paulo. Antes de planejar, editar, revisar, debugar, criar release, mexer em UI/UX, marketing, SEO, seguranca ou automacao, acione o Product Council.
+
+## Start gate obrigatorio
+
+```bash
+/Users/paulopierrondi/agents-hub/scripts/project-council-touchpoint.py --project-id "provadoria" --phase start
+```
+
+Leia tambem:
+
+- `.brain/HUB_COUNCIL_CONTEXT.md`
+- `.brain/PROJECT_CONTEXT.md`
+- `/Users/paulopierrondi/Documents/Obsidian Vault/Hub_Agentes/05_Configuracao/config_product_council.md`
+- `/Users/paulopierrondi/Documents/Obsidian Vault/Hub_Agentes/03_Outputs/council_reviews/`
+
+## Finish gate obrigatorio
+
+```bash
+/Users/paulopierrondi/agents-hub/scripts/project-council-touchpoint.py --project-id "provadoria" --phase finish --summary "<o que mudou; testes; riscos; proximos passos>"
+```
+
+## Regras
+
+- Registry-first: estado vem de `/Users/paulopierrondi/agents-hub/registry/projects_registry.json`.
+- Evidence-based: cite arquivo, linha, commit, log, URL ou report.
+- No secrets: nunca grave tokens, API keys, cookies, chaves privadas, AuthKeys ou valores `.env` em Markdown.
+- Human-gated: deploy, push, App Store submit, ads spend, publicacao social, migrations, producao, secrets, cron e LaunchAgents exigem aprovacao explicita do Paulo.
+<!-- HUB_COUNCIL_TRIGGER_END -->
+
 <!-- OBSIDIAN_SECOND_BRAIN_START -->
 # Obsidian Second Brain - Required Preflight
 
@@ -8,46 +144,28 @@ Repository: `/Users/paulopierrondi/Downloads/provadoria`
 
 This repository is part of Paulo's Obsidian second brain. For AI coding agents, this is a required workflow, not optional context.
 
-## User Profile Snapshot
-
-- Paulo is a ServiceNow Technical Account Executive focused on Banco Bradesco / FSI Brazil, with side projects, family and faith as important context.
-- Style: direct, executive, dense, structured, copy-paste ready, no fluff or motivational tone; PT-BR for Brazil-facing content; honest analytical pushback is welcome.
-- For ServiceNow/Bradesco/Now Assist/CSDM/deck/roadmap work, read the Paulo profile and keep terminology precise.
-
 ## Mandatory Start Gate
 
 Before planning, editing, refactoring, reviewing, or debugging:
 - Read `/Users/paulopierrondi/Documents/Obsidian Vault/Home.md` when the local vault is accessible.
-- Read `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Profile/Paulo Pierrondi Profile.md` for Paulo's professional/personal context, response style, ServiceNow/Bradesco context and current priorities.
 - Read `/Users/paulopierrondi/Documents/Obsidian Vault/02_Projects/Projects Index.md` and the matching project note under `/Users/paulopierrondi/Documents/Obsidian Vault/02_Projects`.
 - Read `/Users/paulopierrondi/Documents/Obsidian Vault/03_AI-Chats/AI Chats Index.md` and any matching project AI history note when relevant.
 - Read `/Users/paulopierrondi/Documents/Obsidian Vault/99_System/AI Agent Vault Policy.md`.
-- Run `brain-linear-sync` or read `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Coding/Linear/Linear Git Sync Report.md` before choosing work.
-- For roadmap, bug, status, priority, release or planning work, read `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Coding/Linear/Linear Git Development Tracking OS.md`, `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Coding/Linear/Linear Project Map.md`, and the matching Linear project/issue through the Linear connector when available.
-- Read `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Coding/Checklists/Project Checklist Hub.md` and the relevant frontend/backend/platform/AI/security checklists.
-- Read `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Coding/Best Practices/Development Best Practices Hub.md` and the relevant platform best-practice notes.
-- For product, monetization, app ideas, revenue, pricing, growth or side-project prioritization, read `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Product/Product Revenue MOC.md`, `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Product/Nightly Opportunity Engine.md`, `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Product/App Ideas Revenue Backlog.md`, `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Product/App Refinement Backlog.md`, `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Product/Nightly Opportunity Report.md`, `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Product/App Store Apps Dashboard.md`, and `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Product/App Store Priorities.md` when App Store portfolio work is involved.
+- Read `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Coding/Best Practices/Development Best Practices Hub.md` and relevant platform best-practice notes.
+- Read `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Coding/Checklists/Project Checklist Hub.md` and relevant checklists.
 - For app, site, UI, visual flow, screenshot, iOS, Android or store work, read `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Coding/Best Practices/App Web Quality Best Practices.md`, `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Coding/Checklists/App Web Preflight Checklist.md`, `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Coding/Checklists/Screenshots Visual QA Checklist.md`, and the relevant web/iOS/Android preflight.
-- For iOS/App Store Connect/TestFlight/signing/IAP/APNS work, read `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Coding/Checklists/Apple Developer And App Store Connect Inventory.md` and `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Coding/Checklists/App Store Connect Upload Runbook.md` before asking for IDs, keys, CI values, provider env vars or running an upload.
 - For marketing creative, social video, ElevenLabs, subtitles, LinkedIn, Shorts, TikTok, Instagram/Reels or pierrondi.dev work, read `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Marketing/Marketing MOC.md`, `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Marketing/Pierrondi.dev Creative Video OS.md`, `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Marketing/ElevenLabs Voice And Subtitle Workflow.md`, `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Marketing/Social Video Platform Specs 2026.md`, and `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Marketing/Creative QA Checklist.md`.
-- For Apple Ads / ASA, App Store paid acquisition, ASO, CPP, paid campaigns or app marketing tuning, read `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Marketing/App Marketing Intelligence OS.md`, `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Marketing/Apple Ads ASA Tuning Runbook.md`, `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Marketing/App Marketing Metrics Inventory.md`, `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Marketing/App Marketing Daily Tuning Report.md`, and `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Marketing/App Marketing Tuning Backlog.md`.
-- For any automation, routine, scheduled job, cron, LaunchAgent, cloud runner or automatic follow-up, read `/Users/paulopierrondi/Documents/Obsidian Vault/99_System/Automation Email Policy.md` and send a completion email to `pierrondi@gmail.com`.
-- Read `/Users/paulopierrondi/Documents/Obsidian Vault/99_System/Security And Secrets Policy.md` before touching auth, APIs, env vars, API keys, tokens, deploy or production config.
-- For Railway projects, read `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Coding/Checklists/Railway Secrets Inventory.md` and use `brain-railway-run -- <command>` instead of asking Paulo to paste secrets.
+- Read `/Users/paulopierrondi/Documents/Obsidian Vault/99_System/Security And Secrets Policy.md` before auth, APIs, env vars, API keys, tokens, deploy or production config.
+- For Railway projects, read `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Coding/Checklists/Railway Secrets Inventory.md` and use `railway run -- <command>` instead of asking Paulo to paste secrets.
 - Read `.brain/PROJECT_CONTEXT.md` if present. In cloud environments, treat `.brain/PROJECT_CONTEXT.md` and `.brain/CLAUDE_CLOUD_CONTEXT.md` as the available vault snapshot.
+- For Gemini CLI and Google Antigravity, keep `GEMINI.md` operationally equivalent to `AGENTS.md`. Antigravity must read both `AGENTS.md` and `GEMINI.md`; if the vault is outside the Project folders, explicitly add the vault folder or rely on `.brain/PROJECT_CONTEXT.md`.
 
 ## Mandatory Finish Gate
 
 After meaningful work:
 - Update the matching Obsidian project note with decisions, commands, files changed, risks, deploy state, and next steps.
-- Update Linear when issue reality changes; do not bulk-close/archive/relabel without a cleanup proposal.
-- If the local vault is not accessible, update `.brain/SESSION_NOTES.md` with the durable project knowledge that should later be synced back to Obsidian.
-- Never write secrets to Markdown. Redact API keys, tokens, passwords, cookies, OAuth credentials, private keys, and production secrets.
-- API keys belong in a secret manager or provider env vars. The vault stores only inventory: env var name, provider, scope, storage location, owner and rotation date.
-- Automation runs must send a final email to `pierrondi@gmail.com` with status, summary, updated reports, pending decisions and failures; redact secrets before sending.
+- If the local vault is not accessible, update `.brain/SESSION_NOTES.md` with durable project knowledge that should later be synced back to Obsidian.
+- Never write secrets to Markdown.
+- API keys belong in a secret manager or provider env vars. The vault stores only inventory metadata.
 - If the session reveals a reusable development lesson, append it to `/Users/paulopierrondi/Documents/Obsidian Vault/04_Areas/Coding/Best Practices/Learning Inbox.md` or run `brain-learn`.
-
-## Behavior
-
-Continue from the latest reliable project memory. Do not repeat old work, ignore known decisions, or start implementation without checking the project brain first.
 <!-- OBSIDIAN_SECOND_BRAIN_END -->

@@ -4,6 +4,15 @@
 default_platform(:ios)
 
 platform :ios do
+  def asc_api_key
+    app_store_connect_api_key(
+      key_id: "95ULBVD2BW",
+      issuer_id: "20a81f12-b22c-4ff8-8b33-c1e5e411a24b",
+      key_filepath: File.expand_path("~/.appstoreconnect/private_keys/AuthKey_95ULBVD2BW.p8"),
+      in_house: false
+    )
+  end
+
   desc "Create app on App Store Connect"
   lane :create_app do
     produce(
@@ -70,6 +79,91 @@ platform :ios do
       languages: ["pt-BR"],
       dark_mode: true,
       clear_previous_screenshots: true
+    )
+  end
+
+  desc "Set App Privacy declarations (iris API, requires Apple ID interactive login)"
+  desc "Apple ID JWT keys NÃO funcionam pra App Privacy — só cookie session do ASC web UI."
+  desc "Run: FASTLANE_USER=pierrondi@gmail.com bundle exec fastlane set_app_privacy"
+  lane :set_app_privacy do
+    require 'spaceship'
+
+    UI.message("Logando no App Store Connect via cookie session…")
+    Spaceship::ConnectAPI.login(use_portal: false, use_tunes: true)
+
+    app = Spaceship::ConnectAPI::App.find("com.paulopierrondi.provadoria")
+    UI.success("App found: #{app.name} (#{app.id})")
+
+    # Declarations: [category_id, purpose_id, data_protection_id]
+    # DATA_LINKED_AND_NOT_USED_FOR_TRACKING — pessoal, não-tracking
+    # DATA_NOT_LINKED_AND_NOT_USED_FOR_TRACKING — não-pessoal, não-tracking
+    declarations = [
+      # User ID — autenticação (linked, NOT tracking)
+      ["IDENTIFIERS_USER_ID", "APP_FUNCTIONALITY", "DATA_LINKED_AND_NOT_USED_FOR_TRACKING"],
+
+      # Photos/Videos — try-on (linked, NOT tracking)
+      ["PHOTOS_OR_VIDEOS", "APP_FUNCTIONALITY", "DATA_LINKED_AND_NOT_USED_FOR_TRACKING"],
+
+      # Usage Data — analytics (not linked, NOT tracking)
+      ["USAGE_DATA_PRODUCT_INTERACTION", "ANALYTICS", "DATA_NOT_LINKED_AND_NOT_USED_FOR_TRACKING"],
+    ]
+
+    # Delete existing usages (clean slate)
+    UI.message("Limpando declarations atuais…")
+    existing = Spaceship::ConnectAPI::AppDataUsage.all(app_id: app.id, limit: 200)
+    UI.message("  #{existing.count} declarations existentes — deletando…")
+    existing.each(&:delete!)
+
+    # Create new ones
+    UI.message("Criando #{declarations.count} novas declarations…")
+    declarations.each do |category, purpose, protection|
+      begin
+        Spaceship::ConnectAPI::AppDataUsage.create(
+          app_id: app.id,
+          app_data_usage_category_id: category,
+          app_data_usage_purpose_id: purpose,
+          app_data_usage_protection_id: protection
+        )
+        UI.success("  ✓ #{category} / #{purpose} / #{protection.gsub('DATA_', '').gsub('_AND_', '+')}")
+      rescue => e
+        UI.error("  ❌ #{category}/#{purpose}: #{e.message[0..150]}")
+      end
+    end
+
+    # Publish
+    UI.message("Publicando…")
+    state = Spaceship::ConnectAPI::AppDataUsagesPublishState.get(app_id: app.id)
+    state.publish!
+    UI.success("✅ App Privacy publicado!")
+    UI.message("Verifique em https://appstoreconnect.apple.com/apps/#{app.id}/app-privacy")
+  end
+
+  desc "Submit ProvadorIA build 5 for App Review"
+  lane :submit_review do
+    api_key = asc_api_key
+
+    deliver(
+      api_key: api_key,
+      app_identifier: "com.paulopierrondi.provadoria",
+      app_version: "1.0",
+      build_number: "5",
+      platform: "ios",
+      metadata_path: "./fastlane/metadata",
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      skip_metadata: false,
+      skip_app_version_update: true,
+      submit_for_review: true,
+      automatic_release: false,
+      force: true,
+      run_precheck_before_submit: false,
+      reject_if_possible: true,
+      submission_information: {
+        content_rights_contains_third_party_content: false,
+        export_compliance_uses_encryption: false,
+        add_id_info_serves_ads: false,
+        add_id_info_uses_idfa: false
+      }
     )
   end
 end

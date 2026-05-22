@@ -126,3 +126,23 @@ A App Store aceita redimensionamento automático para 1290×2796.
 - `a528ae7` — fix: railway rootDirectory for backend Dockerfile context
 - `2e382a4` — fix: build 3 uploaded, orientations fix, agvtool version bump
 - (commits anteriores na sessão compartilhada)
+
+---
+## 2026-05-21 — SUBMISSÃO APP STORE CONNECT ✅
+
+### Status: AGUARDANDO REVISÃO DA APPLE
+- **Build:** 1.0 (5) — `172e800d-ede9-4f88-a46c-573a9a24b43c`
+- **Enviado em:** 21/05/2026 ~21:19 BRT
+- **Preço:** Free ($0,00) para 175 países
+- **Tempo estimado de revisão:** até 48 horas
+
+### Ações realizadas:
+1. ✅ Configurado preço Free via Playwright no Chrome ASC
+2. ✅ Clicado "Adicionar para revisão" → processou com sucesso
+3. ✅ Clicado "Enviar para revisão" no modal
+4. ✅ Status final: "1.0 Aguardando revisão"
+
+### Próximos passos:
+- Aguardar email da Apple com resultado da revisão
+- Preparar respostas para possíveis perguntas do reviewer
+- Planejar marketing/ASO para lançamento
