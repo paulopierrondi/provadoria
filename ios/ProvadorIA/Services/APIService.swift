@@ -35,7 +35,7 @@ actor APIService {
     
     private init() {
         let raw = Bundle.main.object(forInfoDictionaryKey: "API_BASE_URL") as? String
-            ?? "http://127.0.0.1:8000"
+            ?? "https://api-production-c696.up.railway.app"
         self.baseURL = URL(string: raw)!
         
         let config = URLSessionConfiguration.default

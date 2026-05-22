@@ -10,7 +10,6 @@ struct ProfileView: View {
             VStack(spacing: 32) {
                 headerSection
                 statsSection
-                planCard
                 indexSection
             }
             .padding(.horizontal, 24)
@@ -317,7 +316,7 @@ struct DeleteAccountRow: View {
             } catch {
                 await MainActor.run {
                     isDeleting = false
-                    errorMessage = error.localizedDescription
+                    errorMessage = "Não foi possível excluir a conta. Tente novamente mais tarde."
                     showError = true
                 }
             }

@@ -241,18 +241,39 @@ struct TrendingCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Rectangle()
-                .fill(Color.cherryPaper)
-                .frame(width: 140, height: 180)
-                .overlay(
+            ZStack {
+                Rectangle()
+                    .fill(Color.cherryPaper)
+                    .frame(width: 140, height: 180)
+                
+                if let url = URL(string: tryOn.imageURL), !tryOn.imageURL.isEmpty {
+                    AsyncImage(url: url) { phase in
+                        switch phase {
+                        case .success(let image):
+                            image.resizable().scaledToFill()
+                                .frame(width: 140, height: 180)
+                                .clipped()
+                        case .failure, .empty:
+                            Image(systemName: "tshirt")
+                                .font(.system(size: 40))
+                                .foregroundColor(.cherryMid.opacity(0.5))
+                        @unknown default:
+                            Image(systemName: "tshirt")
+                                .font(.system(size: 40))
+                                .foregroundColor(.cherryMid.opacity(0.5))
+                        }
+                    }
+                } else {
                     Image(systemName: "tshirt")
                         .font(.system(size: 40))
                         .foregroundColor(.cherryMid.opacity(0.5))
-                )
-                .overlay(
-                    Rectangle()
-                        .stroke(Color.cherryLine, lineWidth: 1)
-                )
+                }
+            }
+            .frame(width: 140, height: 180)
+            .overlay(
+                Rectangle()
+                    .stroke(Color.cherryLine, lineWidth: 1)
+            )
             
             Text(tryOn.description)
                 .font(.system(size: 14, weight: .semibold, design: .default))

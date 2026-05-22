@@ -258,19 +258,6 @@ struct TryOnResultView: View {
     private var actionButtons: some View {
         HStack(spacing: 12) {
             Button(action: {
-                HapticFeedback.medium()
-            }) {
-                HStack(spacing: 8) {
-                    Text("Comprar (R$ 289)")
-                        .font(.system(size: 15, weight: .semibold, design: .default))
-                }
-                .foregroundColor(.cherryInk)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 16)
-                .background(Color.cherryBone)
-            }
-            
-            Button(action: {
                 HapticFeedback.success()
                 showSavedAlert = true
             }) {

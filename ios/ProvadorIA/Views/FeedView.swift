@@ -147,7 +147,7 @@ struct FeedView: View {
         } catch {
             isLoading = false
             hasError = true
-            errorMessage = error.localizedDescription
+            errorMessage = "Não foi possível carregar o feed. Verifique sua conexão."
         }
     }
     
@@ -160,7 +160,7 @@ struct FeedView: View {
             hasError = false
         } catch {
             hasError = true
-            errorMessage = error.localizedDescription
+            errorMessage = "Não foi possível carregar o feed. Verifique sua conexão."
         }
         isRefreshing = false
     }
@@ -177,9 +177,28 @@ struct ArchiveCard: View {
                     .fill(index == 0 ? Color.cherryAccent.opacity(0.15) : Color.cherryPaper)
                     .frame(height: 200)
                     .overlay(
-                        Image(systemName: "tshirt")
-                            .font(.system(size: 40))
-                            .foregroundColor(.cherryMid.opacity(0.4))
+                        Group {
+                            if let url = URL(string: tryOn.imageURL), !tryOn.imageURL.isEmpty {
+                                AsyncImage(url: url) { phase in
+                                    switch phase {
+                                    case .success(let image):
+                                        image.resizable().scaledToFill()
+                                    case .failure, .empty:
+                                        Image(systemName: "tshirt")
+                                            .font(.system(size: 40))
+                                            .foregroundColor(.cherryMid.opacity(0.4))
+                                    @unknown default:
+                                        Image(systemName: "tshirt")
+                                            .font(.system(size: 40))
+                                            .foregroundColor(.cherryMid.opacity(0.4))
+                                    }
+                                }
+                            } else {
+                                Image(systemName: "tshirt")
+                                    .font(.system(size: 40))
+                                    .foregroundColor(.cherryMid.opacity(0.4))
+                            }
+                        }
                     )
                     .overlay(
                         Rectangle()

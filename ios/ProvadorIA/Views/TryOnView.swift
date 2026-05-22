@@ -105,22 +105,6 @@ struct TryOnView: View {
                             .padding(.vertical, 12)
                             .background(Color.cherryInk)
                         }
-                        
-                        Button(action: {}) {
-                            HStack(spacing: 8) {
-                                Image(systemName: "camera")
-                                Text("Câmera")
-                            }
-                            .font(.system(size: 14, weight: .semibold, design: .default))
-                            .foregroundColor(.cherryInk)
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 12)
-                            .background(Color.clear)
-                            .overlay(
-                                Rectangle()
-                                    .stroke(Color.cherryInk, lineWidth: 1)
-                            )
-                        }
                     }
                 }
             }
@@ -206,7 +190,7 @@ struct TryOnView: View {
             } catch {
                 await MainActor.run {
                     isGenerating = false
-                    errorMessage = error.localizedDescription
+                    errorMessage = "Não foi possível gerar o try-on. Verifique sua conexão e tente novamente."
                     showError = true
                     HapticFeedback.error()
                 }
