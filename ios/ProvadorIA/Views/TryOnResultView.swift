@@ -1,10 +1,14 @@
 import SwiftUI
+import Photos
 
 struct TryOnResultView: View {
     let tryOn: TryOn
     @Environment(\.dismiss) private var dismiss
     @State private var showShareSheet = false
     @State private var showSavedAlert = false
+    @State private var showSaveError = false
+    @State private var saveErrorMessage = ""
+    @State private var isSaving = false
     @State private var showBeforeAfter = false
     
     var body: some View {
@@ -25,6 +29,11 @@ struct TryOnResultView: View {
             Button("OK") { }
         } message: {
             Text("A imagem foi salva na sua galeria.")
+        }
+        .alert("Erro", isPresented: $showSaveError) {
+            Button("OK") { }
+        } message: {
+            Text(saveErrorMessage)
         }
     }
     
@@ -257,13 +266,15 @@ struct TryOnResultView: View {
     
     private var actionButtons: some View {
         HStack(spacing: 12) {
-            Button(action: {
-                HapticFeedback.success()
-                showSavedAlert = true
-            }) {
+            Button(action: saveToGallery) {
                 HStack(spacing: 8) {
-                    Image(systemName: "bookmark")
-                    Text("Salvar")
+                    if isSaving {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .cherryBone))
+                    } else {
+                        Image(systemName: "bookmark")
+                    }
+                    Text(isSaving ? "Salvando..." : "Salvar")
                 }
                 .font(.system(size: 15, weight: .semibold, design: .default))
                 .foregroundColor(.cherryBone)
@@ -274,6 +285,7 @@ struct TryOnResultView: View {
                         .stroke(Color.cherryBone, lineWidth: 1)
                 )
             }
+            .disabled(isSaving)
         }
         .padding(.horizontal, 24)
         .padding(.vertical, 16)
@@ -281,7 +293,44 @@ struct TryOnResultView: View {
     }
     
     private func saveToGallery() {
-        showSavedAlert = true
+        guard let url = URL(string: tryOn.imageURL), !tryOn.imageURL.isEmpty else {
+            saveErrorMessage = "Nenhuma imagem disponível para salvar."
+            showSaveError = true
+            return
+        }
+        
+        isSaving = true
+        
+        Task {
+            do {
+                let (data, _) = try await URLSession.shared.data(from: url)
+                guard let image = UIImage(data: data) else {
+                    await MainActor.run {
+                        isSaving = false
+                        saveErrorMessage = "Não foi possível processar a imagem."
+                        showSaveError = true
+                    }
+                    return
+                }
+                
+                try await PHPhotoLibrary.shared().performChanges {
+                    let request = PHAssetCreationRequest.forAsset()
+                    request.addResource(with: .photo, data: data, options: nil)
+                }
+                
+                await MainActor.run {
+                    isSaving = false
+                    HapticFeedback.success()
+                    showSavedAlert = true
+                }
+            } catch {
+                await MainActor.run {
+                    isSaving = false
+                    saveErrorMessage = "Não foi possível salvar na galeria. Verifique as permissões."
+                    showSaveError = true
+                }
+            }
+        }
     }
 }
 
