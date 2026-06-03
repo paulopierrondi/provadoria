@@ -51,7 +51,7 @@ Na sidebar, clique em **App Information**:
 Após criar o app record, volte ao terminal e rode:
 
 ```bash
-cd /Users/paulopierrondi/Downloads/provadoria/ios
+cd /Users/paulopierrondi/Projects/provadoria/ios
 ./release.sh
 ```
 

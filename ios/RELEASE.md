@@ -15,13 +15,13 @@
 
 ### Opção A: Script Shell (recomendado)
 ```bash
-cd /Users/paulopierrondi/Downloads/provadoria/ios
+cd /Users/paulopierrondi/Projects/provadoria/ios
 ./release.sh
 ```
 
 ### Opção B: Comandos Manuais
 ```bash
-cd /Users/paulopierrondi/Downloads/provadoria/ios
+cd /Users/paulopierrondi/Projects/provadoria/ios
 
 # 1. Archive
 xcodebuild -project ProvadorIA.xcodeproj \

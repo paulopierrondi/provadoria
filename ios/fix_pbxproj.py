@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import re
 
-pbxproj_path = "/Users/paulopierrondi/Downloads/provadoria/ios/ProvadorIA.xcodeproj/project.pbxproj"
+pbxproj_path = "/Users/paulopierrondi/Projects/provadoria/ios/ProvadorIA.xcodeproj/project.pbxproj"
 
 with open(pbxproj_path, "r") as f:
     content = f.read()

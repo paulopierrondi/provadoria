@@ -5,8 +5,15 @@ struct ProvadorIAApp: App {
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
     
     init() {
-        if ProcessInfo.processInfo.arguments.contains("--uitest-reset") {
+        let arguments = ProcessInfo.processInfo.arguments
+        if arguments.contains("--uitest-reset") {
             UserDefaults.standard.removeObject(forKey: "hasSeenOnboarding")
+        }
+        if arguments.contains("--skip-onboarding") || arguments.contains("--screenshot-mode") {
+            UserDefaults.standard.set(true, forKey: "hasSeenOnboarding")
+        }
+        if arguments.contains("--screenshot-mode") {
+            UserDefaults.standard.set(true, forKey: "hasAcceptedAIPhotoProcessing")
         }
         
         let appearance = UITabBarAppearance()

@@ -1,9 +1,9 @@
 # Project Brain Context
 
-Generated: `2026-05-22 09:47:44`
+Generated: `2026-06-02 23:38:21`
 Tool: `sync`
 Local Obsidian vault: `/Users/paulopierrondi/Documents/Obsidian Vault`
-Repository: `/Users/paulopierrondi/Downloads/provadoria`
+Repository: `/Users/paulopierrondi/Projects/provadoria`
 
 This is a non-secret snapshot of the local Obsidian second brain for this repository.
 
@@ -19,6 +19,622 @@ This is a non-secret snapshot of the local Obsidian second brain for this reposi
 8. After meaningful work, update the live Obsidian project note or append durable context to `.brain/SESSION_NOTES.md`.
 
 ## Required Checklist Snapshot
+
+## 04_Areas/Profile/Paulo Pierrondi Profile.md
+
+---
+type: profile
+owner: Paulo Pierrondi
+updated: 2026-05-15
+tags:
+  - profile
+  - operating-context
+  - service-now
+  - bradesco
+  - agent-memory
+---
+# Paulo Pierrondi Profile
+
+This is required user context for Codex/GPT, Claude Code, Kimi and Gemini.
+
+## Executive Summary
+
+Paulo works across enterprise tech, personal products, family and faith. He is a Technical Account Executive at ServiceNow, focused on the Banco Bradesco account in Brazil, while also building side projects and monetizable frameworks/IP. He prefers direct, structured, information-dense responses with honest analytical pushback. Brazil-facing content defaults to Portuguese.
+
+## Response Style
+
+- Lead with the answer.
+- Use executive summary first for complex topics.
+- Use bullets and tables when they improve clarity.
+- Be direct, dense and copy-paste ready.
+- Avoid fluff, motivational tone and vague encouragement.
+- Use PT-BR for Brazil-facing material.
+- Analogies and frameworks are useful when they sharpen thinking.
+- Push back when assumptions are weak, but keep the tone pragmatic.
+- Prefer metrics, tradeoffs, explicit risks and next actions.
+- Do not end with soft filler such as "se fizer sentido".
+
+## Professional Context
+
+- Role: Technical Account Executive (TAE) at ServiceNow, global team.
+- Primary account: Banco Bradesco, FSI Brazil.
+- Works with Rodrigo Rezende (Client Director) and Joao Saes (SC).
+- Coordinates with Impact and CEG/Services.
+- Recurring themes:
+  - Bradesco account strategy.
+  - CMDB/CSDM transformation.
+  - Now Assist and AI Agents.
+  - Governance and operating model.
+  - FSI positioning.
+  - 2026 roadmap.
+
+## Personal Context
+
+- Carioca.
+- Lived for a long period in Dublin.
+- Currently based in Sao Jose dos Campos, SP.
+- Married, family-oriented.
+- Faith-oriented worldview.
+- Entrepreneurial mindset.
+- Active interest in monetizing frameworks and IP.
+- US or EMEA relocation is on the radar.
+
+## Top Of Mind
+
+- `pptx-engine`: TypeScript/Node.js CLI for executive deck generation, multi-LLM with Claude and GPT-4, four-phase architecture.
+- Claude Code as autonomous long-running agents, including 8-hour runs, across apps such as `exploratorio` and `investcoach_ai`.
+- Now Assist Bradesco Operating Model is active.
+- Critical open question: direct ServiceNow investment versus Bradesco-authorized budget.
+
+## Bradesco Live Context
+
+- CMDB program organized in four plateaus:
+  1. Fundacao.
+  2. Fonte Unica.
+  3. Conexao Negocio.
+  4. Excelencia.
+- Accenture is the primary executor, around 800 hours.
+- Other partners: NTT, IBM and 4MATT.
+- Governance stakeholders:
+  - Edson: sponsor.
+  - Fabio: strategic forum.
+  - Marcena: operational forum.
+  - Rodolfo and Rogerio: technical CCB.
+- Recurring bottleneck: COI/Sayumi after the January SPM incident.
+- Terminology rules:
+  - Use `SPM`, not `ITBM`.
+  - Use `forum`, not `committee/comite`, unless quoting source material.
+  - `Cilmara` is spelled with C.
+
+## Tools And Frameworks
+
+- Claude Code skills:
+  - `servicenow-project-pptx`.
+  - `bradesco-project-pptx`.
+- MCP `servicenow-ai-demo` for `cmdb_ci` queries.
+- CMDB context: 61K+ records, with gaps in ownership, serial and IP.
+- Framework SADA.
+- CSDM Data Quality Analyzer:
+  - Python.
+  - Bilingual.
+  - FSO/regulatory focus.
+
+## Now Assist Editorial Rule
+
+Every Bradesco Now Assist material must explicitly connect:
+
+`operating model -> adoption velocity -> revenue expansion`
+
+## How Agents Should Use This
+
+- Before career, executive, ServiceNow, Bradesco, FSI, Now Assist, CSDM, deck, roadmap or positioning work, read this note.
+- When writing for Bradesco or Brazil stakeholders, default to PT-BR and executive density.
+- When writing internal or global ServiceNow strategy, keep terminology precise and avoid over-claiming.
+- When creating decks, use a consultant-style structure: thesis, evidence, options, recommendation, risks, decision needed.
+- For side projects, connect product decisions to monetization, distribution, operational leverage and reusable IP.
+- For personal/career questions, balance enterprise credibility, entrepreneurial upside, family constraints, faith-aligned values and relocation optionality.
+
+## Non-Goals
+
+- Do not invent private facts beyond this profile and the project notes.
+- Do not over-personalize routine code answers.
+- Do not turn faith/family into generic motivational content.
+- Do not expose personal or enterprise-sensitive details outside the intended context.
+
+## 99_System/AI Agent Vault Policy.md
+
+---
+type: policy
+status: generated
+generated_at: "2026-06-02 23:37:30"
+tags:
+  - ai-agents
+  - policy
+  - second-brain
+  - generated
+---
+# AI Agent Vault Policy
+
+Vault principal: `/Users/paulopierrondi/Documents/Obsidian Vault`
+
+Esta politica vale para Codex, Claude Code, Gemini CLI e Kimi CLI.
+
+## User Operating Profile
+
+- Perfil completo: [[04_Areas/Profile/Paulo Pierrondi Profile]]
+- Paulo trabalha entre enterprise tech, side projects, familia e fe.
+- Profissionalmente, e TAE na ServiceNow, foco Banco Bradesco / FSI Brasil.
+- Estilo esperado: direto, executivo, denso, estruturado, copy-paste ready, sem fluff.
+- PT-BR para conteudo Brasil; pushback analitico e bem-vindo.
+- Para Now Assist no Bradesco, conectar sempre: modelo operacional -> velocidade de adocao -> expansao de receita.
+
+## Inicio de sessao
+
+- Identificar o `cwd` atual e procurar a nota correspondente em `02_Projects`.
+- Ler [[04_Areas/Profile/Paulo Pierrondi Profile]] para entender quem e Paulo, contexto profissional/pessoal, estilo de resposta e prioridades.
+- Ler `Home.md`, `02_Projects/Projects Index.md` e a nota do projeto antes de fazer mudancas relevantes.
+- Ler `.brain/PROJECT_CONTEXT.md` quando existir no repo.
+- Rodar `brain-linear-sync` ou ler [[04_Areas/Coding/Linear/Linear Git Sync Report]] para entender estado Git/local antes de iniciar.
+- Para trabalho multi-coder, background coder, automacao, Antigravity ou sessao que precise continuidade, ler [[04_Areas/Coding/Agent Coder Integration OS]] e criar/atualizar handoff em `Hub_Agentes/06_Runtime/handoffs`.
+- Para roadmap, bugs, status, prioridade, release ou planejamento, ler [[04_Areas/Coding/Linear/Linear Git Development Tracking OS]] e conferir o projeto/issue no Linear.
+- Ler [[04_Areas/Coding/Best Practices/Development Best Practices Hub]] e as melhores praticas relevantes da plataforma.
+- Ler [[04_Areas/Coding/Checklists/Project Checklist Hub]] e os checklists relevantes para a plataforma.
+- Para app, site, tela, fluxo visual, screenshot ou store submission, ler [[04_Areas/Coding/Best Practices/App Web Quality Best Practices]], [[04_Areas/Coding/Checklists/App Web Preflight Checklist]] e [[04_Areas/Coding/Checklists/Screenshots Visual QA Checklist]].
+- Para iOS, Android ou web app, ler tambem o preflight especifico da plataforma.
+- Para iOS/App Store Connect/TestFlight/signing/IAP/APNS, ler [[04_Areas/Coding/Checklists/Apple Developer And App Store Connect Inventory]] e [[04_Areas/Coding/Checklists/App Store Connect Upload Runbook]] antes de pedir IDs, chaves, configurar CI ou fazer upload.
+- Para produto, monetizacao, novas ideias de app, receita, pricing, growth ou priorizacao de side projects, ler [[04_Areas/Product/Product Revenue MOC]], [[04_Areas/Product/Nightly Opportunity Engine]], [[04_Areas/Product/App Ideas Revenue Backlog]], [[04_Areas/Product/App Refinement Backlog]] e [[04_Areas/Product/Nightly Opportunity Report]].
+- Para criativos, videos, social, campanhas, ElevenLabs, legendas ou pierrondi.dev, ler [[04_Areas/Marketing/Marketing MOC]], [[04_Areas/Marketing/Pierrondi.dev Creative Video OS]], [[04_Areas/Marketing/ElevenLabs Voice And Subtitle Workflow]], [[04_Areas/Marketing/Social Video Platform Specs 2026]] e [[04_Areas/Marketing/Creative QA Checklist]].
+- Para Apple Ads / ASA, App Store paid acquisition, ASO, CPP, campanhas pagas ou tuning de marketing de apps, ler [[04_Areas/Marketing/App Marketing Intelligence OS]], [[04_Areas/Marketing/Apple Ads ASA Tuning Runbook]], [[04_Areas/Marketing/App Marketing Metrics Inventory]], [[04_Areas/Marketing/App Marketing Daily Tuning Report]] e [[04_Areas/Marketing/App Marketing Tuning Backlog]].
+- Para melhorar o proprio vault, memoria de agentes, Obsidian, MOCs ou rotinas, ler [[04_Areas/Second Brain/Second Brain Intelligence Loop]], [[99_System/Second Brain Intelligence Report]], [[99_System/Claude Code Nightly Second Brain Routine]] e [[04_Areas/Second Brain/External Source Watchlist]].
+- Para qualquer automacao, rotina, job agendado, cron, LaunchAgent, cloud runner ou follow-up automatico, ler [[99_System/Automation Email Policy]] e enviar email de encerramento para `pierrondi@gmail.com`.
+- Ler [[04_Areas/Coding/Checklists/Security Checklist]] antes de auth, dados, APIs, deploy ou IA.
+- Ler [[99_System/Security And Secrets Policy]] antes de lidar com API keys, tokens, env vars ou credenciais.
+- Para credenciais, tratar [[99_System/Credential Vault Operating Model]] como fonte canonica: o vault guarda inventario/referencia, nunca valor real.
+- Para env vars em files locais e automacoes, ler [[99_System/Central Env File Operating Model]]: `/Users/paulopierrondi/Projects/.keys.env` (chmod 600, gitignored) e a fonte unica local, carregada via `brain-env-run -- <comando>`; `./.env` do projeto sobrescreve. Nunca `source .env` ou `python-dotenv` cru em scripts novos.
+- Se a credencial estiver no escopo de [[99_System/Secret Exposure Incident - 2026-05-19]], exigir rotacao antes de uso e usar `/Users/paulopierrondi/.loc
+...[truncated]
+
+## 99_System/Prompt Caching Workflow Policy.md
+
+---
+type: policy
+status: active
+created: 2026-05-22
+tags:
+  - automation
+  - agents
+  - prompt-caching
+  - cost-control
+  - ai-runtime
+---
+# Prompt Caching Workflow Policy
+
+## Rule
+
+All recurring, high-token, multi-agent or production-adjacent AI workflows must be cache-aware.
+
+The required prompt shape is:
+
+```text
+CACHEABLE_PREFIX_START
+stable operating contract
+stable agent / workflow policy
+stable project context
+stable quality gates
+stable output schema
+CACHEABLE_PREFIX_END
+
+DYNAMIC_TASK_START
+current date, live state, user request, diffs, logs, search results, blockers
+DYNAMIC_TASK_END
+```
+
+Static context goes first. Dynamic context goes last. Do not mix timestamps, live status, search results, diffs, log tails or user-specific deltas into the cacheable prefix.
+
+## Cacheable Prefix Order
+
+Use this order whenever a workflow builds a prompt, handoff, CLI request or API call:
+
+1. System role and non-negotiable safety rules.
+2. Agent Hub enforcement and human gates.
+3. Paulo profile, response style and operating preferences.
+4. Runtime/provider routing policy.
+5. Project static context: `AGENTS.md`, `CLAUDE.md`, `KIMI.md`, `GEMINI.md`, `CODEX_RULES.md`, `.brain/PROJECT_CONTEXT.md`.
+6. Reusable checklists, quality gates, App Store rules, security policy and output contracts.
+7. Tool schemas or structured output schema.
+8. Dynamic task delta only after `CACHEABLE_PREFIX_END`.
+
+## Never Cache
+
+Do not include these in cacheable prefixes:
+
+- API keys, tokens, cookies, private keys, `.env` values, session exports or credential screenshots.
+- Current date/time, git dirty lists, live Linear issue bodies, App Store live status, provider dashboard state, web search results, logs, diffs or stack traces.
+- Personal data or private note content that is not required by the workflow.
+- Anything marked `ROTATE_REQUIRED`.
+
+Secrets must stay in provider env vars, Keychain, 1Password when available, or approved secret-intake flows. The vault stores references and metadata only.
+
+## Provider Mapping
+
+| Provider / surface | Cache mechanism | Required workflow behavior |
+| --- | --- | --- |
+| OpenAI / Codex / OpenAI API | Automatic prompt caching for exact repeated prefixes on eligible long prompts; optional `prompt_cache_key`; optional `prompt_cache_retention`; usage exposes `cached_tokens` | Keep identical static prefix, put dynamic task last, use a stable `prompt_cache_key` when direct API calls share a prefix, and log `cached_tokens` when surfaced. |
+| Anthropic / Claude API | Automatic or explicit `cache_control` breakpoints; default 5 minute TTL; optional 1 hour TTL; tool definitions can be cached | Put `cache_control` on the last stable block, not on timestamp or task delta. Keep stable tools/system/messages ordered; use deferred tools where available to avoid invalidating the prefix. |
+| Gemini API | Implicit caching on supported models plus explicit cached content objects for guaranteed savings; usage metadata exposes cached token counts | Create/reuse cached content for stable docs; send only task delta as fresh prompt when direct API supports it. Put large common content at the beginning for implicit cache hits. |
+| Kimi / Moonshot API | Context Caching with cache tags and `role=cache` references | Cache stable files/context with a workflow tag; pass `role=cache` reference plus task delta when direct API supports it. |
+| CLI wrappers without direct cache controls | Stable prefix file plus dynamic task file | Keep prefix files byte-stable; pass current task as suffix. Record strategy as `cli-prefix-layout`. |
+
+## Cache Keys
+
+When a workflow can control cache routing or tag names, use a stable key with this shape:
+
+```text
+paulo:{workflow_id}:{agent_id}:{project_id}:{policy_version}:{context_version}
+```
+
+Do not include dates, branch names that churn daily, live issue titles or secrets in cache keys.
+
+## Required Telemetry
+
+Every recurring workflow report, run note or email must include a redacted prompt-cache block:
+
+```yaml
+prompt_cache:
+  policy: "/Users/paulopierrondi/Documents/Obsidian Vault/99_System/Prompt Caching Workflow Policy.md"
+  strategy: "openai-auto | anthropic-cache-control | gemini-cached-content | kimi-context-cache | cli-prefix-layout | not-supported"
+  cache_key_or_tag: "redacted-or-nonsecret"
+  prefix_version: "YYYY-MM-DD-or-hash"
+  prefix_hash_recorded: true
+  cached_tokens: null
+  input_tokens: null
+  output_tokens: null
+  cache_hit_rate: null
+  notes: "metrics unavailable in this CLI" 
+```
+
+If a CLI does not expose token telemetry, record `null` and explain the strategy used. Absence of telemetry is a workflow quality issue, not a blocker for urgent execution.
+
+## Tool And Schema Hygiene
+
+Provider docs agree that cache invalidation is usually caused by changing the prefix. For agent workflows:
+
+- Keep always-needed tools and structured output schemas stable.
+- Put optional or discovered tools after the cacheable prefix when the runtime supports deferred tool loading.
+- Do not toggle web search
+...[truncated]
+
+## 04_Areas/Coding/Linear/Linear Git Development Tracking OS.md
+
+---
+type: "coding-note"
+status: "indexed"
+normalized_on: "2026-05-20"
+tags:
+  - coding
+  - frontmatter-normalized
+---
+# Linear App + Git Development Tracking OS
+
+Status: active
+Owner: Paulo
+Updated: 2026-05-16
+
+This is the operating system for keeping the Linear app, Git and the Obsidian second brain aligned. `brain-linear-sync` is useful, but it is not the source of truth for Linear. The Linear app connector is the source of truth for projects, issues, cycles/sprints, statuses, labels, assignees, comments and project updates.
+
+## Sources Of Truth
+
+- Code and local state: Git repositories.
+- Product/development queue: Linear app workspace `Agentcore`.
+- Durable memory: Obsidian project notes, AI history and `.brain/PROJECT_CONTEXT.md`.
+- Local machine report: [[04_Areas/Coding/Linear/Linear Git Sync Report]] generated by `brain-linear-sync`; this is only Git metadata + mapping hints.
+- Live Linear objects: read through the Linear app connector before planning, status, sprint/cycle or cleanup decisions.
+- Linear mapping notes: [[04_Areas/Coding/Linear/Linear Project Map]].
+- Cleanup queue: [[04_Areas/Coding/Linear/Linear Cleanup Backlog]].
+
+## Required Start Gate
+
+Before planning or coding in any project:
+
+1. Run `brain-linear-sync` or read the latest [[04_Areas/Coding/Linear/Linear Git Sync Report]] for local Git state only.
+2. Read the matching project note from [[02_Projects/Projects Index]].
+3. Read matching AI history under [[03_AI-Chats/AI Chats Index]] when relevant.
+4. Use the Linear app connector to read the live Linear project/issue whenever the task is roadmap, bug, status, scope, priority, release, sprint/cycle, automation, product planning or backlog cleanup related.
+5. For a normal coding chat, identify the likely Linear issue before edits. If no issue exists and the task is more than a tiny one-off, create or propose a Linear issue instead of letting work disappear into chat history.
+6. Check branch, dirty files, ahead/behind state, live Linear status, cycle/sprint and assignee before editing.
+
+## Required Finish Gate
+
+After meaningful work:
+
+- Update the Obsidian project note with decisions, commands, files changed, risks, deploy state and next steps.
+- Update the Linear issue when issue reality changed: status, assignee, priority, labels, cycle/sprint, blocker, evidence or completion state.
+- Add a Linear comment/status summary when work produced meaningful evidence but should not change status yet.
+- Keep Linear issue links in the project note when a task is driven by Linear.
+- Store no secrets in Linear or Obsidian. Secret values stay in providers or secret managers.
+- If the work creates reusable practice, add it to [[04_Areas/Coding/Best Practices/Learning Inbox]].
+
+## Linear Connector Rules
+
+- Use the Linear app connector for live reads: projects, issues, cycles/sprints, labels, statuses, assignees, comments and project status updates.
+- Do not treat [[04_Areas/Coding/Linear/Linear Git Sync Report]] as a substitute for live Linear. It only says which repos look mapped or unmapped from local metadata.
+- Every new chat that performs coding/project work must either attach itself to an existing Linear issue/project or explicitly record why no Linear update is appropriate.
+- Do not bulk-close, archive, delete, relabel or assign without an explicit cleanup step.
+- Automation can generate cleanup proposals, not destructive changes.
+- Treat old `Done` issues with missing labels/assignees as cleanup candidates, not coding blockers.
+- Treat `In Progress` issues with stale Git repos as daily-priority candidates.
+- Treat cycles/sprints as planning data: read current/next cycles before moving work into or out of sprint scope.
+
+## Daily Sync Output
+
+Daily sync should produce:
+
+- Git repo health: dirty/ahead/behind/stale/unmapped.
+- Linear app health: active projects, current/next cycles, stale `In Progress`, high-priority `Todo`, backlog overload, unlabeled/unassigned issues, orphan issues with no project and projects with stale status updates.
+- Project note updates for active repos.
+- Cleanup proposals in [[04_Areas/Coding/Linear/Linear Cleanup Backlog]].
+- Learning candidates for best practices.
+
+## Organic Prompt For Coders
+
+Use this at the start of a new coding session:
+
+```text
+Read the Obsidian second brain preflight, run or inspect brain-linear-sync for Git state, then use the Linear app connector to read the matching project/issue/cycle/status before edits. Continue from project memory. After meaningful work, update the project note and the live Linear issue/project if reality changed. Do not store secrets.
+```
+
+## Cloud / Other Machine Rule
+
+Cloud coders and other machines will not automatically have the local vault. They must use:
+
+- `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` or `KIMI.md`.
+- `.brain/PROJECT_CONTEXT.md`.
+- `.brain/CLAUDE_CLOUD_CONTEXT.md` when present.
+- Live Linear app connector if available. If unavailable, say so clearly and leave a concrete Linear update proposal for the nex
+...[truncated]
+
+## 04_Areas/Coding/Linear/Linear Project Map.md
+
+---
+type: "coding-note"
+status: "indexed"
+normalized_on: "2026-05-20"
+tags:
+  - coding
+  - frontmatter-normalized
+---
+# Linear Project Map
+
+Updated: 2026-05-28
+
+This map links Linear projects to local repos and Obsidian project notes. It is mapping metadata only.
+
+Important: this note is not the Linear source of truth. Always verify live projects/issues/cycles through the Linear app connector before updating status, scope, sprint/cycle, labels or assignees.
+
+| Linear project | Status | Priority | Repo / path hint | Obsidian note hint | Notes |
+| --- | --- | --- | --- | --- | --- |
+| Itaú NowMobile ServiceNow | Backlog | High | `itau-nowmobile-servicenow` | search Projects Index | New live project from 2026-05-21; repo appears in local sync as `/Users/paulopierrondi/Projects/itau-nowmobile-servicenow` on `codex/AGE-1517-vibe-code-integration` and as `/Users/paulopierrondi/Documents/itau-nowmobile-servicenow` in the project description. |
+| nowassistdemo | Planned | High | `nowassistdemo` | search Projects Index | ServiceNow AI demo control plane. Newest project in Linear. |
+| Pierrondi.ia - Apple Design Redesign | Backlog | High | `pierrondi-ia` | `pierrondi-ia` | Design-system redesign track for public site and Studio. |
+| fifa26bolao - Bolao Express | Backlog | No priority | `fifa2026bolao`, `bolao` | search Projects Index | iOS + Railway backend. Active issues remain in progress/todo. |
+| Jarvis Butler Experience | Backlog | No priority | `pierrondi-ia` | `pierrondi-ia` | Butler/chat/voice/dashboard experience inside Marketing OS. |
+| ServiceNow Agent Army | In Progress | Urgent | `servicenow-agent-army` | search Projects Index | Community ServiceNow agent product. |
+| Pierrondi Marketing OS | In Progress | Urgent | `pierrondi-ia` | `pierrondi-ia` | Core marketing platform and Studio. |
+| PPT_Formation | Backlog | High | `ppt_engine`, `ppt` | search Projects Index | Agentic PPTX engine. |
+| Fashion Stylist AI | Completed | High | `fashion` | search Projects Index | Completed in Linear, still useful as app pattern source. |
+| Faith | Completed | High | `faith`, `faithschool` | `faithschool-web` | Moved to Past Projects after iOS `2.5.2 (64)` was submitted for App Store Review on 2026-05-26. |
+| Design System Consistency | Backlog | High | `csdm-validator` | search Projects Index | CSDM visual consistency project. |
+| Privacy & Cookie Compliance | Planned | No priority | `pierrondi-ia`, `agentcore`, `csdm-validator` | search Projects Index | Cross-product compliance queue. |
+| Brain Coach - Context-Aware Copilot & AI Architect Workflows | Planned | No priority | `brain`, `servicenow`, `csdm` | search Projects Index | ServiceNow architect/copilot workflows. |
+| Investcoach_ai | Backlog | No priority | `investcoach` | search Projects Index | Project exists but needs repo mapping confirmation. |
+| Agentcore Website | Backlog | Urgent | `agentcore`, `pierrondi-ia` | `pierrondi-ia` | Institutional/landing website; may overlap with Marketing OS repo. |
+| Cantus.ai Harmonizer | In Progress | High | `cantus`, `cantu`, `CantuStudio` | search Projects Index | Harmonizer + iOS review history. |
+| csdm_validator | In Progress | Urgent | `csdm-validator`, `csdm_validator` | search Projects Index | ServiceNow CSDM validator web/iOS track. |
+| iOS App Portfolio Revenue OS | In Progress | Urgent | multiple app repos | app marketing/product notes | Umbrella tracker for review queue and paid evidence gate; see AGE-1474. |
+| Adivinha! Music Quiz | Todo via issue | High | `adivinha-app`, `adivinha-music-quiz` | search Projects Index | Live issue AGE-1477 covers RevenueCat/shared secret and sandbox purchase. |
+| Aura Daily Affirmations | Todo via issue | High | `aura-affirmations` | search Projects Index | Live issue AGE-1478 covers audio-led launch and PPO hypothesis. |
+| Bandle BR / Music Quiz | Todo via issue | High | `bandle-br`, `adivinha-music-quiz` | search Projects Index | Live issue AGE-1480 covers App Review rejection and retention/share proof. |
+| InvestCoach.AI | Todo via issue | Urgent | `investcoach_ai` | `investcoach_ai` | Live issue AGE-1482 gates paid scale on Test Events and Apple Ads export. |
+| Muse Edit Growth | Todo via issue | High | `fashioncore` | search Projects Index | Live issue AGE-1481 separates current Muse Edit growth from historical Fashion Stylist AI. |
+| MyTone - AI Ringtone Studio | Todo via issue | High | `mytone-app`, `mytone-ringtone` | search Projects Index | Live issue AGE-1476 covers StoreKit smoke test and post-approval hooks. |
+| Parabens IA BR | Todo via issue | High | `parabens-ai-br` | search Projects Index | Live issue AGE-1479 covers App Review/resubmit and BR creative proof. |
+| pierrondi.dev Public Site | Todo via issue | High | `pierrondi-site` | search Projects Index | Live issue AGE-1486 covers proof page and analytics readiness. Canonical production is Railway (`www.pierrondi.dev` / `pierrondi-site-production.up.railway.app`); Vercel aliases are legacy/non-official. |
+| Ser
+...[truncated]
+
+## 99_System/Automation Email Policy.md
+
+---
+type: policy
+status: active
+tags:
+  - automation
+  - email
+  - notification
+---
+# Automation Email Policy
+
+Regra fixa: toda automacao, independente de rodar em Codex, Claude, Kimi/OpenClaw, Gemini, LaunchAgent local, cloud runner ou script agendado, deve enviar um email de encerramento para `pierrondi@gmail.com`.
+
+## Obrigatorio
+
+- Enviar email ao final de cada run, tanto em sucesso quanto em falha.
+- Destinatario padrao unico: `pierrondi@gmail.com`.
+- Assunto deve identificar automacao e status.
+- Corpo deve incluir:
+  - nome/id da automacao;
+  - status final;
+  - horario;
+  - principais mudancas/achados;
+  - arquivos/relatorios atualizados;
+  - decisoes humanas pendentes;
+  - falhas ou bloqueios.
+- Redigir segredos antes do envio.
+
+## Transporte Local Padrao
+
+Em automacoes locais no Mac, usar:
+
+```bash
+/Users/paulopierrondi/.local/bin/brain-send-automation-email --automation "<id>" --status "<success|failed>" --log "<path>"
+```
+
+Para LaunchAgents ou `run.sh`, usar o wrapper/trap:
+
+```bash
+/Users/paulopierrondi/.local/bin/brain-run-with-email --automation "<id>" --log "<path>" -- <command>
+```
+
+ou:
+
+```bash
+source /Users/paulopierrondi/.local/bin/brain-automation-email-trap
+brain_automation_email_setup "<id>"
+```
+
+## Cloud / Connector Rule
+
+Se a automacao rodar fora do Mac local:
+
+- usar o conector/ferramenta de email disponivel para enviar a `pierrondi@gmail.com`;
+- se nao houver transporte de email disponivel, criar um draft em Markdown e registrar `EMAIL_FAILED` em [[99_System/Automation Email Log]];
+- a falha de transporte deve aparecer no relatorio final e no vault.
+
+## Guardrails
+
+- Esta regra e a unica excecao padrao a "nao enviar mensagens externas".
+- Nao enviar email para terceiros automaticamente.
+- Nao anexar `.env`, tokens, API keys, cookies, private keys, credenciais, dumps de banco, PII bruta ou logs sem redacao.
+- Nao usar `/usr/bin/mail` direto para Gmail; usar Mail.app/iCloud local quando no Mac.
+- Se o email falhar, salvar draft seguro em [[99_System/Automation Email Drafts]].
+
+## 99_System/Credential Vault Operating Model.md
+
+---
+type: policy
+status: active
+tags:
+  - security
+  - secrets
+  - credentials
+  - second-brain
+---
+# Credential Vault Operating Model
+
+## Answer First
+
+O Obsidian pode ser o **cofre operacional** das credenciais, mas nao deve guardar o **valor real** de API keys, tokens, senhas, cookies, private keys ou arquivos `.env`.
+
+Modelo correto:
+
+```text
+Obsidian             = indice, inventario, runbook, owner, escopo, rotacao, referencia
+/Projects/.keys.env       = fonte unica local para files e automacoes (chmod 600, gitignored)
+Apple Keychain       = cofre durable de valores (paulo-second-brain namespace)
+1Password (futuro)   = referencias multi-machine via op://...
+Provider env vars    = runtime/producao (Railway, Vercel, GitHub Actions)
+```
+
+Carregamento canonico em scripts locais: `brain-env-run -- <comando>`. Detalhes operacionais em [[99_System/Central Env File Operating Model]].
+
+## Por que nao guardar segredo real em Markdown
+
+- O Obsidian guarda notas como arquivos Markdown em texto plano no filesystem local.
+- Obsidian Sync pode proteger o remote vault, mas o vault local continua legivel para qualquer processo/usuario com acesso ao Mac desbloqueado.
+- Plugins, indexadores, backups, search, logs, screenshots e agentes podem acabar lendo o conteudo.
+- LLMs e automacoes devem usar referencias e inventario, nao receber valor real.
+
+## Onde guardar o valor real
+
+| Uso | Local recomendado | Motivo |
+| --- | --- | --- |
+| Variaveis compartilhadas entre projetos locais | `/Users/paulopierrondi/Projects/.keys.env` (chmod 600, gitignored) carregado via `brain-env-run` | Fonte unica para files e automacoes; precedence aceita override por projeto. |
+| Override por projeto local | `./.env` no diretorio do projeto | Aplicado apos o central, vence em conflito. |
+| Senhas/passkeys pessoais | Apple Passwords / iCloud Keychain ou 1Password | Sync seguro com devices aprovados. |
+| API keys de desenvolvimento durable | 1Password Developer / 1Password CLI | Permite `op://...` references e `op run` sem plaintext. |
+| Secrets de producao Railway/Vercel/Netlify/Fly/Render | Provider env vars | O runtime injeta sem passar pelo vault. |
+| CI/CD | GitHub Actions Secrets ou provider equivalente | Separacao de acesso por repo/env. |
+| Cloud enterprise | AWS/GCP/Azure secret manager | IAM, audit, rotacao e least privilege. |
+| Fallback local Mac | Apple Keychain via `brain-load-secrets`/`brain-secret-intake` | Bom para credenciais humanas e backing durable do `.env` central. |
+
+## O que o vault deve guardar
+
+Guardar em [[04_Areas/Coding/Checklists/Secrets And API Keys Register]]:
+
+- Nome da env var.
+- Provider.
+- Projeto/repos que usam.
+- Ambiente: local, staging, prod, CI.
+- Onde o valor real esta guardado.
+- Referencia segura, quando houver, como `op://vault/item/field`.
+- Escopo/permissao.
+- Owner.
+- Data de criacao/rotacao.
+- Procedimento de revogacao.
+- Evidencia de que `.env.example` existe sem valor real.
+
+## O que o vault nunca deve guardar
+
+- API key real.
+- Bearer token, refresh token, session token ou cookie.
+- Senha.
+- Private key `.p8`, `.pem`, `.key`, `.p12`.
+- Service account JSON.
+- `.env` completo.
+- Screenshot mostrando credenciais.
+- Output de CLI que imprima secrets.
+
+## Padrao recomendado para Paulo
+
+### 1. `/Users/paulopierrondi/Projects/.keys.env` como fonte unica local
+
+Carregar com `brain-env-run`:
+
+```bash
+brain-env-run -- npm run dev
+brain-env-run -- python3 scripts/factory.py
+brain-env-run list           # mostra apenas nomes
+brain-env-run check          # confirma chmod 600 e contagem de keys
+```
+
+Regras: `chmod 600`, gitignored, nunca em Markdown/chat/Linear/email/screenshot. Detalhes em [[99_System/Central Env File Operating Model]].
+
+### 2. Apple Keychain como backing durable do `.env` central
+
+`brain-secret-intake` grava no Keychain; `brain-load-secrets` exporta no shell ou subprocess. Useful para regerar o `.env` central apos rotacao ou em maquina nova. Receita completa em [[99_System/Central Env File Operating Model]].
+
+### 3. 1Password como cofre principal multi-machine (futuro)
+
+Quando `op` estiver instalado:
+
+```bash
+export OPENAI_API_KEY="op://Developer/OpenAI/api-key"
+op run -- npm run dev
+```
+
+Regra: `.env.op` pode guardar referencias `op://...`; `.env.local` com valor real fica local e gitignored.
+
+### 4. Apple Passwords / iCloud Keychain para credenciais humanas
+
+Usar para contas, passkeys, senhas de apps e acesso no iPhone/Mac. Bom para uso humano; nao e o melhor formato para automacoes de coders porque nao tem referencias `op://...` portaveis por repo.
+
+### 5. Provider env vars para producao
+
+Railway/Vercel/GitHub/etc. continuam fonte de runtime. O vault guarda somente:
+
+```text
+RAILWAY_PROJECT=x
+RAILWAY_SERVICE=y
+ENV_VAR_NAME=OPENAI_API_KEY
+stored_at=Railway Variables
+value=never stored here
+```
+
+## Regras para coders
+
+- Default para automacoes locais: `brain-env-run -- <comando>`. Carrega `/Projects/.keys.env` central + override de projeto, sem ecoar valores.
+- Nunca pedir que Paulo co
+...[truncated]
 
 ## 04_Areas/Coding/Best Practices/Development Best Practices Hub.md
 
@@ -38,6 +654,8 @@ Este e o hub vivo de melhores praticas de desenvolvimento.
 Antes de implementar, revisar ou desenhar arquitetura, escolha os guias relevantes:
 
 - App/Web quality: [[04_Areas/Coding/Best Practices/App Web Quality Best Practices]]
+- High-craft frontend visual standard: [[04_Areas/Coding/Best Practices/High Craft Frontend Visual Standard]]
+- Guided tour UX: [[04_Areas/Coding/Best Practices/Guided Tour UX Standard]]
 - Mobile opening motion: [[04_Areas/Coding/Best Practices/Mobile App Opening Motion Standard]]
 - Mobile privacy/consent: [[04_Areas/Coding/Best Practices/Mobile App Privacy Consent Standard]]
 - iOS QA/TestFlight closure: [[04_Areas/Coding/Best Practices/iOS Functional QA And TestFlight Closure Standard]]
@@ -51,8 +669,10 @@ Antes de implementar, revisar ou desenhar arquitetura, escolha os guias relevant
 - AI/LLM apps: [[04_Areas/Coding/Best Practices/AI LLM Best Practices]]
 - DevOps/Railway: [[04_Areas/Coding/Best Practices/DevOps Railway Best Practices]]
 - Testing/QA: [[04_Areas/Coding/Best Practices/Testing QA Best Practices]]
+- **Cyclomatic complexity (mandatory end-of-activity gate): [[99_System/Cyclomatic Complexity Policy]]**
 - Agent workflow: [[04_Areas/Coding/Best Practices/Agent Workflow Best Practices]]
 - Security baseline: [[04_Areas/Coding/Checklists/Security Checklist]]
+- Authorized security testing / bug bounty engine: [[04_Areas/Coding/Best Practices/Authorized Security Testing Engine]]
 - Platform checklists: [[04_Areas/Coding/Checklists/Project Checklist Hub]]
 
 ## Como aprender automaticamente
@@ -61,6 +681,17 @@ Todo coder deve registrar aprendizados reutilizaveis em:
 
 - [[04_Areas/Coding/Best Practices/Learning Inbox]]
 - [[04_Areas/Coding/Best Practices/Patterns To Promote]]
+
+## Padrões recentemente promovidos
+
+- Authorized security testing: gated request harness (default-deny scope, ≤1 req/s, auto-redacted evidence, no active request without human gate), self-evolution loop (outcomes → lessons → behavior, EV-ranked targets), adversarial self-audit of safety tooling. Ver [[04_Areas/Coding/Best Practices/Authorized Security Testing Engine]].
+
+- Prompt caching e workflow layout: separar prefixo estável de delta dinâmico, registrar `prompt_cache.strategy`, `prefix_version` e telemetria quando houver.
+- CLI/headless orchestration: comandos batch devem ter modo não-interativo explícito; quando o CLI default for TUI, usar flag headless/documentada antes de integrar em automação.
+- iOS/Android/App Store/Play submissions: smoke real no runtime alvo continua sendo gate obrigatório, mesmo quando lint/build/health check passam.
+- Screenshot/release QA: assets de loja e marketing precisam composição final, dimensão exata e validação lado a lado antes do submit.
+- Guided tours: cada rota/funcionalidade relevante precisa tour contextual com spotlight correto, persistencia por usuario e validacao desktop/mobile/producao antes de release.
+- Complexidade ciclomatica: gate obrigatorio de fim-de-atividade via `complexity-guard.py scan --changed`; nada com funcao acima do teto HARD (CCN 15) fecha sem refator ou waiver logado. Engine universal `lizard` + nativo (`ruff C901`, eslint `complexity`). Ver [[99_System/Cyclomatic Complexity Policy]].
 
 Aprendizado reutilizavel e algo que deve guiar projetos futuros:
 
@@ -99,10 +730,8 @@ Itens do Learning Inbox viram melhores praticas quando:
 
 - [[04_Areas/Coding/AI Coding Operating System]]
 - [[04_Areas/Coding/Checklists/Project Checklist Hub]]
-- [[04_Areas/Coding/Checklists/App Web Preflight Checklist]]
-- [[04_Areas/Coding/Checklists/Screenshots Visual QA Checklist]]
-- [[99_System/AI Agent Vault Policy]]
-- [[99_System/Security And Secrets Policy]]
+- [[04_Areas/Coding/Checkli
+...[truncated]
 
 ## 04_Areas/Coding/Best Practices/App Web Quality Best Practices.md
 
@@ -131,6 +760,7 @@ Qualidade de app/web e uma combinacao de produto, design, estado, performance, a
 - Landing page publica nunca pode ser resposta JSON, pagina generica ou placeholder. `GET /` deve entregar HTML responsivo, branded, com proposta de valor clara, visual real do produto, CTA, links de suporte/privacy/terms e metadata social/SEO.
 - Interfaces operacionais devem ser claras, densas e rapidas.
 - Apps consumer podem ser mais expressivos, mas ainda precisam de fluxo obvio.
+- Idioma e contrato de produto: cada app precisa declarar um idioma primario canonico por mercado/release e nenhuma rota/tela deve misturar PT/EN por fallback de browser, string hardcoded ou asset antigo. Apps bilingues precisam de locale explicito, switch claro e QA separada por idioma.
 - Todo app mobile deve ter uma pequena animacao de abertura contextual ao dominio do app, antes de privacidade/auth/home, sem parecer splash generico e sem atrasar o uso.
 - Em app iOS, modificacao significativa so fecha depois de teste funcional no app instalado e upload do novo build para TestFlight/App Store Connect, salvo excecao explicita.
 - Screenshots sao deliverable de primeira classe, nao "depois". Submission, release, post, deck, anuncio ou pagina nova so e "feito" quando os arquivos finais artisticos existem, validados e registrados.
@@ -172,10 +802,7 @@ Regra maxima: para app iOS, "feito" nao significa apenas codigo compilando. Sign
 Padrao:
 - Ao fechar mudanca iOS significativa, testar no app instalado: cold start/opening motion, privacy/consent, auth/demo ou anonimo, Home, navegacao principal, feature alterada, links legais e APIs relevantes.
 - Incrementar build number antes do archive.
-- Usar lane/script existente (`bundle exec fastlane local_beta`, `npm run ios:upload` ou equivalente).
-- Confirmar upload para App Store Connect/TestFlight e registrar se esta processing ou `VALID`.
-- Atualizar vault e Linear com build/version, comandos, artefatos visuais e riscos.
-- TestFlight upload tem
+- Usar lane/script
 ...[truncated]
 
 ## 04_Areas/Coding/Best Practices/Recent App Web Screenshot Learnings.md
@@ -312,10 +939,15 @@ tags:
 - Ler nota do projeto e AI history.
 - Ler best practices e checklists relevantes.
 - Confirmar comandos canonicos.
+- Para trabalho multi-agent, criar primeiro um mission packet com `agent-mastery intake --goal "..."`; usar `--all-core-coders` quando a intencao for acionar Kimi, Qwen, Codex, Gemini, Antigravity e Claude no mesmo desenho operacional.
 - Para background work, confirmar `.brain/BACKGROUND_CODER_CONTEXT.md`, owner (`codex`, `claude`, `kimi`, `gemini` ou `antigravity`), issue/tarefa unica, artefato esperado e stop condition.
 
 ## Durante
 
+- Nao deixar chat operacional passar de 60% de contexto sem checkpoint. Em 50-55%, rodar `chat-context-guard checkpoint`; em >=60%, produzir resume pack e continuar em novo chat.
+- Manter session journal vivo. Preflight escreve automaticamente, mas coders devem rodar `session-journal heartbeat` a cada 10 minutos de trabalho ativo, depois de patch relevante, falha de teste/build, mudanca de fase, human gate ou contexto em 50-55%.
+- Usar a superficie certa antes de chamar outro LLM: `llm-routing-guard route --task "..."` quando houver duvida. Codex integra; Claude resolve risco complexo; Kimi pesquisa/triage; Gemini valida; Antigravity faz browser/visual/worktree; Qwen faz draft isolado.
+- Usar a tool certa antes de executar: `tool-usage-guard route --task "..."` quando houver duvida. Obsidian registra memoria duravel; Linear registra realidade viva de produto; Git/GitHub registra codigo/PR/CI; CodeGraph responde estrutura de codigo; Browser/Antigravity prova visual/browser; secrets ficam fora de Markdown/chat/logs.
 - Preservar mudancas do usuario.
 - Evitar refactor fora do escopo.
 - Usar ferramentas seguras para secrets: Railway, provider env vars, 1Password/Keychain.
@@ -337,6 +969,9 @@ tags:
 - 2026-05-21: Cursor Background Agent deve entrar no Hub como worker remoto de branch/PR pequeno, nunca como integrador final. Ele usa snapshots `.brain` e `.cursor/rules`; Codex/Claude local valida e Obsidian/Linear registram a realidade.
 - 2026-05-21: Paulo decidiu nao abrir Cursor por ora. Background work deve ficar embutido nos coders atuais: Kimi para volume/triagem, Codex para patch/integracao, Claude Code para complexidade/compliance, Gemini CLI para validacao independente/MCP/terminal e Antigravity para orquestracao/browser/worktree/artefatos. Cursor fica dormente.
 - 2026-05-21: Gemini CLI e Google Antigravity entram como coders ativos no Hub. Gemini cobre validacao independente/MCP/terminal com `GEMINI.md`; Antigravity cobre orquestracao agent-first, browser/Chrome, worktrees, subagentes e artefatos com `AGENTS.md` + `GEMINI.md`.
+- 2026-05-25: Multi-agent work deve comecar por mission packet, nao por prompt solto. `agent-mastery.py` gera `mission.md`, `status.json` e handoff prompts com owner, artefato, stop condition, hard gates e prompt cache antes de qualquer dispatch.
+- 2026-05-25: Contexto de chat e recurso operacional finito. Em 50-55%, checkpoint obrigatorio;
+...[truncated]
 
 ## 04_Areas/Coding/Checklists/Project Checklist Hub.md
 
@@ -357,6 +992,7 @@ Antes de implementar, revisar ou fazer deploy, o agente deve escolher os checkli
 
 - Preflight essencial app/web: [[04_Areas/Coding/Checklists/App Web Preflight Checklist]]
 - Visual QA/screenshots: [[04_Areas/Coding/Checklists/Screenshots Visual QA Checklist]]
+- High-craft frontend/site/portfolio: [[04_Areas/Coding/Best Practices/High Craft Frontend Visual Standard]]
 - Frontend: [[04_Areas/Coding/Checklists/Frontend Checklist]]
 - Backend/API: [[04_Areas/Coding/Checklists/Backend API Checklist]]
 - Web/Next/Node: [[04_Areas/Coding/Checklists/Platform Web Next Node Checklist]]
@@ -388,6 +1024,7 @@ O vault guarda inventario, decisoes e referencias. O vault **nao guarda valores 
 - [ ] Para roadmap, bug, status, prioridade, release, sprint/cycle, automacao ou backlog cleanup, ler o projeto/issue vivo no Linear via conector quando disponivel.
 - [ ] Selecionar checklists relevantes deste hub.
 - [ ] Para app, site, tela, fluxo visual ou store submission, abrir [[04_Areas/Coding/Checklists/App Web Preflight Checklist]].
+- [ ] Para portfolio, landing premium, hero, animacao ou referencia visual, abrir [[04_Areas/Coding/Best Practices/High Craft Frontend Visual Standard]].
 - [ ] Para mudanca visual, planejar screenshots com [[04_Areas/Coding/Checklists/Screenshots Visual QA Checklist]].
 - [ ] Verificar riscos e decisoes antigas.
 - [ ] Confirmar onde secrets reais devem ficar.
@@ -416,11 +1053,7 @@ O vault guarda inventario, decisoes e referencias. O vault **nao guarda valores 
 - Android Core App Quality: https://developer.android.com/docs/quality-guidelines/core-app-quality
 - Android technical quality: https://developer.android.com/quality/technical
 - Google Play Developer Program Policy: https://support.google.com/googleplay/android-developer/answer/16933379
-- Web Vitals: https://web.dev/articles/vitals
-- WCAG 2.2: https://www.w3.org/TR/WCAG22/
-- OWASP Top 10 2021: https://owasp.org/Top10/2021/
-- OWASP API Security Top 10 2023: https://owasp.org/API-Security/
-- OWASP ASVS: https://owasp.org/www-project-application-security-
+- Web V
 ...[truncated]
 
 ## 04_Areas/Coding/Checklists/App Web Preflight Checklist.md
@@ -470,6 +1103,7 @@ Este e o preflight mais importante antes de criar, alterar ou revisar qualquer a
 - [ ] Linear issue/projeto vivo lido via conector quando o trabalho for roadmap, bug, release, status, prioridade, sprint/cycle, backlog ou automacao.
 - [ ] [[04_Areas/Coding/Best Practices/Development Best Practices Hub]]
 - [ ] [[04_Areas/Coding/Best Practices/Frontend UI UX Best Practices]]
+- [ ] [[04_Areas/Coding/Best Practices/High Craft Frontend Visual Standard]] quando houver site publico, portfolio, landing, hero, animacao, referencia visual ou pedido de qualidade premium.
 - [ ] [[04_Areas/Coding/Checklists/Project Checklist Hub]]
 - [ ] [[04_Areas/Coding/Checklists/Screenshots Visual QA Checklist]]
 - [ ] [[04_Areas/Coding/Checklists/Security Checklist]]
@@ -480,7 +1114,7 @@ Este e o preflight mais importante antes de criar, alterar ou revisar qualquer a
 - [ ] iOS: [[04_Areas/Coding/Checklists/iOS App Preflight Checklist]]
 - [ ] Android: [[04_Areas/Coding/Checklists/Android App Preflight Checklist]]
 - [ ] Backend/API: [[04_Areas/Coding/Checklists/Backend API Checklist]]
-- [ ] AI/LLM: [[04_Areas/Coding/Checklists/AI Integrations Checklist]]
+- [ ] AI/LLM: [[04_Areas/Coding/Checklists/AI Integrations Checklist]] — se houver IA, smoke real do endpoint + fluxo UI no runtime alvo sao obrigatorios; sem isso, production/TestFlight/App Store/Play Console e NO-GO.
 - [ ] Release/deploy: [[04_Areas/Coding/Checklists/Release Deploy Checklist]]
 
 ## 3. Produto e UX
@@ -503,9 +1137,7 @@ Este e o preflight mais importante antes de criar, alterar ou revisar qualquer a
 
 - [ ] App icon foi validado como final, forte e reconhecivel; nao e placeholder, template cru ou asset generico.
 - [ ] App icon esta consistente entre build instalado, App Store/Play, landing, favicon e OG image.
-- [ ] Screenshot desktop e mobile foram capturados quando ha mudanca visual.
-- [ ] Opening motion mobile foi capturado em screenshot/video curto e o path foi registrado quando houve mudanca de app/release.
-- [ ] Para store submission: 6 screenshots composed por idioma e device class, no formato exato (App Store 6.9" = 1320x2868). Sem composer brandado e
+- [ ] Screenshot
 ...[truncated]
 
 ## 04_Areas/Coding/Checklists/Screenshots Visual QA Checklist.md
@@ -532,6 +1164,7 @@ tags:
 - [ ] Bug visual, overflow ou responsividade.
 - [ ] Antes/depois de refactor de UI — comparar lado-a-lado.
 - [ ] Marketing post, anuncio, deck, video preview — formato e dimensoes do canal final, nao reaproveitar de outro lugar.
+- [ ] Site/landing/portfolio com referencia visual externa — capturar referencia e resultado novo em desktop/mobile para comparar.
 
 ## Viewports
 
@@ -541,6 +1174,15 @@ tags:
 - [ ] Desktop padrao.
 - [ ] Desktop largo quando layout for responsivo.
 - [ ] Light/dark mode quando suportado.
+
+## Sites, landings e portfolio high-craft
+
+- [ ] Primeiro viewport mostra marca, pessoa, produto ou objeto principal sem depender de texto pequeno no nav.
+- [ ] Se ha referencia visual, o resultado foi comparado contra a referencia por tese visual, movimento, composicao, tipografia, paleta e assets.
+- [ ] Ha screenshot do hero e pelo menos um screenshot em scroll state.
+- [ ] Canvas/WebGL/SVG animado foi validado como nao branco, nao travado, corretamente enquadrado e respeitando reduced motion quando aplicavel.
+- [ ] Foto, produto ou diagrama principal parecem parte do sistema visual, nao colagem.
+- [ ] CTA, contato, SEO/Open Graph e favicon foram conferidos quando a pagina e publica.
 
 ## "Super awesome" para store/marketing — checklist obrigatorio
 
@@ -588,22 +1230,7 @@ tags:
 
 - [ ] Paths dos screenshots registrados na nota do projeto.
 - [ ] Cada screenshot de QA tem interpretacao humana registrada: o que passou, o que falhou, se bloqueia release e qual e o proximo passo.
-- [ ] Screenshot em simulador/device compartilhado com outros apps/agentes nao conta como evidencia final sem confirmar bundle/app/processo.
-- [ ] Para iOS/App Store, a evidencia final precisa mostrar produto real em uso, nao apenas login/tour; login/tour conta somente como evidencia auxiliar.
-- [ ] Push/ASC ficam bloqueados ate todos os fluxos core terem screenshot ou video curto com resultado pass/fail registrado.
-- [ ] Se screenshot contem dado sensivel, nao anexar ao vault; registrar apenas que foi verificado.
-- [ ] Falhas visuais viram item no projeto ou Learning Inbox.
-
-## Pipeline canonico — HTML composer + Playwright
-
-Para produzir screenshots "super awesome" reusavel entre projetos:
-
-```
-project/marketing/
-  composer/
-    template.html      # brand gradient + headline + frame + footer
-    manifest.json      # {shots: [{id, raw, pt:{eyebrow,headline,subhead}, en:{...}}, ...]}
-    render.mjs         #
+- [ ] Screenshot em simulador/device compartilhado com outros apps/agentes nao conta como evide
 ...[truncated]
 
 ## 04_Areas/Coding/Checklists/Web App Preflight Checklist.md
@@ -621,6 +1248,7 @@ tags:
 ## UX
 
 - [ ] O primeiro viewport mostra produto, estado real ou tarefa principal.
+- [ ] Para portfolio, landing premium, hero, animacao ou referencia visual, aplicar [[04_Areas/Coding/Best Practices/High Craft Frontend Visual Standard]].
 - [ ] Navegacao principal e retorno sao claros.
 - [ ] Estados empty/loading/error/success existem.
 - [ ] Forms preservam dados em erro.
@@ -658,6 +1286,8 @@ tags:
 
 - [ ] Screenshot desktop.
 - [ ] Screenshot mobile.
+- [ ] Para site/landing high-craft, screenshot do hero e de estado com scroll em desktop/mobile.
+- [ ] Canvas/WebGL/SVG animado validado como nao branco, nao travado e corretamente enquadrado quando aplicavel.
 - [ ] Screenshot de estado de erro/loading se mudou fluxo.
 - [ ] Sem overflow horizontal.
 - [ ] Sem texto sobrepondo UI.
@@ -666,6 +1296,7 @@ tags:
 
 - Web Vitals: https://web.dev/articles/vitals
 - WCAG 2.2: https://www.w3.org/TR/WCAG22/
+- High Craft Frontend Visual Standard: [[04_Areas/Coding/Best Practices/High Craft Frontend Visual Standard]]
 
 ## 04_Areas/Coding/Checklists/iOS App Preflight Checklist.md
 
@@ -896,6 +1527,12 @@ tags:
 
 Este arquivo e inventario. Ele **nao guarda valores reais**.
 
+## Fonte unica local
+
+Variaveis de ambiente compartilhadas vivem em `/Users/paulopierrondi/Projects/.keys.env` (chmod 600, gitignored). Carregamento canonico via `brain-env-run -- <comando>`. Override por projeto: `.env` no diretorio do projeto. Detalhes em [[99_System/Central Env File Operating Model]].
+
+Este register continua sendo **inventario** (nome, owner, projeto, ambiente, status, rotacao). O valor real continua em `/Projects/.keys.env` + Apple Keychain durable + provider env vars de producao.
+
 ## Regra
 
 Guardar aqui:
@@ -922,13 +1559,14 @@ Nao guardar aqui:
 
 ## Locais recomendados para valor real
 
+- `/Users/paulopierrondi/Projects/.keys.env` (chmod 600, gitignored) — fonte unica local; carregar com `brain-env-run`.
+- `./.env` do projeto — override quando o projeto precisa de valor diferente do global.
+- Apple Keychain via `brain-secret-intake`/`brain-load-secrets` — backing durable do `.env` central.
 - 1Password ou outro password manager com referencias seguras, por exemplo `op://Developer/OpenAI/api-key`.
 - Apple Passwords / iCloud Keychain para senhas/passkeys humanas.
-- Apple Keychain local como fallback local.
 - GitHub Actions Secrets.
-- Vercel/Railway/Netlify/Fly/Render environment variables.
+- Vercel/Railway/Netlify/Fly/Render environment variables (producao).
 - AWS/GCP/Azure secret manager.
-- `.env.local` apenas local, sem commit.
 
 ## Modelo de uso
 
@@ -976,10 +1614,7 @@ Registro canonico: [[99_System/Secret Exposure Incident - 2026-05-19]].
 
 | Projeto | Env var | Fornecedor | Ambientes | Onde esta o valor real | Escopo | Rotacao | Dono | Status |
 |---|---|---|---|---|---|---|---|---|
-| _template_ | `OPENAI_API_KEY` | OpenAI | local/staging/prod | 1Password + provider env vars | server-side model calls | trimestral ou incidente | Paulo | planned |
-| global-ios | `APP_STORE_CONNECT_ISSUER_ID` | Apple App Store Connect | local/CI/provider env | [[04_Areas/Coding/Checklists/Apple Developer And App Store Connect Inventory]] | identificador nao-secreto para ASC API/TestFlight/upload; private key `.p8` fica fora do vault | n/a salvo troca de conta Apple | Paulo | **ativo** — registrado 2026-05-15 |
-| global-ios | `ASC_KEY_ID` / `APP_STORE_CONNECT_KEY_ID` | Apple App Store Connect | local/CI/provider env | [[04_Areas/Coding/Checklists/Apple Developer And App Store Connect Inventory]] | identificador nao-secreto da API key (`95ULBVD2BW`); `.p8` fica fora do vault | n/a salvo rotacao da API key | Paulo | **ativo** — confirmado 2026-05-15 |
-| global-ios | `
+| _template_ | `OPENAI_API_KEY` | OpenAI | local/staging/prod | 1Password + provider env vars | server-side model calls | trimestral ou
 ...[truncated]
 
 ## 04_Areas/Marketing/Marketing MOC.md
@@ -1035,7 +1670,7 @@ Este e o centro de operacao para criativos, videos curtos, campanhas, legendas, 
 ## Projeto
 
 - [[02_Projects/pierrondi-ia]]
-- Repo: `/Users/paulopierrondi/Downloads/pierrondi-ia`
+- Repo: `/Users/paulopierrondi/Projects/pierrondi-ia`
 - Studio: `/studio/videos`, `/studio/creatives`, `/studio/creatives/factory`, `/studio/campaigns`, `/studio/topics`, `/studio/approvals`, `/studio/health`
 
 ## Regra
@@ -1065,7 +1700,7 @@ Todo pedido de criativo deve gerar um pacote, nao apenas uma peca:
 - Todo ad de app, UGC ou nao UGC, deve passar pelo fluxo nativo `Creative Video Factory` do Pierrondi IA Studio antes de geracao, upload ou publicacao.
 - Tela canonica: `/studio/creatives/factory`.
 - API canonica: `/api/marketing-os/content-factory/creative-video`.
-- Engine canonica: `/Users/paulopierrondi/Downloads/pierrondi-ia/lib/marketing-os/content-factory/creative-video-factory.ts`.
+- Engine canonica: `/Users/paulopierrondi/Projects/pierrondi-ia/lib/marketing-os/content-factory/creative-video-factory.ts`.
 - O app standalone `creative-video-factory` e os artefatos do `investcoach_ai` sao biblioteca/prototipo historico, nao a fonte de verdade.
 - Primeiro perguntar e registrar: canal principal (`TikTok`, `Instagram`, `LinkedIn`, `YouTube`), objetivo, pago/organico, tela real do app, hook dos 2 primeiros segundos e angulo de venda.
 - Sempre que possivel, capturar demo real via Xcode/iOS Simulator antes de usar b-roll generico. A prova de produto deve vir antes de UGC, avatar, Veo ou Pexels.
@@ -1078,7 +1713,7 @@ Todo pedido de criativo deve gerar um pacote, nao apenas uma peca:
 - Apple Ads / ASA, Meta, TikTok, YouTube, LinkedIn Ads ou qualquer canal pago podem gerar diagnostico e recomendacao diaria.
 - Nenhum agente pode pausar, aumentar budget, mudar bid, criar campanha, publicar criativo pago ou alterar target CPA sem aprovacao explicita do Paulo.
 - O vault guarda metricas agregadas, decisoes e hipoteses; segredos de API/OAuth ficam fora do vault.
-- Para apps financeiros ou IA financeira no TikTok, `TikTok Financial Ads Compliance Runbook` e preflight obrigatori
+- Para apps financeiros ou IA financeira no TikTok, `TikTok Financial Ads Compliance Runbook` e preflight obrigatorio
 ...[truncated]
 
 ## 04_Areas/Marketing/Pierrondi.dev Creative Video OS.md
@@ -1101,6 +1736,21 @@ Criar criativos e videos de marketing de alta qualidade para Pierrondi.dev e pro
 
 O output bom nao e "um video". E um pacote de campanha com roteiro, voz, legendas, assets, variacoes por canal, QA e aprendizado.
 
+## Pierrondi.dev site visual language
+
+O site publico de Paulo deve operar como prova executiva de capacidade, nao como landing generica de IA.
+
+Padrao visual atual:
+- preto profundo + branco forte + lime como sinal eletrico;
+- campo neural vivo como camada de sistema;
+- sinapses/sinais conectando agentes, workflows, governanca, inferencia e plataformas;
+- foto executiva integrada ao ambiente visual, sem fundo branco colado;
+- diagramas de arquitetura com fluxo de contexto, permissao, acao e evidencia;
+- movimento real no scroll, com progress bar, reveal e responsividade;
+- copy executiva, sem nome de cliente quando nao houver autorizacao.
+
+Antes de mexer em pierrondi.dev, ler [[04_Areas/Coding/Best Practices/High Craft Frontend Visual Standard]], [[04_Areas/Coding/Best Practices/App Web Quality Best Practices]], [[04_Areas/Coding/Checklists/App Web Preflight Checklist]] e [[04_Areas/Coding/Checklists/Screenshots Visual QA Checklist]].
+
 ## Regra de ouro — LinkedIn
 
 - **LinkedIn fica 100% restrito a ServiceNow ate Paulo dizer explicitamente o contrario.**
@@ -1110,14 +1760,14 @@ O output bom nao e "um video". E um pacote de campanha com roteiro, voz, legenda
 
 ## Fonte de verdade no repo
 
-- Repo: `/Users/paulopierrondi/Downloads/pierrondi-ia`
-- Creative Video Factory: `/Users/paulopierrondi/Downloads/pierrondi-ia/docs/marketing-os/creative-video-factory.md`
+- Repo: `/Users/paulopierrondi/Projects/pierrondi-ia`
+- Creative Video Factory: `/Users/paulopierrondi/Projects/pierrondi-ia/docs/marketing-os/creative-video-factory.md`
 - Studio: `/studio/creatives/factory`
 - API: `/api/marketing-os/content-factory/creative-video`
-- Engine: `/Users/paulopierrondi/Downloads/pierrondi-ia/lib/marketing-os/content-factory/creative-video-factory.ts`
-- Creative engine runbook: `/Users/paulopierrondi/Downloads/pierrondi-ia/docs/marketing/creative-engine-test-runbook.md`
-- Criativos curados: `/Users/paulopierrondi/Downloads/pierrondi-ia/assets/creatives/post-images/`
-- Background videos: `/Users/paulopierrondi/Downloads/pierrondi-ia/assets/video-backgrounds/`
+- Engine: `/Users/paulopierrondi/Projects/pierrondi-ia/lib/marketing-os/content-factory/creative-video-factory.ts`
+- Creative engine runbook: `/Users/paulopierrondi/Projects/pierrondi-ia/docs/marketing/creative-engine-test-runbook.md`
+- Criativos curados: `/Users/paulopierrondi/Projects/pierrondi-ia/assets/creatives/post-images/`
+- Background videos: `/Users/paulopierrondi/Projects/pierrondi-ia/assets/video-backgrounds/`
 - API force video: `/api/marketing-os/force-video`
 - Preflight: `/api/marketing-os/video/preflight`
 
@@ -1152,32 +1802,7 @@ O output bom nao e "um video". E um pacote de campanha com roteiro, voz, legenda
 - Primeiros 2 segundos precisam ter tese, contraste ou prova.
 - O roteiro precisa soar falado, nao escrito.
 - Legenda precisa ser legivel sem audio e sem cobrir UI do canal.
-- Voz precisa combinar com o canal: LinkedIn mais autoridade, TikTok/Reels mais ritmo, YouTube Shorts mais clareza e retenção.
-- B-roll precisa reforcar a ideia; se for generico, melhor usar screen/product proof.
-- Cada peca precisa ter um unico CTA.
-- Nao publicar sem approval quando houver canal externo.
-
-## Formatos canonicos
-
-- Master vertical: MP4 H.264/AAC, 1080x1920, 30fps, 9:16.
-- Feed vertical/crop: 1080x1350, 4:5.
-- Square fallback: 1080x1080, 1:1.
-- LinkedIn professional cut: 9:16 ou 4:5, com SRT sidecar quando possivel.
-- Shorts/TikTok/Reels: 9:16, legendas burned-in, safe zones respeitadas.
-
-## Duracao recomendada por intencao
-
-- Prova rapida: 12-20s.
-- Hook + tese + CTA: 20-35s.
-- Mini tutorial: 35-60s.
-- Story/problem-solution: 45-90s.
-- YouTube Shorts longo: ate 3 min quando a historia realmente precisa, mas evitar se houver risco de musica/Content ID.
-
-## Assets primeiro, IA depois
-
-O pipeline deve consultar assets curados antes de gerar asset novo:
-
-- imagem/post: `assets/creatives/po
+- Voz precisa combinar com o canal: LinkedIn mais autoridade, TikTok/Ree
 ...[truncated]
 
 ## 04_Areas/Marketing/ElevenLabs Voice And Subtitle Workflow.md
@@ -1214,8 +1839,8 @@ Gerar voz natural e legendas sincronizadas para videos de marketing, sem perder 
 
 ## ElevenLabs no repo
 
-- Adapter: `/Users/paulopierrondi/Downloads/pierrondi-ia/lib/marketing-os/voice/elevenlabs.ts`
-- Captions: `/Users/paulopierrondi/Downloads/pierrondi-ia/lib/marketing-os/video/captions.ts`
+- Adapter: `/Users/paulopierrondi/Projects/pierrondi-ia/lib/marketing-os/voice/elevenlabs.ts`
+- Captions: `/Users/paulopierrondi/Projects/pierrondi-ia/lib/marketing-os/video/captions.ts`
 - Env vars:
   - `ELEVENLABS_API_KEY`
   - `ELEVENLABS_PAULO_VOICE_ID`
@@ -1441,6 +2066,15 @@ tags:
 - [ ] Nenhum frame todo preto/branco ou quebrado.
 - [ ] Sem stock generico quando a peca precisa provar algo.
 
+## Site/portfolio creative standard
+
+- [ ] Para pierrondi.dev, site pessoal ou portfolio executivo, ler [[04_Areas/Coding/Best Practices/High Craft Frontend Visual Standard]] antes de editar.
+- [ ] Primeiro viewport prova Paulo, a oferta ou o sistema de trabalho; nao pode parecer landing generica de IA.
+- [ ] Referencia visual foi decomposta em tese, movimento, composicao, tipografia, paleta e assets antes da implementacao.
+- [ ] Foto executiva, diagramas e workflows estao integrados ao ambiente visual.
+- [ ] Nao citar nomes de clientes sem autorizacao; usar prova por categoria, industria, padrao tecnico e resultado.
+- [ ] Contato, email, SEO/Open Graph e CTA foram tratados como parte da conversao, nao acabamento.
+
 ## Export
 
 - [ ] MP4 H.264/AAC.
@@ -1495,7 +2129,7 @@ Use o vault e o repo pierrondi-ia. Leia:
 - 04_Areas/Marketing/Social Video Platform Specs 2026.md
 - 04_Areas/Marketing/Creative QA Checklist.md
 - 02_Projects/pierrondi-ia.md
-- /Users/paulopierrondi/Downloads/pierrondi-ia/docs/marketing-os/video-render-pipeline.md
+- /Users/paulopierrondi/Projects/pierrondi-ia/docs/marketing-os/video-render-pipeline.md
 
 Crie um pacote de criativo para:
 Produto/oferta: <produto>
@@ -1563,7 +2197,7 @@ Criativo atual:
 ## Pedir execucao no repo
 
 ```text
-No repo /Users/paulopierrondi/Downloads/pierrondi-ia, use o pipeline existente de video factory. Antes de mexer, rode/consulte o preflight do video. Gere apenas draft/review, sem publicar automaticamente. Use RENDER_BACKEND=ffmpeg como default e registre output paths, renderId, scriptId, custos, blockers e proximos passos no vault.
+No repo /Users/paulopierrondi/Projects/pierrondi-ia, use o pipeline existente de video factory. Antes de mexer, rode/consulte o preflight do video. Gere apenas draft/review, sem publicar automaticamente. Use RENDER_BACKEND=ffmpeg como default e registre output paths, renderId, scriptId, custos, blockers e proximos passos no vault.
 ```
 
 ## Kimi Claw - radar diario de video ads
@@ -1650,6 +2284,16 @@ O vault e o lugar para memoria, inventario, decisoes e referencias de credenciai
 
 Modelo canonico: [[99_System/Credential Vault Operating Model]].
 
+## Fonte unica local: `/Users/paulopierrondi/Projects/.keys.env`
+
+Para todos os files e automacoes locais, a fonte canonica de variaveis de ambiente e `/Users/paulopierrondi/Projects/.keys.env`, carregada via `/Users/paulopierrondi/.local/bin/brain-env-run`. Detalhes em [[99_System/Central Env File Operating Model]].
+
+- `chmod 600` obrigatorio.
+- Nunca commitar; nunca colar em chat, Markdown, Linear, screenshot, log ou email.
+- Producao continua em provider env vars (Railway/Vercel/GitHub Actions), nunca neste `.env`.
+- Override por projeto: `.env` local do projeto vence sobre o central.
+- Scripts novos: `brain-env-run -- <comando>` em vez de `source .env` ou `python-dotenv` cru.
+
 ## Permitido no vault
 
 - Nome de env var.
@@ -1676,14 +2320,16 @@ Modelo canonico: [[99_System/Credential Vault Operating Model]].
 
 ## Padrao para projetos
 
-- `.env.local` para desenvolvimento local e fora do Git.
-- `.env.example` com nomes e valores falsos.
+- `/Users/paulopierrondi/Projects/.keys.env` (chmod 600) como fonte unica de variaveis compartilhadas; carregar via `brain-env-run`.
+- `./.env` no diretorio do projeto apenas para overrides especificos (precedence wins).
+- `.env.example` com nomes e valores falsos no repo.
 - Secret manager/provider env vars para producao.
 - GitHub Actions Secrets para CI.
 - Nunca passar segredo para LLM quando nao for estritamente necessario.
 
 ## Regra para coders
 
+- Default para automacoes locais: `brain-env-run -- <comando>` (carrega o `.env` central + override de projeto).
 - Nao pedir Paulo para colar API key/token em chat quando houver alternativa.
 - Consultar [[04_Areas/Coding/Checklists/Secrets And API Keys Register]] e usar a referencia/local de armazenamento.
 - Preferir `op://...` + `op run` quando 1Password CLI estiver disponivel.
@@ -1716,6 +2362,7 @@ O arquivo temporario nao deve entrar em Obsidian, Git, Linear, email ou screensh
 
 ## Links
 
+- [[99_System/Central Env File Operating Model]]
 - [[99_System/Credential Vault Operating Model]]
 - [[99_System/Manual Credential Intake]]
 - [[99_System/Secret Exposure Incident - 2026-05-19]]
@@ -1729,12 +2376,12 @@ O arquivo temporario nao deve entrar em Obsidian, Git, Linear, email ou screensh
 ---
 type: project
 repo_name: "provadoria"
-repo_path: "/Users/paulopierrondi/Downloads/provadoria"
+repo_path: "/Users/paulopierrondi/Projects/provadoria"
 repo_kind: "repo"
 branch: "main"
-dirty_files: 29
+dirty_files: 57
 remote: "https://github.com/paulopierrondi/provadoria.git"
-generated_at: "2026-05-22 09:38:19"
+generated_at: "2026-06-02 23:37:30"
 tags:
   - project
   - git
@@ -1743,12 +2390,12 @@ tags:
 
 ## Estado rapido
 
-- Path: `/Users/paulopierrondi/Downloads/provadoria`
+- Path: `/Users/paulopierrondi/Projects/provadoria`
 - Tipo: `repo`
 - Repo kind: `repo`
 - Branch: `main`
-- Arquivos alterados agora: `29`
-- Ultimo commit: `467fb2c 2026-05-21 feat: screenshots iPad Pro 12.9" gerados e upload via API ASC`
+- Arquivos alterados agora: `57`
+- Ultimo commit: `f93895b 2026-05-22 fix: corrige PrivacyInfo.xcprivacy — remove tracking domain invalido e API category invalida (ITMS-91054, ITMS-91064). Build 6.`
 - Remote: `https://github.com/paulopierrondi/provadoria.git`
 - Marcadores encontrados: `README.md, CLAUDE.md, AGENTS.md, GEMINI.md`
 
@@ -1807,7 +2454,7 @@ provadoria/
 type: project-ai-history
 project: "provadoria"
 status: generated
-generated_at: "2026-05-22 09:38:19"
+generated_at: "2026-06-02 23:37:30"
 tags:
   - ai-history
   - project-history
@@ -1817,7 +2464,7 @@ tags:
 
 Projeto: [[02_Projects/provadoria|provadoria]]
 
-- Path: `/Users/paulopierrondi/Downloads/provadoria`
+- Path: `/Users/paulopierrondi/Projects/provadoria`
 - Codex relacionado: `0`
 - Claude Code relacionado: `0`
 - Kimi relacionado: `0`

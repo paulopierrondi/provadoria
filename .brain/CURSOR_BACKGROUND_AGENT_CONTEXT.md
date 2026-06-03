@@ -6,7 +6,7 @@ Registry generated at: `2026-05-21T12:27:30Z`
 
 - Registry id: `provadoria`
 - Name: `provadoria`
-- Path: `/Users/paulopierrondi/Downloads/provadoria`
+- Path: `/Users/paulopierrondi/Projects/provadoria`
 - Obsidian note: `02_Projects/provadoria`
 - Linear hint: `Provadoria (criar Linear project)`
 - Branch at registry snapshot: `main`

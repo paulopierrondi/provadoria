@@ -6,7 +6,7 @@ Registry generated at: `2026-05-21T12:27:30Z`
 
 - Registry id: `provadoria`
 - Name: `provadoria`
-- Path: `/Users/paulopierrondi/Downloads/provadoria`
+- Path: `/Users/paulopierrondi/Projects/provadoria`
 - Obsidian note: `02_Projects/provadoria`
 - Linear hint: `Provadoria (criar Linear project)`
 - Branch at registry snapshot: `main`
@@ -35,6 +35,14 @@ Use current coders:
 - Use Kimi for volume, Codex for normal implementation, Claude for complex/high-risk work, Gemini for independent CLI validation, and Antigravity for orchestrated/browser-heavy tasks.
 - Stop before secrets, deploy, App Store/TestFlight, paid ads, production migrations, social publishing, force push or multi-repo mutation.
 
+## Prompt Caching
+
+- Follow `/Users/paulopierrondi/Documents/Obsidian Vault/99_System/Prompt Caching Workflow Policy.md`.
+- Stable prefix first: Hub enforcement, project context, gates, checklists, output schema.
+- Dynamic delta last: current task, date, live status, diffs, logs, search results.
+- Never cache secrets, `.env`, private keys, cookies or `ROTATE_REQUIRED` values.
+- Report strategy, prefix version, nonsecret key/tag and cached token telemetry when available.
+
 ## Handoff Contract
 
 Every background coder must report:
@@ -45,3 +53,4 @@ Every background coder must report:
 - Confidence and residual risk.
 - Exact next action.
 - Whether Obsidian/Linear needs updating.
+- Prompt cache strategy and telemetry or reason unavailable.

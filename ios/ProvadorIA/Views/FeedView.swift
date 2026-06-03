@@ -137,6 +137,13 @@ struct FeedView: View {
     
     @MainActor
     private func loadFeed() async {
+        if ProcessInfo.processInfo.arguments.contains("--screenshot-mode") {
+            tryOns = TryOn.samples
+            isLoading = false
+            hasError = false
+            return
+        }
+
         isLoading = true
         hasError = false
         

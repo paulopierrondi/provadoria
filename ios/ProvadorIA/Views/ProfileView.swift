@@ -56,40 +56,6 @@ struct ProfileView: View {
         )
     }
     
-    private var planCard: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Vire premium.")
-                        .font(.system(size: 20, weight: .regular, design: .serif))
-                        .foregroundColor(.cherryBone)
-                    Text("Try-ons ilimitados.")
-                        .font(.system(size: 20, weight: .regular, design: .serif))
-                        .italic()
-                        .foregroundColor(.cherryBone)
-                }
-                
-                Spacer()
-                
-                Text("R$ 14,90")
-                    .font(.system(size: 24, weight: .regular, design: .serif))
-                    .italic()
-                    .foregroundColor(.cherryBone)
-            }
-            
-            Button(action: {}) {
-                Text("Assinar →")
-                    .font(.system(size: 15, weight: .semibold, design: .default))
-                    .foregroundColor(.cherryInk)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
-                    .background(Color.cherryBone)
-            }
-        }
-        .padding(20)
-        .background(Color.cherryInk)
-    }
-    
     private var indexSection: some View {
         VStack(alignment: .leading, spacing: 20) {
             Text("Índice — conta")

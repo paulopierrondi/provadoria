@@ -1,18 +1,18 @@
 # Hub Council Context — provadoria
 
-Generated from registry: `2026-05-21T12:27:30Z`
+Generated from registry: `2026-05-31T20:33:42.729Z`
 
 ## Registry
 
 - Registry id: `provadoria`
 - Name: `provadoria`
-- Path: `/Users/paulopierrondi/Downloads/provadoria`
+- Path: `/Users/paulopierrondi/Projects/provadoria`
 - Obsidian note: `02_Projects/provadoria`
-- Linear: `Provadoria (criar Linear project)`
+- Linear: `Provadoria (AGE) — id 93dfe567-9c37-4993-8401-188b5fa6b477`
 - Branch: `main`
-- Dirty: `9`
-- Ahead/behind: `+0/-0`
-- Last commit: `009c593 2026-05-18 feat: screenshots, vercel legal pages deploy, session notes update`
+- Dirty: `14`
+- Ahead/behind: `(no upstream)`
+- Last commit: `f93895b 2026-05-22 fix: corrige PrivacyInfo.xcprivacy — remove tracking domain invalido e API category invalida (ITMS-91054, ITMS-91064). Build 6.`
 
 ## Product Council
 
@@ -46,9 +46,11 @@ Todo trabalho neste projeto deve acionar:
 - Council config: `/Users/paulopierrondi/Documents/Obsidian Vault/Hub_Agentes/05_Configuracao/config_product_council.md`
 - Council reports: `/Users/paulopierrondi/Documents/Obsidian Vault/Hub_Agentes/03_Outputs/council_reviews/`
 - Dashboard: `/Users/paulopierrondi/Documents/Obsidian Vault/Hub_Agentes/04_Dashboards/dashboard_product_council.md`
+- Prompt caching policy: `/Users/paulopierrondi/Documents/Obsidian Vault/99_System/Prompt Caching Workflow Policy.md`
 
 ## Guardrails
 
 - Nao escrever segredos em Markdown.
+- Em workflows recorrentes, manter contexto estavel em prefixo cacheavel e delta dinamico no fim; registrar `prompt_cache` quando disponivel.
 - Nao executar deploy, push, App Store submit, ads spend, publicacao, migrations, producao, cron/LaunchAgent mutation ou secret changes sem aprovacao explicita.
 - Se o vault local nao existir, use este arquivo como snapshot e registre resultado em `.brain/SESSION_NOTES.md`.

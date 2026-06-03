@@ -1,5 +1,33 @@
 
 
+<!-- PROJECT_LOCAL_COUNCIL_START -->
+## Project Local Council - Required Context
+
+This repo has a local council overlay. It does not replace the global Product Council; it makes the global roles specific to this repo.
+
+Before planning, editing, reviewing, testing, release, automation, Linear, secrets, UI or marketing work, read:
+
+- `.brain/PROJECT_COUNCIL.md`
+- relevant `.brain/local-agents/*.md`
+- `.brain/HUB_COUNCIL_CONTEXT.md`
+- `.brain/PROJECT_CONTEXT.md`
+- `/Users/paulopierrondi/Documents/Obsidian Vault/99_System/Prompt Caching Workflow Policy.md` when available
+- `AGENTS.md` and `GEMINI.md`
+
+Local agents are advisory role contracts, not autonomous permission grants. They inherit all hard gates from Agent Hub, Obsidian, Linear, Automation Email Policy and Security/Secrets policy.
+
+Required local council handoff:
+
+- local agent(s) considered;
+- decision or recommendation;
+- files/commands/evidence;
+- risk and human gate;
+- exact next action.
+- prompt_cache strategy and cache telemetry when a provider exposes `cached_tokens` or equivalent.
+
+Registry id: `provadoria`.
+<!-- PROJECT_LOCAL_COUNCIL_END -->
+
 <!-- BACKGROUND_CODERS_START -->
 ## Background Coders Protocol
 
@@ -17,6 +45,16 @@ Leia antes de planejar/editar:
 - `AGENTS.md`
 - `GEMINI.md`
 - `CODEX_RULES.md`
+- `/Users/paulopierrondi/Documents/Obsidian Vault/99_System/Prompt Caching Workflow Policy.md`
+
+### Prompt caching
+
+Para rotinas recorrentes, contexto grande ou handoff multi-agente:
+
+- coloque contexto estavel primeiro: Hub rules, perfil Paulo, contexto do projeto, gates e output schema;
+- coloque delta dinamico por ultimo: pedido atual, data, live state, diffs, logs e web search;
+- nunca cachear secrets, `.env`, cookies, private keys, AuthKeys ou `ROTATE_REQUIRED`;
+- registrar `prompt_cache.strategy`, `prefix_version`, key/tag nao secreto e `cached_tokens` quando disponivel.
 
 ### Routing
 
@@ -120,6 +158,7 @@ Leia tambem:
 - `.brain/HUB_COUNCIL_CONTEXT.md`
 - `.brain/PROJECT_CONTEXT.md`
 - `/Users/paulopierrondi/Documents/Obsidian Vault/Hub_Agentes/05_Configuracao/config_product_council.md`
+- `/Users/paulopierrondi/Documents/Obsidian Vault/99_System/Prompt Caching Workflow Policy.md`
 - `/Users/paulopierrondi/Documents/Obsidian Vault/Hub_Agentes/03_Outputs/council_reviews/`
 
 ## Finish gate obrigatorio
@@ -133,5 +172,6 @@ Leia tambem:
 - Registry-first: estado vem de `/Users/paulopierrondi/agents-hub/registry/projects_registry.json`.
 - Evidence-based: cite arquivo, linha, commit, log, URL ou report.
 - No secrets: nunca grave tokens, API keys, cookies, chaves privadas, AuthKeys ou valores `.env` em Markdown.
+- Prompt caching: contexto estavel primeiro, task delta por ultimo, secrets fora do prefixo cacheavel, telemetry registrada quando disponivel.
 - Human-gated: deploy, push, App Store submit, ads spend, publicacao social, migrations, producao, secrets, cron e LaunchAgents exigem aprovacao explicita do Paulo.
 <!-- HUB_COUNCIL_TRIGGER_END -->

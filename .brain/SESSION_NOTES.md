@@ -146,3 +146,24 @@ A App Store aceita redimensionamento automático para 1290×2796.
 - Aguardar email da Apple com resultado da revisão
 - Preparar respostas para possíveis perguntas do reviewer
 - Planejar marketing/ASO para lançamento
+
+---
+## 2026-05-22 — INVALID_BINARY RESOLVIDO ✅
+
+### Erros identificados (email da Apple):
+1. **ITMS-91054**: `NSPrivacyAccessedAPICategoryPhotoLibrary` não é categoria válida de Required Reason API
+2. **ITMS-91064**: `NSPrivacyTrackingDomains` não vazio exige `NSPrivacyTracking = true`
+
+### Correções aplicadas:
+- `PrivacyInfo.xcprivacy`: removeu `NSPrivacyTrackingDomains` (array vazio)
+- `PrivacyInfo.xcprivacy`: removeu `NSPrivacyAccessedAPITypes` (array vazio) — PhotoLibrary não é Required Reason API
+- `Info.plist`: build 5 → 6
+- `project.pbxproj`: `CURRENT_PROJECT_VERSION` 5 → 6
+- Commit: `f93895b`
+
+### Próximos passos (requer Xcode local):
+1. Abrir Xcode → Product → Archive
+2. Distribute App → App Store Connect → Upload
+3. Aguardar processamento do build 6 no ASC
+4. Associar build 6 à versão 1.0
+5. Reenviar para revisão

@@ -24,6 +24,17 @@ struct HomeView: View {
     }
     
     private func loadData() async {
+        if ProcessInfo.processInfo.arguments.contains("--screenshot-mode") {
+            recentTryOns = Array(TryOn.samples.prefix(4))
+            stats = UserStats(
+                tryOns: TryOn.samples.count,
+                reviews: Review.samples.count,
+                votes: TryOn.samples.reduce(0) { $0 + $1.votes }
+            )
+            loadError = false
+            return
+        }
+
         isLoading = true
         defer { isLoading = false }
         do {

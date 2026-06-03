@@ -25,7 +25,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>6</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>NSCameraUsageDescription</key>
@@ -33,7 +33,7 @@
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>O app precisa salvar o resultado do try-on na sua galeria de fotos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>O app precisa acessar suas fotos para você enviar sua foto e a foto da roupa para o try-on virtual.</string>
+	<string>O app precisa acessar suas fotos para você escolher a foto processada pela API do ProvadorIA e pelo Google Gemini somente para gerar o try-on virtual.</string>
 	<key>UILaunchScreen</key>
 	<dict/>
 	<key>UISupportedInterfaceOrientations</key>

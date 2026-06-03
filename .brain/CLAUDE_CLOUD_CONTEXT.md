@@ -3,7 +3,7 @@
 This file is a non-secret capsule exported from Paulo's local Obsidian second brain.
 
 Local vault source: `/Users/paulopierrondi/Documents/Obsidian Vault`
-Repository: `/Users/paulopierrondi/Downloads/provadoria`
+Repository: `/Users/paulopierrondi/Projects/provadoria`
 
 ## User Profile Snapshot
 
@@ -44,7 +44,7 @@ When asked to work in this repo, internally start with:
 ---
 type: project
 repo_name: "provadoria"
-repo_path: "/Users/paulopierrondi/Downloads/provadoria"
+repo_path: "/Users/paulopierrondi/Projects/provadoria"
 repo_kind: "repo"
 branch: "main"
 dirty_files: 9
@@ -58,7 +58,7 @@ tags:
 
 ## Estado rapido
 
-- Path: `/Users/paulopierrondi/Downloads/provadoria`
+- Path: `/Users/paulopierrondi/Projects/provadoria`
 - Tipo: `repo`
 - Repo kind: `repo`
 - Branch: `main`
@@ -815,9 +815,9 @@ This note is for cleanup proposals. Do not treat it as permission to bulk-edit L
 - Five non-primary or nested files still lack the alignment block after repair; review manually before broad edits:
   - `/Users/paulopierrondi/.hermes/hermes-agent/AGENTS.md`
   - `/Users/paulopierrondi/.kimi_openclaw/workspace/AGENTS.md`
-  - `/Users/paulopierrondi/Downloads/faithschool-web/faithschool/CLAUDE.md`
-  - `/Users/paulopierrondi/Downloads/pierrondi-ia-apps-ads-readiness/AGENTS.md`
-  - `/Users/paulopierrondi/Downloads/pierrondi-ia-apps-ads-readiness/CLAUDE.md`
+  - `/Users/paulopierrondi/Projects/faithschool-web/faithschool/CLAUDE.md`
+  - `/Users/paulopierrondi/Projects/pierrondi-ia-apps-ads-readiness/AGENTS.md`
+  - `/Users/paulopierrondi/Projects/pierrondi-ia-apps-ads-readiness/CLAUDE.md`
 - `brain-linear-sync` refreshed [[04_Areas/Coding/Linear/Linear Git Sync Report]] at `2026-05-16 09:06:30`: `31` repos scanned, `31` dirty, `8` ahead, `2` behind, `18` still needing Linear project mapping.
 - Live Linear connector inspection succeeded. Agentcore projects are readable; statuses are `Backlog`, `Todo`, `In Progress`, `Done`, `Duplicate`, `Canceled`.
 - Current live `In Progress` issues are still `AGE-1421` through `AGE-1424` for `fifa26bolao - Bolao Express`.
@@ -2125,7 +2125,7 @@ Este e o centro de operacao para criativos, videos curtos, campanhas, legendas, 
 ## Projeto
 
 - [[02_Projects/pierrondi-ia]]
-- Repo: `/Users/paulopierrondi/Downloads/pierrondi-ia`
+- Repo: `/Users/paulopierrondi/Projects/pierrondi-ia`
 - Studio: `/studio/videos`, `/studio/creatives`, `/studio/creatives/factory`, `/studio/campaigns`, `/studio/topics`, `/studio/approvals`, `/studio/health`
 
 ## Regra
@@ -2155,7 +2155,7 @@ Todo pedido de criativo deve gerar um pacote, nao apenas uma peca:
 - Todo ad de app, UGC ou nao UGC, deve passar pelo fluxo nativo `Creative Video Factory` do Pierrondi IA Studio antes de geracao, upload ou publicacao.
 - Tela canonica: `/studio/creatives/factory`.
 - API canonica: `/api/marketing-os/content-factory/creative-video`.
-- Engine canonica: `/Users/paulopierrondi/Downloads/pierrondi-ia/lib/marketing-os/content-factory/creative-video-factory.ts`.
+- Engine canonica: `/Users/paulopierrondi/Projects/pierrondi-ia/lib/marketing-os/content-factory/creative-video-factory.ts`.
 - O app standalone `creative-video-factory` e os artefatos do `investcoach_ai` sao biblioteca/prototipo historico, nao a fonte de verdade.
 - Primeiro perguntar e registrar: canal principal (`TikTok`, `Instagram`, `LinkedIn`, `YouTube`), objetivo, pago/organico, tela real do app, hook dos 2 primeiros segundos e angulo de venda.
 - Sempre que possivel, capturar demo real via Xcode/iOS Simulator antes de usar b-roll generico. A prova de produto deve vir antes de UGC, avatar, Veo ou Pexels.
@@ -2204,14 +2204,14 @@ O output bom nao e "um video". E um pacote de campanha com roteiro, voz, legenda
 
 ## Fonte de verdade no repo
 
-- Repo: `/Users/paulopierrondi/Downloads/pierrondi-ia`
-- Creative Video Factory: `/Users/paulopierrondi/Downloads/pierrondi-ia/docs/marketing-os/creative-video-factory.md`
+- Repo: `/Users/paulopierrondi/Projects/pierrondi-ia`
+- Creative Video Factory: `/Users/paulopierrondi/Projects/pierrondi-ia/docs/marketing-os/creative-video-factory.md`
 - Studio: `/studio/creatives/factory`
 - API: `/api/marketing-os/content-factory/creative-video`
-- Engine: `/Users/paulopierrondi/Downloads/pierrondi-ia/lib/marketing-os/content-factory/creative-video-factory.ts`
-- Creative engine runbook: `/Users/paulopierrondi/Downloads/pierrondi-ia/docs/marketing/creative-engine-test-runbook.md`
-- Criativos curados: `/Users/paulopierrondi/Downloads/pierrondi-ia/assets/creatives/post-images/`
-- Background videos: `/Users/paulopierrondi/Downloads/pierrondi-ia/assets/video-backgrounds/`
+- Engine: `/Users/paulopierrondi/Projects/pierrondi-ia/lib/marketing-os/content-factory/creative-video-factory.ts`
+- Creative engine runbook: `/Users/paulopierrondi/Projects/pierrondi-ia/docs/marketing/creative-engine-test-runbook.md`
+- Criativos curados: `/Users/paulopierrondi/Projects/pierrondi-ia/assets/creatives/post-images/`
+- Background videos: `/Users/paulopierrondi/Projects/pierrondi-ia/assets/video-backgrounds/`
 - API force video: `/api/marketing-os/force-video`
 - Preflight: `/api/marketing-os/video/preflight`
 
@@ -2308,8 +2308,8 @@ Gerar voz natural e legendas sincronizadas para videos de marketing, sem perder 
 
 ## ElevenLabs no repo
 
-- Adapter: `/Users/paulopierrondi/Downloads/pierrondi-ia/lib/marketing-os/voice/elevenlabs.ts`
-- Captions: `/Users/paulopierrondi/Downloads/pierrondi-ia/lib/marketing-os/video/captions.ts`
+- Adapter: `/Users/paulopierrondi/Projects/pierrondi-ia/lib/marketing-os/voice/elevenlabs.ts`
+- Captions: `/Users/paulopierrondi/Projects/pierrondi-ia/lib/marketing-os/video/captions.ts`
 - Env vars:
   - `ELEVENLABS_API_KEY`
   - `ELEVENLABS_PAULO_VOICE_ID`
@@ -2594,7 +2594,7 @@ Use o vault e o repo pierrondi-ia. Leia:
 - 04_Areas/Marketing/Social Video Platform Specs 2026.md
 - 04_Areas/Marketing/Creative QA Checklist.md
 - 02_Projects/pierrondi-ia.md
-- /Users/paulopierrondi/Downloads/pierrondi-ia/docs/marketing-os/video-render-pipeline.md
+- /Users/paulopierrondi/Projects/pierrondi-ia/docs/marketing-os/video-render-pipeline.md
 
 Crie um pacote de criativo para:
 Produto/oferta: <produto>
@@ -2662,7 +2662,7 @@ Criativo atual:
 ## Pedir execucao no repo
 
 ```text
-No repo /Users/paulopierrondi/Downloads/pierrondi-ia, use o pipeline existente de video factory. Antes de mexer, rode/consulte o preflight do video. Gere apenas draft/review, sem publicar automaticamente. Use RENDER_BACKEND=ffmpeg como default e registre output paths, renderId, scriptId, custos, blockers e proximos passos no vault.
+No repo /Users/paulopierrondi/Projects/pierrondi-ia, use o pipeline existente de video factory. Antes de mexer, rode/consulte o preflight do video. Gere apenas draft/review, sem publicar automaticamente. Use RENDER_BACKEND=ffmpeg como default e registre output paths, renderId, scriptId, custos, blockers e proximos passos no vault.
 ```
 
 ## Kimi Claw - radar diario de video ads
@@ -3983,7 +3983,7 @@ tags:
 
 Projeto: [[02_Projects/provadoria|provadoria]]
 
-- Path: `/Users/paulopierrondi/Downloads/provadoria`
+- Path: `/Users/paulopierrondi/Projects/provadoria`
 - Codex relacionado: `0`
 - Claude Code relacionado: `0`
 - Kimi relacionado: `0`

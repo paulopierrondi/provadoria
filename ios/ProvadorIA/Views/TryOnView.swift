@@ -12,10 +12,14 @@ struct TryOnView: View {
     @State private var result: TryOn?
     @State private var errorMessage: String?
     @State private var showError = false
+    @AppStorage("hasAcceptedAIPhotoProcessing") private var hasAcceptedAIPhotoProcessing = false
     @Environment(\.dismiss) private var dismiss
     
     private var isFormValid: Bool {
-        userPhotoData != nil && clothingPhotoData != nil && !description.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        userPhotoData != nil
+            && clothingPhotoData != nil
+            && !description.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            && hasAcceptedAIPhotoProcessing
     }
     
     private var currentStep: Int {
@@ -30,6 +34,7 @@ struct TryOnView: View {
             VStack(spacing: 32) {
                 headerSection
                 stepIndicatorSection
+                aiConsentSection
                 photoUploadSection
                 directionNotesSection
                 generateButton
@@ -141,6 +146,37 @@ struct TryOnView: View {
                 DirectionNote(number: 3, title: "Boa iluminação", noteBody: "Evite sombras fortes que confundem o modelo.")
             }
         }
+    }
+
+    private var aiConsentSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Privacidade da IA")
+                .font(.system(size: 20, weight: .regular, design: .serif))
+                .foregroundColor(.cherryInk)
+
+            Text("Para gerar o try-on, o ProvadorIA processa sua foto, a foto da roupa e a descrição na API do ProvadorIA e no provedor de IA Google Gemini. Usamos esses dados somente para criar o resultado, sem venda, tracking ou treinamento de modelos.")
+                .font(.system(size: 13, weight: .regular, design: .default))
+                .foregroundColor(.cherryMid)
+                .lineSpacing(3)
+
+            Toggle(isOn: $hasAcceptedAIPhotoProcessing) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Autorizo o processamento por IA")
+                        .font(.system(size: 15, weight: .semibold, design: .default))
+                        .foregroundColor(.cherryInk)
+                    Text("Você pode desativar antes de gerar um novo try-on.")
+                        .font(.system(size: 12, weight: .regular, design: .default))
+                        .foregroundColor(.cherryMid)
+                }
+            }
+            .tint(.cherryAccent)
+        }
+        .padding(16)
+        .background(Color.cherryPaper)
+        .overlay(
+            Rectangle()
+                .stroke(Color.cherryLine, lineWidth: 1)
+        )
     }
     
     private var generateButton: some View {
